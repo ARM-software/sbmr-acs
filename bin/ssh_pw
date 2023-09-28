@@ -1,0 +1,109 @@
+#!/usr/bin/expect --
+
+# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# SPDX-License-Identifier : Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# ssh using the parms provided by the caller.  The benefit provided by this
+# program is that it will enter the password for you (i.e. non-interactively).
+
+# Description of arguments:
+# Arg0: The password.
+# Arg1: The ssh parm string.  This is the totality of ssh parms you wish to
+#       specify (e.g. userid, host, etc.).
+
+
+# Main
+
+  # Get arguments.
+  set password [lindex $argv 0]
+  set ssh_parms [lreplace $argv 0 0]
+
+  eval spawn ssh ${ssh_parms}
+
+  set timeout 30
+
+  set max_attempts 3
+
+  set attempts 0
+  while { 1 } {
+    incr attempts 1
+    expect {
+      -re "Offending RSA key in (.*?)\[\r\n\]" {
+        # We have been informed by ssh that we have a bad key.
+        # Retrieve the file path and line number from the ssh output.
+        set fields [split $expect_out(1,string) ":"]
+        set file_path [lindex $fields 0]
+        set line_num [lindex $fields 1]
+        # Use sed to delete the bad key.
+        set cmd_buf "sed -i ${line_num}d ${file_path}"
+        puts "Issuing: ${cmd_buf}"
+        eval exec bash -c {$cmd_buf}
+        # Kill the failed spawned ssh process.
+        exec kill -9 [exp_pid]
+        # Start a new process now that our stale key problem is fixed.
+        eval spawn ssh ${ssh_parms}
+        continue
+      }
+      -re "assword:" {
+        send "$password\r"
+        break
+      }
+      -re "Are you sure you want to continue connecting" {
+        if { $attempts > $max_attempts } {
+          puts stderr "**ERROR** Exceeded $max_attempts attempts to ssh."
+          exit 1
+        }
+        send "yes\r"
+      }
+      timeout {
+        puts stderr "**ERROR** Timed out waiting for password prompt."
+        exit 1
+      }
+      eof {
+        puts stderr "**ERROR** End of data waiting for password prompt."
+        exit 1
+      }
+    }
+  }
+
+  set timeout 3
+  expect {
+    "Permission denied, please try again." {
+      puts ""
+      puts "**ERROR** Incorrect userid or password provided to this program."
+      exit 1
+    }
+  }
+
+  set timeout -1
+
+  # We don't ever expect to see this string.  This will keep this program
+  # running indefinitely.
+  set never_string "When in the course of human events, it becomes :"
+  if { [ catch {expect { "${never_string}" {send "whatever\r"} }} result ] } {
+    set child_died {expect:[ ]spawn[ ]id[ ]exp4[ ]not[ ]open}
+    if { [regexp -expanded ${child_died} $result] } {
+      # The child died.  This is not necessarily an error (for example, the
+      # user may have included a command string to run on the target).
+      exit 0
+    } else {
+      puts $result
+      exit 1
+    }
+  }
+
+  exit 0
+
+

@@ -1,0 +1,42 @@
+##### BMC Information #####
+-v BMC_HOST:redfish-localhost
+-v BMC_USERNAME:admin
+-v BMC_PASSWORD:password
+
+-v BMC_ID:bmc
+-v SYSTEM_ID:system
+-v CHASSIS_ID:chassis
+
+--outputdir=logs
+
+
+##### SOL Information #####
+# Default SOL_TYPE as ipmi sol.
+# Change to ssh per systems. Additional cmd for executing sol supports.
+#
+#-v SOL_TYPE:ssh
+#-v SOL_SSH_PORT:22
+#-v SOL_SSH_CMD:None
+
+
+##### Host Information #####
+-v SOL_LOGIN_OUTPUT:ubuntu login:
+-v SOL_LOGIN_USERNAME:user
+-v SOL_LOGIN_PASSWORD:password
+
+
+##### Virtual Media #####
+-v VM_URL:https://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04.2-live-server-arm64.iso
+
+
+##### Self Declaration For SBMR Interface #####
+# If system supports the compliant interfaces, change corresponding variable to 1.
+#
+-v M1_JTAG_1_2_Interface_Declaration:0
+-v M2_JTAG_1_2_Interface_Declaration:0
+-v M2_IO_1_NCSI_Interface_Declaration:0
+-v M2_RAS_1_2_Function_Declaration:0
+
+
+##### Debug : Redfish Mockup Creator #####
+#--include Test_BMC_Redfish_Using_Redfish_Mockup_Creator

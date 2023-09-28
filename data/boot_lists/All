@@ -1,0 +1,47 @@
+Redfish Power On
+Redfish Power On (mfg)
+IPMI Power On
+IPMI Power On (mfg)
+Redfish Power Off
+Redfish Power Off (mfg)
+Redfish Hard Power Off
+Redfish Hard Power Off (mfg)
+IPMI Power Off
+IPMI Power Off (mfg)
+IPMI Power Soft
+IPMI Power Soft (mfg)
+Host Power Off
+Host Power Off (mfg)
+PDU AC Cycle (run)
+PDU AC Cycle (run) (mfg)
+PDU AC Cycle (off)
+PDU AC Cycle (off) (mfg)
+IPMI MC Reset Warm (run)
+IPMI MC Reset Warm (run) (mfg)
+IPMI MC Reset Warm (off)
+IPMI MC Reset Warm (off) (mfg)
+IPMI MC Reset Cold (off)
+IPMI MC Reset Cold (off) (mfg)
+IPMI MC Reset Cold (run)
+IPMI MC Reset Cold (run) (mfg)
+IPMI Std MC Reset Warm (off)
+IPMI Std MC Reset Warm (off) (mfg)
+IPMI Std MC Reset Warm (run)
+IPMI Std MC Reset Warm (run) (mfg)
+IPMI Std MC Reset Cold (off)
+IPMI Std MC Reset Cold (off) (mfg)
+IPMI Std MC Reset Cold (run)
+IPMI Std MC Reset Cold (run) (mfg)
+IPMI Power Cycle
+IPMI Power Cycle (mfg)
+IPMI Power Reset
+IPMI Power Reset (mfg)
+Auto Reboot
+Auto Reboot (mfg)
+Host initd Reset
+Host initd Reset (mfg)
+Host Reboot
+Host Reboot (mfg)
+RF SYS GracefulRestart
+RF SYS GracefulRestart (mfg)
+RF SYS ForceRestart

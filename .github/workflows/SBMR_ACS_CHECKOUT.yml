@@ -1,0 +1,35 @@
+name: Checkout sbmr-acs Repository
+
+on:
+  push:
+    branches:                # trigger on push to main
+      - main
+  pull_request:              # trigger on pull requests to main
+    branches:
+      - main
+  workflow_dispatch:         # to dispatch from Github Actions
+
+jobs:
+  checkout_and_package:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Zip the repository
+      run: |
+        COMMIT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+        # store the commit_sha in Actions environment variable
+        echo "commit_sha=$COMMIT_SHA" >> "$GITHUB_ENV"
+
+        zip -r sbmr-acs-$COMMIT_SHA.zip .
+        ls sbmr-acs-$COMMIT_SHA.zip
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: sbmr-acs-${{ env.commit_sha }}.zip
+        path: sbmr-acs-${{ env.commit_sha }}.zip

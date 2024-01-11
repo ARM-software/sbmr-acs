@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2024, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,17 @@ Test Redfish Virtual Media Action Uri
     [Documentation]  Verify Redfish Virtual Media Action Uri
     [Tags]  M21_USB_1_Redfish_Virtual_Media_Action_Uri
 
+    # create payload to patch network protocol URI with VirtualMedia
+    # ProtocolEnabled to be True. Ignore the response
+    ${vm_status}=  Create Dictionary  ProtocolEnabled=${True}
+    ${payload}=  Create Dictionary  VirtualMedia=${vm_status}
+
+    Redfish.Patch  ${REDFISH_NW_PROTOCOL_URI}  body=&{payload}
+    ...  valid_status_codes=[]
+
+    # wait for new values to take effect
+    Sleep  ${NETWORK_TIMEOUT}s
+
     ${members}=  Redfish.Get Members List
     ...  /redfish/v1/Managers/${BMC_ID}/VirtualMedia
 
@@ -48,14 +59,40 @@ Test Redfish Virtual Media Action Uri
     ${payload}=  Create Dictionary
     ...    Image=${VM_URL}
 
+    # add custom parameters to payload, if provided by user
+    Run Keyword If  '${VM_USER}' != '${EMPTY}'
+    ...  Set to Dictionary  ${payload}  UserName  ${VM_USER}
+
+    Run Keyword If  '${VM_PASSWD}' != '${EMPTY}'
+    ...  Set to Dictionary  ${payload}  Password  ${VM_PASSWD}
+
+    Run Keyword If  '${VM_TRANSFER_PROTO_TYPE}' != '${EMPTY}'
+    ...  Set to Dictionary  ${payload}  TransferProtocolType  ${VM_TRANSFER_PROTO_TYPE}
+
+    Run Keyword If  '${VM_TRANSFER_METHOD}' != '${EMPTY}'
+    ...  Set to Dictionary  ${payload}  TransferMethod  ${VM_TRANSFER_METHOD}
+
+    Run Keyword If  '${VM_WRITE_PROT}' != '${EMPTY}'
+    ...  Set to Dictionary  ${payload}  WriteProtected  ${VM_WRITE_PROT}
+
     Redfish.Post  ${insert_uri}  body=&{payload}
 
     Sleep  5 sec
 
-    ## Check image was inserted correctly
+    # Check image was inserted correctly
     ${resp}=  Redfish.Get Properties  ${members}[0]
     Should Be Equal  ${resp['Image']}  ${VM_URL}
     Should Be Equal  ${resp['Inserted']}  ${True}
+
+    # check if custom parameters inserted correctly
+    Run Keyword If  '${VM_TRANSFER_PROTO_TYPE}' != '${EMPTY}'
+    ...  Should Be Equal  ${resp['TransferProtocolType']}  ${VM_TRANSFER_PROTO_TYPE}
+
+    Run Keyword If  '${VM_TRANSFER_METHOD}' != '${EMPTY}'
+    ...  Should Be Equal  ${resp['TransferMethod']}  ${VM_TRANSFER_METHOD}
+
+    Run Keyword If  '${VM_WRITE_PROT}' != '${EMPTY}'
+    ...  Should Be Equal  ${resp['WriteProtected']}  ${VM_WRITE_PROT}
 
     # Eject image after testing
     Run Keyword If  ${resp['Inserted']} == ${True}

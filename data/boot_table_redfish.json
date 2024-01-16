@@ -9,7 +9,7 @@
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -27,7 +27,7 @@
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -103,7 +103,7 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
@@ -121,13 +121,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -155,14 +155,14 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "bmc": "^Enabled$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -191,14 +191,14 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "bmc": "^Enabled$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -227,13 +227,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -261,13 +261,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -295,13 +295,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -313,13 +313,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -331,13 +331,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -355,7 +355,7 @@
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -367,14 +367,14 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "bmc": "^Enabled$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 1,
@@ -386,13 +386,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -404,13 +404,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,
@@ -422,13 +422,13 @@
         "start": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "end": {
             "redfish": "^1$",
             "chassis": "^On$",
-            "boot_progress": "^SystemHardwareInitializationComplete|OSRunning|On$",
+            "boot_progress": "^SystemHardwareInitializationComplete|OSBootStarted|OSRunning|On$",
             "host": "^Enabled$"
         },
         "bmc_reboot": 0,

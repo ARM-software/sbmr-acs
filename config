@@ -28,6 +28,13 @@
 ##### Virtual Media #####
 -v VM_URL:https://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04.2-live-server-arm64.iso
 
+# Additional Virtual Media Parameters
+# Following is an example, uncomment and modify the variables as needed by Virtual Media.
+# -v VM_USER:username
+# -v VM_PASSWD:password
+# -v VM_TRANSFER_PROTO_TYPE:NFS
+# -v VM_TRANSFER_METHOD:Stream
+# -v VM_WRITE_PROT:false
 
 ##### Self Declaration For SBMR Interface #####
 # If system supports the compliant interfaces, change corresponding variable to 1.

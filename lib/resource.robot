@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2024, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,6 +77,13 @@ ${SOL_LOGIN_TIMEOUT}         10 mins
 ${SOL_TYPE}         ipmi
 ${SOL_SSH_PORT}     22
 ${SOL_SSH_CMD}      None
+
+# Virtual Media related parameters
+${VM_USER}                   ${EMPTY}
+${VM_PASSWD}                 ${EMPTY}
+${VM_TRANSFER_PROTO_TYPE}    ${EMPTY}
+${VM_TRANSFER_METHOD}        ${EMPTY}
+${VM_WRITE_PROT}             ${EMPTY}
 
 # PDU related parameters
 ${PDU_TYPE}         ${EMPTY}

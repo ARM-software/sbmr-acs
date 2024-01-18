@@ -43,7 +43,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishServiceValidator.
 Test BMC Redfish Using Redfish Service Validator
     [Documentation]  Check conformance with a Redfish service interface.
     [Tags]  M2_OOB_1_Redfish_Service_Validator
-    ...     M3_OOB_1_Redfish_Service_Validator
+
 
     Download DMTF Tool  ${rsv_dir_path}  ${rsv_github_url}  stable_branch=${rsv_revision}
 

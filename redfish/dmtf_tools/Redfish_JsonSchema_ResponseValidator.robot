@@ -40,7 +40,7 @@ ${command_string}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}Redfish-JsonSchema-Respo
 Test BMC Redfish Using Redfish JsonSchema ResponseValidator
     [Documentation]  Check BMC conformance with JsonSchema files at the DMTF site.
     [Tags]  M2_OOB_1_Redfish_JsonSchema_ResponseValidator
-    ...     M3_OOB_1_Redfish_JsonSchema_ResponseValidator
+
 
     Download DMTF Tool  ${rsv_dir_path}  ${rsv_github_url}  stable_branch=${rsv_revision}
 

@@ -33,7 +33,7 @@ Suite Teardown   Suite Teardown Execution
 Verify BMC Redfish Boot Source Override with Enabled Mode As Once
     [Documentation]  Verify BMC Redfish Boot Source Override with Enabled Mode As Once.
     [Tags]           M2_OOB_1_Redfish_Boot_Source_As_Once
-    ...              M3_OOB_1_Redfish_Boot_Source_As_Once
+
     [Template]  Set And Verify Boot Source Override
 
     #BootSourceOverrideEnabled    BootSourceOverrideTarget
@@ -45,7 +45,7 @@ Verify BMC Redfish Boot Source Override with Enabled Mode As Once
 Verify BMC Redfish Boot Source Override with Enabled Mode As Continuous
     [Documentation]  Verify BMC Redfish Boot Source Override with Enabled Mode As Continuous.
     [Tags]           M2_OOB_1_Redfish_Boot_Source_As_Continuous
-    ...              M3_OOB_1_Redfish_Boot_Source_As_Continuous
+
     [Template]  Set And Verify Boot Source Override
 
     #BootSourceOverrideEnabled    BootSourceOverrideTarget
@@ -57,7 +57,7 @@ Verify BMC Redfish Boot Source Override with Enabled Mode As Continuous
 Verify BMC Redfish Boot Source Override with Enabled Mode As Disabled
     [Documentation]  Verify BMC Redfish Boot Source Override with Enabled Mode As Disabled.
     [Tags]           M2_OOB_1_Redfish_Boot_Source_As_Disabled
-    ...              M3_OOB_1_Redfish_Boot_Source_As_Disabled
+
 
     Redfish Disable Boot Source
 

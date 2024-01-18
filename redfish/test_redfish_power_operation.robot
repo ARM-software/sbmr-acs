@@ -30,7 +30,7 @@ Suite Teardown    Suite Teardown Execution
 Verify Redfish Host GracefulShutdown
     [Documentation]  Verify Redfish host graceful shutdown operation.
     [Tags]  M2_OOB_1_Redfish_Host_GracefulShutdown
-    ...     M3_OOB_1_Redfish_Host_GracefulShutdown
+
 
     # Wait until OS login prompt show up, then issue GracefulShutdown
     Redfish Hard Power Off  stack_mode=skip
@@ -47,7 +47,7 @@ Verify Redfish Host GracefulShutdown
 Verify Redfish Host PowerOn
     [Documentation]  Verify Redfish host power on operation.
     [Tags]  M2_OOB_1_Redfish_Host_PowerOn
-    ...     M3_OOB_1_Redfish_Host_PowerOn
+
 
     Redfish Power On
 
@@ -55,7 +55,7 @@ Verify Redfish Host PowerOn
 Verify Redfish Host PowerOff
     [Documentation]  Verify Redfish host power off operation.
     [Tags]  M2_OOB_1_Redfish_Host_PowerOff
-    ...     M3_OOB_1_Redfish_Host_PowerOff
+
 
     Redfish Hard Power Off
 
@@ -63,7 +63,7 @@ Verify Redfish Host PowerOff
 Verify Redfish Host GracefulRestart
     [Documentation]  Verify Redfish host graceful restart operation.
     [Tags]  M2_OOB_1_Redfish_Host_GracefulRestart
-    ...     M3_OOB_1_Redfish_Host_GracefulRestart
+
 
     # Wait until OS login prompt show up, then issue GracefulRestart
     Redfish Hard Power Off  stack_mode=skip
@@ -80,7 +80,7 @@ Verify Redfish Host GracefulRestart
 Verify Redfish Host ForceRestart
     [Documentation]  Verify Redfish host force restart operation
     [Tags]  M2_OOB_1_Redfish_Host_ForceRestart
-    ...     M3_OOB_1_Redfish_Host_ForceRestart
+
 
     RF SYS ForceRestart
 
@@ -88,7 +88,7 @@ Verify Redfish Host ForceRestart
 Verify Redfish Host PowerCycle
     [Documentation]  Verify Redfish host Power Cycle operation
     [Tags]  M2_OOB_1_Redfish_Host_PowerCycle
-    ...     M3_OOB_1_Redfish_Host_PowerCycle
+
 
     Redfish Power Cycle
 

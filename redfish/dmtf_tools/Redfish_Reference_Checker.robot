@@ -38,7 +38,7 @@ ${command_string}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishReferenceTool.py
 Test BMC Redfish Reference
     [Documentation]  Checks for valid reference URLs in CSDL XML files.
     [Tags]  M2_OOB_1_Redfish_Reference_Checker
-    ...     M3_OOB_1_Redfish_Reference_Checker
+
 
     ${rc}  ${output}=  Run DMTF Tool  ${rsv_dir_path}  ${command_string}  check_error=1
 

@@ -55,6 +55,12 @@ class bmc_redfish_utils(object):
             if self._rest_response_.status == 200:
                 self.__inited__ = True
 
+            # Update HTTPS Session timeout
+            # By default the value of timeout is 30s, which may be less to cater to all the vendor
+            # Increasing the value to 120s
+            self._redfish_.patch("/redfish/v1/SessionService",
+                                 body={"SessionTimeout":120}, valid_status_codes=[])
+
     def get_redfish_session_info(self):
         r"""
         Returns redfish sessions info dictionary.

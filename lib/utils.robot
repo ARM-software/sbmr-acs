@@ -279,6 +279,27 @@ Redfish Set Boot Default
     Should Be Equal As Strings  ${resp["BootSourceOverrideMode"]}  ${override_mode}
 
 
+Get Redfish Settings Object Uri
+    [Documentation]  Get Redfish Setting Object URI. If @Redfish.Settings
+    ...              not support, then return the origin URI
+    [Arguments]      ${redfish_uri}
+
+    ${resp}=  Redfish.Get Attribute  ${redfish_uri}  @Redfish.Settings
+
+    ${uris}=  Get Value From Nested Dict  @odata.id  ${resp}
+
+    ${notFound}=  Run Keyword And Return Status
+    ...  Should Be Empty  ${uris}
+
+    ${uri}=
+    ...  Run Keyword If  '${notFound}' == '${TRUE}'
+    ...      Set Variable  ${redfish_uri}
+    ...  ELSE
+    ...      Set Variable  ${uris}[0]
+
+    [Return]  ${uri}
+
+
 Redfish Set Boot Source
     [Documentation]  Set and Verify Boot source override
     [Arguments]      ${override_enabled}  ${override_target}
@@ -294,10 +315,12 @@ Redfish Set Boot Source
 
     ${payload}=  Create Dictionary  Boot=${data}
 
-    Redfish.Patch  /redfish/v1/Systems/${SYSTEM_ID}  body=&{payload}
+    ${setting_uri}=  Get Redfish Settings Object Uri  /redfish/v1/Systems/${SYSTEM_ID}
+
+    Redfish.Patch  ${setting_uri}  body=&{payload}
     ...  valid_status_codes=[${HTTP_OK},${HTTP_CREATED},${HTTP_ACCEPTED},${HTTP_NO_CONTENT}]
 
-    ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  Boot
+    ${resp}=  Redfish.Get Attribute  ${setting_uri}  Boot
     Should Be Equal As Strings  ${resp["BootSourceOverrideEnabled"]}  ${override_enabled}
     Should Be Equal As Strings  ${resp["BootSourceOverrideTarget"]}  ${override_target}
 
@@ -309,8 +332,10 @@ Redfish Disable Boot Source
     # override_enabled    Boot source override enable type.
     #                     ('Once', 'Continuous', 'Disabled').
 
+    ${setting_uri}=  Get Redfish Settings Object Uri  /redfish/v1/Systems/${SYSTEM_ID}
+
     # If BootSourceOverrideEnabled as disabled, then return
-    ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  Boot
+    ${resp}=  Redfish.Get Attribute  ${setting_uri}  Boot
 
     Run Keyword If  '${resp["BootSourceOverrideEnabled"]}'=='Disabled'
     ...  Return From Keyword
@@ -319,20 +344,20 @@ Redfish Disable Boot Source
     ${data}=  Create Dictionary  BootSourceOverrideTarget=None
     ${payload}=  Create Dictionary  Boot=${data}
 
-    Redfish.Patch  /redfish/v1/Systems/${SYSTEM_ID}  body=&{payload}
+    Redfish.Patch  ${setting_uri}  body=&{payload}
     ...  valid_status_codes=[${HTTP_OK},${HTTP_CREATED},${HTTP_ACCEPTED},${HTTP_NO_CONTENT}]
 
     # Verify BootSourceOverrideEnabled as Disable. If not, Set to Disabled
     ${data}=  Create Dictionary  BootSourceOverrideEnabled=Disabled
     ${payload}=  Create Dictionary  Boot=${data}
 
-    ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  Boot
+    ${resp}=  Redfish.Get Attribute  ${setting_uri}  Boot
     Run Keyword If  '${resp["BootSourceOverrideEnabled"]}'!='Disabled'
-    ...  Redfish.Patch  /redfish/v1/Systems/${SYSTEM_ID}  body=&{payload}
+    ...  Redfish.Patch  ${setting_uri}  body=&{payload}
     ...  valid_status_codes=[${HTTP_OK},${HTTP_CREATED},${HTTP_ACCEPTED},${HTTP_NO_CONTENT}]
 
     # Verify BootSourceOverrideEnabled and return status
-    ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  Boot
+    ${resp}=  Redfish.Get Attribute  ${setting_uri}  Boot
     Should Be Equal As Strings  ${resp["BootSourceOverrideEnabled"]}  Disabled
 
 

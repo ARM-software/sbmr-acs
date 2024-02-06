@@ -290,3 +290,25 @@ def validate_supported_vga_controller(lists):
                 return True
 
     return False
+
+
+def get_value_from_nested_dict(key, nested_dict):
+    r"""
+    Return the key value from the nested dictionary.
+
+    key            Key value of the dictionary to look up.
+    nested_dict    Dictionary data.
+    """
+
+    result = []
+
+    if not isinstance(nested_dict, dict):
+        return result
+
+    for k, v in nested_dict.items():
+        if k == key:
+            result.append(v)
+        elif isinstance(v, dict) and k != key:
+            result += get_value_from_nested_dict(key, v);
+
+    return result

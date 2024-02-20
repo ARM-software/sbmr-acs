@@ -188,16 +188,6 @@ class redfish_plus(HttpClient):
         if etag is not None:
             headers = {"If-Match": etag}
 
-        # Check if @Redfish.Settings member present
-        if "@Redfish.Settings" in response.dict:
-            # update args with URI found in SettingObject if found else continue
-            try:
-                tmp_args = list(args)
-                tmp_args[0] = response.dict['@Redfish.Settings']['SettingsObject']['@odata.id']
-                args = tuple(tmp_args)
-            except KeyError:
-                pass
-
         quiet = 0
         if MTLS_ENABLED == "True":
             return self.rest_request(

@@ -4,7 +4,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "end": {
             "redfish": "^1$",
@@ -22,7 +22,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "end": {
             "redfish": "^1$",
@@ -44,7 +44,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 0,
         "method_type": "keyword",
@@ -60,7 +60,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 0,
         "method_type": "keyword",
@@ -76,7 +76,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 0,
         "method_type": "keyword",
@@ -92,7 +92,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 0,
         "method_type": "keyword",
@@ -110,7 +110,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 0,
         "method_type": "keyword",
@@ -144,7 +144,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 1,
         "method_type": "keyword",
@@ -180,7 +180,7 @@
             "bmc": "^Enabled$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 1,
         "method_type": "keyword",
@@ -216,7 +216,7 @@
             "bmc": "^Enabled$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 1,
         "method_type": "keyword",
@@ -250,7 +250,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 1,
         "method_type": "keyword",
@@ -284,7 +284,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "bmc_reboot": 1,
         "method_type": "keyword",
@@ -350,7 +350,7 @@
             "redfish": "^1$",
             "chassis": "^Off$",
             "boot_progress": "^None|Off$",
-            "host": "^Disabled$"
+            "host": "^Disabled|StandbyOffline$"
         },
         "end": {
             "redfish": "^1$",

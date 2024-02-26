@@ -143,7 +143,7 @@ Before running the test suite, setup for configurations in the [*config*](config
 For BMC configuration, `BMC ip address`, `BMC username`, and `BMC password` needs to be set.
 Also, `Redfish instance` name needs to be set as per your system. `*CHASSIS_ID*` is main chassis that in charge of power status.
 
-For Host configuration, Host OS `login prompt`, Host OS `username` and Host OS `password` needs to be set.
+For Host configuration, Host OS `login prompt`, Host OS `username` and Host OS `password` needs to be set. Ensure that the HOST OS is set as the first entry in the boot order of the system under test (SUT) for IPMI SOL test to work.
 
 For Serial over LAN (SOL) configuration, SBMR-ACS will verify SOL capability and SOL methods can be IPMI SOL and SSH-based SOL. Default method is via IPMI SOL (Don't need to change SOL configuration). You may also change to SSH-based SOL by setting `SOL_TYPE` to ssh and `SOL_SSH_PORT` (default port 22). Besides, if extra commands are needed to start SOL in SSH, `SOL_SSH_CMD` may be set.
 

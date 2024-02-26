@@ -1,5 +1,5 @@
 robotframework
-requests
+requests==2.31.0
 robotframework-requests
 robotframework-jsonlibrary
 paramiko>=2.5.0
@@ -20,3 +20,4 @@ colorama
 pyasn1
 pyasn1_modules
 robotframework-lint
+jsonschema==3.2.0

@@ -38,7 +38,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishServiceValidator.
 ...                -p ${BMC_PASSWORD} --logdir ${OUTPUT_DIR}${/}redfish-service-validator
 ...                --debugging
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Using Redfish Service Validator
     [Documentation]  Check conformance with a Redfish service interface.

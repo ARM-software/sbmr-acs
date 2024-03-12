@@ -48,7 +48,7 @@ Run Shell Inband IPMI Raw Command
     Return From Keyword If  ${fail_on_err} == ${0}  ${stderr}
     Should Be Empty  ${stderr}  msg=${stdout}
 
-    [Return]  ${stdout}
+    RETURN  ${stdout}
 
 
 Run Shell Inband IPMI Standard Command
@@ -66,7 +66,7 @@ Run Shell Inband IPMI Standard Command
     ${rc}  ${stdout}  ${stderr}=  Shell Cmd  ${ipmi_cmd}  return_stderr=True
     Return From Keyword If  ${fail_on_err} == ${0}  ${stderr}
     Should Be Empty  ${stderr}  msg=${stdout}
-    [Return]  ${stdout}
+    RETURN  ${stdout}
 
 
 Check If IPMI Tool Exist

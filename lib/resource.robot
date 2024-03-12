@@ -154,14 +154,14 @@ ${M2_RAS_1_2_Function_Declaration}       0
 Get Inventory Schema
     [Documentation]  Get inventory schema.
     [Arguments]    ${machine}
-    [Return]    &{INVENTORY}[${machine}]
+    RETURN    &{INVENTORY}[${machine}]
 
 Get Inventory Items Schema
     [Documentation]  Get inventory items schema.
     [Arguments]    ${machine}
-    [Return]    &{INVENTORY_ITEMS}[${machine}]
+    RETURN    &{INVENTORY_ITEMS}[${machine}]
 
 Get Sensor Schema
     [Documentation]  Get sensors schema.
     [Arguments]    ${machine}
-    [Return]    &{SENSORS}[${machine}]
+    RETURN    &{SENSORS}[${machine}]

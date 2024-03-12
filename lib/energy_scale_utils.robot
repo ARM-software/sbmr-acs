@@ -39,7 +39,7 @@ Get System Power Cap Limit
 
     ${power_limit_watts}=  Redfish.Get Attribute  ${power_cap_uri}   PowerLimitWatts
 
-    [return]  ${power_limit_watts}
+    RETURN  ${power_limit_watts}
 
 
 DCMI Power Get Limits
@@ -62,7 +62,7 @@ DCMI Power Get Limits
     ${output}=  Remove String  ${output}  milliseconds
     ${output}=  Remove String  ${output}  seconds
     &{limits}=  Key Value Outbuf To Dict  ${output}
-    [Return]  &{limits}
+    RETURN  &{limits}
 
 
 Get DCMI Power Limit
@@ -71,7 +71,7 @@ Get DCMI Power Limit
 
     &{limits}=  DCMI Power Get Limits
     ${power_setting}=  Get From Dictionary  ${limits}  power_limit
-    [Return]  ${power_setting}
+    RETURN  ${power_setting}
 
 
 Set DCMI Power Limit And Verify

@@ -44,7 +44,7 @@ Filter Expected Logging Events
     ${all_event_list}=  Get Redfish Event Logs
     Remove Values From List  ${all_event_list}  ${expected_event}
 
-    [Return]  ${all_event_list}
+    RETURN  ${all_event_list}
 
 
 Get IPMI SEL Setting
@@ -59,7 +59,7 @@ Get IPMI SEL Setting
     ...  case-insensitive
     ${setting_status}=  Fetch From Right  ${setting_line}  :${SPACE}
 
-    [Return]  ${setting_status}
+    RETURN  ${setting_status}
 
 
 Get Event Logs
@@ -88,7 +88,7 @@ Get Event Logs
     #}
 
     ${members}=  Redfish.Get Attribute  ${EVENT_LOG_URI}Entries  Members
-    [Return]  ${members}
+    RETURN  ${members}
 
 
 Get Redfish Event Logs
@@ -112,7 +112,7 @@ Get Redfish Event Logs
     Return From Keyword If  '${num_filter_struct_args}' == '${0}'  &{packed_dict}
     ${filtered_error_logs}=  Filter Struct  ${packed_dict}  &{filter_struct_args}
 
-    [Return]  ${filtered_error_logs}
+    RETURN  ${filtered_error_logs}
 
 
 Get Event Logs Not Ok
@@ -120,7 +120,7 @@ Get Event Logs Not Ok
 
     ${members}=  Get Event Logs
     ${severe_logs}=  Evaluate  [elog for elog in $members if elog['Severity'] != 'OK']
-    [Return]  ${severe_logs}
+    RETURN  ${severe_logs}
 
 
 Get Number Of Event Logs
@@ -128,7 +128,7 @@ Get Number Of Event Logs
 
     ${members}=  Get Event Logs
     ${num_members}=  Get Length  ${members}
-    [Return]  ${num_members}
+    RETURN  ${num_members}
 
 
 Redfish Purge Event Log
@@ -180,4 +180,4 @@ Redfish Get PostCodes
     ${members}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}/LogServices/PostCodes/Entries
     ...  Members  valid_status_codes=[${HTTP_OK}, ${HTTP_NO_CONTENT}]
 
-    [Return]  ${members}
+    RETURN  ${members}

@@ -33,7 +33,7 @@ ${rsv_revision}           1.0.1
 ${command_string}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishReferenceTool.py
 ...                --nochkcert 'https://${BMC_HOST}:${HTTPS_PORT}/redfish/v1/$metadata'
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Reference
     [Documentation]  Checks for valid reference URLs in CSDL XML files.

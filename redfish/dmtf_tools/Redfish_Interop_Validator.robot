@@ -39,7 +39,7 @@ ${profile_dir_path}    HWMgmt-OCP-profiles
 ${profile_github_url}  https://github.com/opencomputeproject/HWMgmt-OCP-Profiles
 
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Using Redfish Interop Validator On OCP Baseline Profile
     [Documentation]  Check conformance based on the BMC Interoperability profile.

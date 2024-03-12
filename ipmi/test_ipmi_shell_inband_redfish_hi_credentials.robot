@@ -92,7 +92,7 @@ Check Bootstrapping Account Credential
     Should Not Contain Any  ${string}  ${SPACE}  \\  '  "
     ...  msg=Failure: Credential Contains Invalid Characters
 
-    [Return]  ${string}
+    RETURN  ${string}
 
 
 Redfish Get Credential Bootstrapping Status
@@ -106,7 +106,7 @@ Redfish Get Credential Bootstrapping Status
     # Assume: only one host interface
     ${prop}=  Redfish.Get Properties  ${interface}[0]
 
-    [Return]  ${prop["CredentialBootstrapping"]["Enabled"]}
+    RETURN  ${prop["CredentialBootstrapping"]["Enabled"]}
 
 
 Redfish Set Credential Bootstrapping Status
@@ -125,5 +125,5 @@ Redfish Set Credential Bootstrapping Status
     Redfish.Patch  ${interface}[0]  body=&{payload}
     ...  valid_status_codes=[${HTTP_OK}, ${HTTP_NO_CONTENT}]
 
-    [Return]  ${status}
+    RETURN  ${status}
 

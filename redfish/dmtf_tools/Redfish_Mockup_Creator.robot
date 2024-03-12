@@ -34,7 +34,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}redfishMockupCreate.py
 ...                -r https://${BMC_HOST}:${HTTPS_PORT} -u ${BMC_USERNAME} -p ${BMC_PASSWORD}
 ...                -S --Dir ${mockup_dir} --quiet --maxlogentries 10
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Using Redfish Mockup Creator
     [Documentation]  Collect Redfish APIs for debugging via Redfish-Mockup-Creator.

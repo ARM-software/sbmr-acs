@@ -35,7 +35,7 @@ ${validator_dir}   ${OUTPUT_DIR}${/}${rsv_dir_path}
 ${command_string}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}Redfish-JsonSchema-ResponseValidator.py
 ...                -r https://${BMC_HOST} -u ${BMC_USERNAME} -p ${BMC_PASSWORD} -S -v
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Using Redfish JsonSchema ResponseValidator
     [Documentation]  Check BMC conformance with JsonSchema files at the DMTF site.

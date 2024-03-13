@@ -61,7 +61,7 @@ ${power_on_timeout}       15 mins
 ${power_off_timeout}      15 mins
 ${state_change_timeout}   3 mins
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Account Management
     [Documentation]  Check Account Management with a Redfish interface.

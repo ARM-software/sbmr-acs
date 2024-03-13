@@ -193,7 +193,7 @@ Check If warmReset is Initiated
     ${alive}=   Run Keyword and Return Status
     ...    Open Connection And Log In
     Return From Keyword If   '${alive}' == '${False}'    ${False}
-    [Return]    ${True}
+    RETURN    ${True}
 
 
 Create OS Console Command String
@@ -214,7 +214,7 @@ Create OS Console Command String
     ${cmd}=  Catenate  ${ssh_pw_file_path} ${BMC_PASSWORD} -p ${HOST_SOL_PORT}
     ...  -o "StrictHostKeyChecking no" ${BMC_USERNAME}@${BMC_HOST} ${BMC_CONSOLE_CLIENT}
 
-    [Return]  ${cmd.strip()}
+    RETURN  ${cmd.strip()}
 
 
 Get SOL Console Pid
@@ -289,7 +289,7 @@ Stop SOL Console Logging
     ...  Cmd Fnc  cat ${log_file_path} 2>/dev/null  quiet=${loc_quiet}
     ...  print_output=${0}  show_err=${0}
 
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Start SOL Console Logging
@@ -330,7 +330,7 @@ Start SOL Console Logging
     Wait Until Keyword Succeeds  10 seconds  0 seconds
     ...   Get SOL Console Pid  ${1}  ${log_file_path}
 
-    [Return]  ${log_output}
+    RETURN  ${log_output}
 
 
 Mac Address To Hex String
@@ -347,7 +347,7 @@ Mac Address To Hex String
     # i_macaddress   The MAC address.
 
     ${mac_hex}=  Catenate  0x${i_macaddress.replace(':', ' 0x')}
-    [Return]    ${mac_hex}
+    RETURN    ${mac_hex}
 
 
 IP Address To Hex String
@@ -370,20 +370,20 @@ IP Address To Hex String
     END
     ${ip_hex}=  Catenate    @{ip}
 
-    [Return]    ${ip_hex}
+    RETURN    ${ip_hex}
 
 
 Redfish Get BMC Version
     [Documentation]  Get BMC version via Redfish.
 
     ${output}=  Redfish.Get Attribute  ${REDFISH_BASE_URI}Managers/${BMC_ID}  FirmwareVersion
-    [Return]  ${output}
+    RETURN  ${output}
 
 Redfish Get Host Version
     [Documentation]  Get host version via Redfish.
 
     ${output}=  Redfish.Get Attribute  ${REDFISH_BASE_URI}Systems/${SYSTEM_ID}  BiosVersion
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Validate IP On BMC

@@ -98,7 +98,7 @@ Login To OS Host
 
     SSHLibrary.Open Connection  ${os_host}
     ${resp}=  SSHLibrary.Login  ${os_username}  ${os_password}
-    [Return]  ${resp}
+    RETURN  ${resp}
 
 
 Initiate OS Host Reboot
@@ -147,14 +147,14 @@ Redfish Get Power Restore Policy
     [Documentation]  Returns the BMC power restore policy.
 
     ${power_restore_policy}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  PowerRestorePolicy
-    [Return]  ${power_restore_policy}
+    RETURN  ${power_restore_policy}
 
 
 Redfish Get Auto Reboot
     [Documentation]  Returns auto reboot setting.
 
     ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  Boot
-    [Return]  ${resp["AutomaticRetryConfig"]}
+    RETURN  ${resp["AutomaticRetryConfig"]}
 
 
 Redfish Set Power Restore Policy
@@ -248,7 +248,7 @@ Get Task State From File
     ...  json.load(open('${code_base_dir_path}data/task_state.json'))  modules=json
     Rprint Vars  task_state
 
-    [Return]  ${task_state}
+    RETURN  ${task_state}
 
 
 Redfish Set Boot Default
@@ -297,7 +297,7 @@ Get Redfish Settings Object Uri
     ...  ELSE
     ...      Set Variable  ${uris}[0]
 
-    [Return]  ${uri}
+    RETURN  ${uri}
 
 
 Redfish Set Boot Source
@@ -376,7 +376,7 @@ Redfish Get BMC State
     # },
 
     ${status}=  Redfish.Get Attribute  /redfish/v1/Managers/${BMC_ID}  Status
-    [Return]  ${status["State"]}
+    RETURN  ${status["State"]}
 
 
 Redfish Get Host State
@@ -393,7 +393,7 @@ Redfish Get Host State
     # },
 
     ${chassis}=  Redfish.Get Properties  /redfish/v1/Chassis/${CHASSIS_ID}
-    [Return]  ${chassis["PowerState"]}  ${chassis["Status"]["State"]}
+    RETURN  ${chassis["PowerState"]}  ${chassis["Status"]["State"]}
 
 
 Redfish Get Boot Progress
@@ -417,7 +417,7 @@ Redfish Get Boot Progress
     ...  ELSE
     ...    Set Variable  ${resp["PowerState"]}
 
-    [Return]  ${LastState}  ${resp["Status"]["State"]}
+    RETURN  ${LastState}  ${resp["Status"]["State"]}
 
 
 Redfish Get States
@@ -444,7 +444,7 @@ Redfish Get States
 
     Redfish.Delete  ${session}
 
-    [Return]  ${states}
+    RETURN  ${states}
 
 
 Redfish Delete All Sessions
@@ -565,7 +565,7 @@ Get BIOS Attribute
     ${systems}=  Redfish_Utils.Get Member List  /redfish/v1/Systems
     ${bios_attr_dict}=  Redfish.Get Attribute  ${systems[0]}/Bios  Attributes
 
-    [Return]  ${bios_attr_dict}
+    RETURN  ${bios_attr_dict}
 
 
 Set BIOS Attribute

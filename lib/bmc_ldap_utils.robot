@@ -26,7 +26,7 @@ Get LDAP Configuration Using Redfish
     # ldap_type  The LDAP type ("ActiveDirectory" or "LDAP").
 
     ${ldap_config}=  Redfish.Get Properties  ${REDFISH_BASE_URI}AccountService
-    [Return]  ${ldap_config["${ldap_type}"]}
+    RETURN  ${ldap_config["${ldap_type}"]}
 
 
 Get LDAP Privilege And Group Name Via Redfish
@@ -72,7 +72,7 @@ Get LDAP Privilege And Group Name Via Redfish
       Append To List  ${ldap_group_names}  ${ldap_config["RemoteRoleMapping"][${i}]["RemoteGroup"]}
     END
 
-    [Return]  ${ldap_group_names}
+    RETURN  ${ldap_group_names}
 
 
 Create LDAP Configuration

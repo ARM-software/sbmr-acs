@@ -48,7 +48,7 @@ Get Redfish BMC Dump Log Entries
 
      ${resp}=  Redfish.Get  ${REDFISH_DUMP_URI}
 
-     [Return]  ${resp.dict}
+     RETURN  ${resp.dict}
 
 
 Redfish Delete All System Dumps
@@ -80,7 +80,7 @@ Initiate BMC Dump Using Redfish And Return Task Id
      # "TaskState": "Running",
      # "TaskStatus": "OK"
 
-     [Return]  ${resp.dict['Id']}
+     RETURN  ${resp.dict['Id']}
 
 Create User Initiated BMC Dump Via Redfish
     [Documentation]  Generate user initiated BMC dump via Redfish and return the dump id number (e.g., "5").
@@ -127,7 +127,7 @@ Create User Initiated BMC Dump Via Redfish
     #       "/redfish/v1/Managers/${BMC_ID}/LogServices/Dump/Actions/LogService.CollectDiagnosticData"
     # }
 
-    [Return]  ${task_dict["Payload"]["HttpHeaders"][-1].split("/")[-1]}
+    RETURN  ${task_dict["Payload"]["HttpHeaders"][-1].split("/")[-1]}
 
 
 Get Dump ID
@@ -156,7 +156,7 @@ Get Dump ID
     ${task_dict}=  Redfish.Get Properties  /redfish/v1/TaskService/Tasks/${task_id}
     ${key}  ${value}=  Set Variable  ${task_dict["Payload"]["HttpHeaders"][-1].split(":")}
     Run Keyword If  '${key}' != 'Location'  Fail
-    [Return]  ${value.strip('/').split('/')[-1]}
+    RETURN  ${value.strip('/').split('/')[-1]}
 
 Get Task Status
     [Documentation]  Return task status.
@@ -166,7 +166,7 @@ Get Task Status
     # task_id        Task ID.
 
     ${resp}=  Redfish.Get Properties  /redfish/v1/TaskService/Tasks/${task_id}
-    [Return]  ${resp['TaskState']}
+    RETURN  ${resp['TaskState']}
 
 Check Task Completion
     [Documentation]  Check if the task is complete.

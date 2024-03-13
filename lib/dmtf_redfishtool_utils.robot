@@ -43,7 +43,7 @@ Redfishtool Get
     ...  ELSE
     ...    Is HTTP error Expected  ${cmd_output}  ${expected_error}
 
-    [Return]  ${cmd_output}
+    RETURN  ${cmd_output}
 
 
 Redfishtool Patch
@@ -63,7 +63,7 @@ Redfishtool Patch
     ...  ELSE
     ...    Is HTTP error Expected  ${cmd_output}  ${expected_error}
 
-    [Return]  ${cmd_output}
+    RETURN  ${cmd_output}
 
 
 Redfishtool Post
@@ -84,7 +84,7 @@ Redfishtool Post
     ...  ELSE
     ...    Is HTTP error Expected  ${cmd_output}  ${expected_error}
 
-    [Return]  ${cmd_output}
+    RETURN  ${cmd_output}
 
 
 Redfishtool Delete
@@ -103,7 +103,7 @@ Redfishtool Delete
     ...  ELSE
     ...    Is HTTP error Expected  ${cmd_output}  ${expected_error}
 
-    [Return]  ${cmd_output}
+    RETURN  ${cmd_output}
 
 
 Is HTTP error Expected

@@ -92,7 +92,7 @@ Verify BSA Compliant UART From Boot Log
     Dictionary Should Contain Key  ${spcr_tty_lists}  ${ttyConsole}[0]
     ...  msg=Failure: Console UART not a BSA compliant UART
 
-    [Return]  ${ttyConsole}[0]
+    RETURN  ${ttyConsole}[0]
 
 
 Suite Setup Execution

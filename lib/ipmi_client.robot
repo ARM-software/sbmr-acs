@@ -54,7 +54,7 @@ Run IPMI Command
     ...  ELSE IF  '${IPMI_COMMAND}' == 'Inband'
     ...    Run Inband IPMI Raw Command  ${command}
     ...  ELSE  Fail  msg=Invalid IPMI Command type provided: ${IPMI_COMMAND}
-    [Return]  ${resp}
+    RETURN  ${resp}
 
 
 Run IPMI Standard Command
@@ -76,7 +76,7 @@ Run IPMI Standard Command
     ...  ELSE IF  '${IPMI_COMMAND}' == 'Inband'
     ...    Run Inband IPMI Standard Command  ${command}  ${fail_on_err}
     ...  ELSE  Fail  msg=Invalid IPMI Command type provided : ${IPMI_COMMAND}
-    [Return]  ${resp}
+    RETURN  ${resp}
 
 
 Run Inband IPMI Raw Command
@@ -99,7 +99,7 @@ Run Inband IPMI Raw Command
     ${stdout}  ${stderr}=  Execute Command  ${ipmi_cmd}  return_stderr=True
     Return From Keyword If  ${fail_on_err} == ${0}  ${stderr}
     Should Be Empty  ${stderr}  msg=${stdout}
-    [Return]  ${stdout}
+    RETURN  ${stdout}
 
 
 Run Inband IPMI Standard Command
@@ -125,7 +125,7 @@ Run Inband IPMI Standard Command
     ${stdout}  ${stderr}=  Execute Command  ${ipmi_cmd}  return_stderr=True
     Return From Keyword If  ${fail_on_err} == ${0}  ${stderr}
     Should Be Empty  ${stderr}  msg=${stdout}
-    [Return]  ${stdout}
+    RETURN  ${stdout}
 
 
 Run External IPMI Standard Command
@@ -150,7 +150,7 @@ Run External IPMI Standard Command
     ${rc}  ${output}=  Run And Return RC and Output  ${ipmi_cmd}
     Return From Keyword If  ${fail_on_err} == ${0}  ${output}
     Should Be Equal  ${rc}  ${expected_rc}  msg=${output}
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Run External IPMI Raw Command
@@ -164,7 +164,7 @@ Run External IPMI Raw Command
 
     ${output}=  Run External IPMI Standard Command
     ...  raw ${command}  ${fail_on_err}  &{options}
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Check If IPMI Tool Exist
@@ -219,7 +219,7 @@ Deactivate SOL Via IPMI
     # Logging SOL output for debug purpose.
     Log  ${output}
 
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Byte Conversion
@@ -265,7 +265,7 @@ Byte Conversion
     #   Equivalent dbus-send argument for smaller IPMI raw command:
     #   byte:0x00 byte:0x06 byte:0x00 byte:0x36
     Run Keyword if   ${argLength} == 9     Return from Keyword    ${valueinBytesWithoutArray}
-    [Return]    ${valueinBytesWithArray}
+    RETURN    ${valueinBytesWithArray}
 
 
 Set NetFn Byte
@@ -334,7 +334,7 @@ Get Host State Via External IPMI
     Should Not Contain  ${output}  Error
     ${output}=  Fetch From Right  ${output}  ${SPACE}
 
-    [Return]  ${output}
+    RETURN  ${output}
 
 
 Set BMC Network From Host
@@ -401,7 +401,7 @@ Create Random IPMI User
     ${random_username}=  Generate Random String  8  [LETTERS]
     ${random_userid}=  Evaluate  random.randint(2, 15)  modules=random
     IPMI Create User  ${random_userid}  ${random_username}
-    [Return]  ${random_userid}  ${random_username}
+    RETURN  ${random_userid}  ${random_username}
 
 
 Delete Created User
@@ -469,7 +469,7 @@ Create SEL
 
     Should Not Contain  ${resp}  00 00  msg=SEL not created.
 
-    [Return]  ${resp}
+    RETURN  ${resp}
 
 
 Fetch One Threshold Sensor From Sensor List
@@ -492,7 +492,7 @@ Fetch One Threshold Sensor From Sensor List
 
     ${random_sensor_name}=  Evaluate  random.choice(${sensor_name_list})  random
 
-    [Return]  ${random_sensor_name}
+    RETURN  ${random_sensor_name}
 
 Fetch Sensor Details From SDR
     [Documentation]  Identify the sensors from sdr get and fetch sensor details required.
@@ -512,7 +512,7 @@ Fetch Sensor Details From SDR
     ...  case-insensitive
     ${setting_status}=  Fetch From Right  ${setting_line}  :${SPACE}
 
-    [Return]  ${setting_status}
+    RETURN  ${setting_status}
 
 
 Get Bytes From SDR Sensor
@@ -528,7 +528,7 @@ Get Bytes From SDR Sensor
     ${sensor_hex}=  Replace String  ${sensor_detail[1]}  )  ${EMPTY}
     ${sensor_hex}=  Zfill Data  ${sensor_hex}  2
 
-    [Return]  ${sensor_hex}
+    RETURN  ${sensor_hex}
 
 
 Get Current Date from BMC
@@ -548,7 +548,7 @@ Get Current Date from BMC
     ${date}=  Convert Date  ${date}  date_format=%b %d %H:%M:%S %Y
     ...  result_format=%m/%d/%Y %H:%M:%S  exclude_millis=True
 
-    [Return]   ${date}
+    RETURN   ${date}
 
 
 Get SEL Info Via IPMI
@@ -569,7 +569,7 @@ Get SEL Info Via IPMI
     ...  raw ${IPMI_RAW_CMD['SEL_entry']['SEL_info'][0]}
     ${resp}=  Split String  ${resp}
 
-    [Return]  ${resp}
+    RETURN  ${resp}
 
 
 Verify Invalid IPMI Command
@@ -613,7 +613,7 @@ Identify Request Data
     # ${hex1} will contains the data to write for fru in list.
     # ${hex2} will contains the data to verify fru after write operation completed.
 
-    [Return]  ${hex1}  ${hex2}
+    RETURN  ${hex1}  ${hex2}
 
 
 Check IPMI SOL Output Content

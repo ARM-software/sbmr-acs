@@ -32,7 +32,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}rf_protocol_validator.py
 ...                --report-dir ${EXECDIR}${/}logs${/}redfish-protocol-validator
 ...                --no-cert-check
 
-*** Test Case ***
+*** Test Cases ***
 
 Test BMC Redfish Using Redfish Protocol Validator
     [Documentation]  Check conformance with a Redfish service interface.

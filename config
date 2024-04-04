@@ -7,8 +7,8 @@
 -v SYSTEM_ID:system
 -v CHASSIS_ID:chassis
 
+# relative or absolute path of logs directory
 --outputdir=logs
-
 
 ##### SOL Information #####
 # Default SOL_TYPE as ipmi sol.

@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2024, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,16 +28,25 @@ Test Host IPMI Inband Add User Account
     ...     M21_IPMI_1_IB_Add_User_Account
 
     ${random_username}=  Generate Random String  8  [LETTERS]
-    ${random_userid}=  Evaluate  random.randint(3, 15)  modules=random
+    ${random_userid}=  Evaluate  random.randint(3, 10)  modules=random
+
+    # generate a random password with atleast one uppercase, one lowercase and a numeral
+    ${uppercase}=  Generate Random String  6  [UPPER]
+    ${lowercase}=  Generate Random String  6  [LOWER]
+    ${numbers}=  Generate Random String  4  [NUMBERS]
+    ${random_password}=  Catenate  SEPARATOR=  ${uppercase}  ${lowercase}  ${numbers}
 
     # Add user account
     Run Shell Inband IPMI Standard Command  user set name ${random_userid} ${random_username}
+    Run Shell Inband IPMI Standard Command  user set password ${random_userid} ${random_password}
+
+    # Enable user account
+    Run Shell Inband IPMI Standard Command  user enable ${random_userid}
+
     ${user_info}=  Run Shell Inband IPMI Standard Command  channel getaccess 1 ${random_userid}
     ${name_line}=  Get Lines Containing String  ${user_info}  User Name
 
     Should Contain  ${name_line}  ${random_username}
 
-    # Delete user account
-    Run Shell Inband IPMI Standard Command  user set name ${random_userid} ""
-    ${user_info}=  Run Shell Inband IPMI Standard Command  channel getaccess 1 ${random_userid}
-    ${name_line}=  Get Lines Containing String  ${user_info}  User Name
+    # Disable user account
+    Run Shell Inband IPMI Standard Command  user disable ${random_userid}

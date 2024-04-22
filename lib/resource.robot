@@ -66,7 +66,7 @@ ${IPMI_DELAY}         ${1}
 ${IPMI_OPTIONS_EFIBOOT}       ${EMPTY}
 
 # Log default path for IPMI SOL.
-${IPMI_SOL_LOG_FILE}    ${EXECDIR}${/}logs${/}sol_${BMC_HOST}
+${IPMI_SOL_LOG_FILE}    ${OUTPUT_DIR}${/}sol_${BMC_HOST}
 
 # IPMI SOL console output types/parameters to verify.
 ${SOL_BIOS_OUTPUT}          ${EMPTY}

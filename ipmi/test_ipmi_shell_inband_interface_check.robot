@@ -43,7 +43,6 @@ Test Host IPMI Inband Interface Functionality
 
 Test Host IPMI Inband Interface Interrupt
     [Documentation]  Verify IPMI Inband Interface Interrupt on Host
-    [Tags]  M21_IB_2_IPMI_SSIF_Interrupt
 
     ${rc}  ${stdout}  ${stderr}=  Shell Cmd  ${DMIDECODE_CMD_38}  return_stderr=True
 

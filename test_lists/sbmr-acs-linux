@@ -13,7 +13,6 @@
 
 # M21 Level
 --include M21_IB_1_IPMI_SSIF_Capability
---include M21_IB_2_IPMI_SSIF_Interrupt
 --include M21_IPMI_1_Redfish_Host_Certificate_Fingerprint
 --include M21_IPMI_1_Redfish_Host_Get_Account_Credential
 --include M21_IPMI_1_IB_Get_Manager_Info

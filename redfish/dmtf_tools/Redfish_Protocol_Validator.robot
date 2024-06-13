@@ -26,7 +26,7 @@ Resource           ../../lib/dmtf_tools_utils.robot
 ${DEFAULT_PYTHON}  python3
 ${rsv_dir_path}    Redfish-Protocl-Validator
 ${rsv_github_url}  https://github.com/DMTF/Redfish-Protocol-Validator.git
-${rsv_revision}    1.1.8
+${rsv_revision}    1.2.5
 ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}rf_protocol_validator.py
 ...                -r https://${BMC_HOST}:${HTTPS_PORT} -u ${BMC_USERNAME} -p ${BMC_PASSWORD}
 ...                --report-dir ${EXECDIR}${/}logs${/}redfish-protocol-validator

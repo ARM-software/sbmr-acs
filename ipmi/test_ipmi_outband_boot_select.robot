@@ -41,8 +41,6 @@ Test IPMI Out-of-Band Boot Device Selection
     none
     pxe
     disk
-    bios
-
 
 *** Keywords ***
 

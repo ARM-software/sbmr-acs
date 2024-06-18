@@ -27,7 +27,7 @@ Test Teardown    Sleep  ${IPMI_DELAY}
 Test Host IPMI Inband Redfish Host Get Manager Certificate Fingerprint
     [Documentation]  Test IPMI Inband Redfish Host Get Manager Certificate
     ...              Fingerprint on Host
-    [Tags]  M21_IPMI_1_Redfish_Host_Certificate_Fingerprint
+    [Tags]  M21_IPMI_1_IPMI_8_Redfish_Host_Certificate_Fingerprint
 
     # Get Certificate Number 1
     ${ipmi_output}=  Run Shell Inband IPMI Raw Command  0x2c 0x01 0x52 0x1
@@ -46,7 +46,7 @@ Test Host IPMI Inband Redfish Host Get Manager Certificate Fingerprint
 Test Host IPMI Inband Redfish Host Get Account Credential
     [Documentation]  Test IPMI Inband Redfish Host Get Account Credential
     ...              on Host
-    [Tags]  M21_IPMI_1_Redfish_Host_Get_Account_Credential
+    [Tags]  M21_IPMI_1_IPMI_8_Redfish_Host_Get_Account_Credential
     [Template]  Check IPMI Inband Redfish Host Get Account Credential
 
     0xA5

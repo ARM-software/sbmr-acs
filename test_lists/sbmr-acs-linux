@@ -2,6 +2,7 @@
 --include M1_IB_1_IPMI_SSIF_Functionality
 --include M1_OOB_1_IPMI_6_IB_Get_Manager_Info
 --include M1_OOB_1_IPMI_7_IB_Add_User_Account
+--include M1_RAS_1_2_Send_Platform_Error_Record_Command
 
 # M2 Level
 --include M2_IB_1_Redfish_HI_Functionality
@@ -13,19 +14,18 @@
 
 # M21 Level
 --include M21_IB_1_IPMI_SSIF_Capability
---include M21_IPMI_1_Redfish_Host_Certificate_Fingerprint
---include M21_IPMI_1_Redfish_Host_Get_Account_Credential
+--include M21_IPMI_1_IPMI_8_Redfish_Host_Certificate_Fingerprint
+--include M21_IPMI_1_IPMI_8_Redfish_Host_Get_Account_Credential
 --include M21_IPMI_1_IB_Get_Manager_Info
 --include M21_IPMI_1_IB_Add_User_Account
 --include M21_IPMI_2_Send_Platform_Error_Record_Command
 --include M21_IPMI_2_Send_Boot_Progress_Code_Command
 --include M21_IPMI_2_Get_Boot_Progress_Code
 --include M21_PCI_1_Interface_Availability
---include M1_RAS_1_2_Send_Platform_Error_Record_Command
 
 # M21_IPMI1 Redfish HI Credential required only if platform support
---skiponfailure M21_IPMI_1_Redfish_Host_Certificate_Fingerprint
---skiponfailure M21_IPMI_1_Redfish_Host_Get_Account_Credential
+--skiponfailure M21_IPMI_1_IPMI_8_Redfish_Host_Certificate_Fingerprint
+--skiponfailure M21_IPMI_1_IPMI_8_Redfish_Host_Get_Account_Credential
 
 # M21_IPMI2 Arm-defined IPMI Cmd required only if platform support
 --skiponfailure M21_IPMI_2_Send_Platform_Error_Record_Command

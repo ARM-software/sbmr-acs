@@ -23,13 +23,13 @@
 --include M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
 --include M2_JTAG_1_2_Interface_Declaration
 --include M2_IO_1_NCSI_Interface_Declaration
+--include M2_RAS_1_2_Function_Declaration
 
 # M21 Level
 --include M21_IPMI_1_Power_Control
 --include M21_IPMI_1_Boot_Device
 --include M21_PCI_1_Redfish_Graphical_Console_Capability
 --include M21_USB_1_Redfish_Virtual_Media_Action_Uri
---include M2_RAS_1_2_Function_Declaration
 
 # Required Only If System Support
 --skiponfailure M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server

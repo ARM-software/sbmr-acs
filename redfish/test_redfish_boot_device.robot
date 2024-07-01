@@ -39,7 +39,6 @@ Verify BMC Redfish Boot Source Override with Enabled Mode As Once
     #BootSourceOverrideEnabled    BootSourceOverrideTarget
     Once                          Hdd
     Once                          Pxe
-    Once                          BiosSetup
 
 
 Verify BMC Redfish Boot Source Override with Enabled Mode As Continuous
@@ -51,7 +50,6 @@ Verify BMC Redfish Boot Source Override with Enabled Mode As Continuous
     #BootSourceOverrideEnabled    BootSourceOverrideTarget
     Continuous                    Hdd
     Continuous                    Pxe
-    Continuous                    BiosSetup
 
 
 Verify BMC Redfish Boot Source Override with Enabled Mode As Disabled

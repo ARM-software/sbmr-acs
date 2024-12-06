@@ -48,7 +48,7 @@ Test BMC Redfish Using Redfish Interop Validator On OCP Baseline Profile
     [Template]  Run Redfish Interop Validator With Profile
 
     # profile
-    OCPBaselineHardwareManagement.v1_0_1.json
+    HWMgmt${/}OCPBaselineHardwareManagement.v1_1_0.json
 
 
 Test BMC Redfish Using Redfish Interop Validator On OCP Server Profile
@@ -58,7 +58,7 @@ Test BMC Redfish Using Redfish Interop Validator On OCP Server Profile
     [Template]  Run Redfish Interop Validator With Profile
 
     # profile
-    OCPServerHardwareManagement.v1_0_0.json
+    Server${/}OCPServerHardwareManagement.v1_1_0.json
 
 
 *** Keywords ***

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2025, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ the boot fails, they can see exactly why by looking at the current state as
 compared with the expected state.
 """
 
-import imp
+import importlib.util
 import os
 import re
 import sys
@@ -56,7 +56,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.utils import DotDict
 
 base_path = (
-    os.path.dirname(os.path.dirname(imp.find_module("gen_robot_print")[1]))
+    os.path.dirname(os.path.dirname(importlib.util.find_spec("gen_robot_print").origin))
     + os.sep
 )
 sys.path.append(base_path + "data/")

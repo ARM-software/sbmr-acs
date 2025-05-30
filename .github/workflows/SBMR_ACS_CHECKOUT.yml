@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -29,7 +29,7 @@ jobs:
         ls sbmr-acs-$COMMIT_SHA.zip
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sbmr-acs-${{ env.commit_sha }}.zip
         path: sbmr-acs-${{ env.commit_sha }}.zip

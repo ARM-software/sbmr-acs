@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2025, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,14 +31,8 @@ import shutil
 import sys
 import time
 
-try:
-    import ConfigParser
-except ImportError:
-    import configparser
-try:
-    import StringIO
-except ImportError:
-    import io
+import configparser
+from io import StringIO
 
 import re
 import socket
@@ -320,14 +314,11 @@ def my_parm_file(prop_file_path):
     string_file.seek(0, os.SEEK_SET)
 
     # Create the ConfigParser object.
-    try:
-        config_parser = ConfigParser.ConfigParser()
-    except NameError:
-        config_parser = configparser.ConfigParser(strict=False)
+    config_parser = configparser.ConfigParser(strict=False)
     # Make the property names case-sensitive.
     config_parser.optionxform = str
     # Read the properties from the string file.
-    config_parser.readfp(string_file)
+    config_parser.read_file(string_file)
     # Return the properties as a dictionary.
     if robot_env:
         return DotDict(config_parser.items("dummysection"))

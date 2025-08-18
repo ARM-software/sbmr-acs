@@ -41,6 +41,7 @@ SBMR_RAW_EVENT = {
     },
 }
 
+IPMI_CMD = BuiltIn().get_variable_value("${IPMI_INBAND_CMD}", default="ipmitool")
 
 def get_system_interface_capabilities():
     r"""
@@ -56,7 +57,7 @@ def get_system_interface_capabilities():
         [ouput_msg_size]:           255
     """
 
-    cmd_buf = "ipmitool raw 0x06 0x57 0x0"
+    cmd_buf = IPMI_CMD + " raw 0x06 0x57 0x0"
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
@@ -107,7 +108,7 @@ def get_sbmr_command_support():
        [get_boot_progress_code]          false
     """
 
-    cmd_buf = "ipmitool raw 0x06 0x0a 0x0e 0x2c 0x00 0xae"
+    cmd_buf = IPMI_CMD + " raw 0x06 0x0a 0x0e 0x2c 0x00 0xae"
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
@@ -149,7 +150,7 @@ def send_platform_error_record():
     by returning body code
     """
 
-    cmd_buf = "ipmitool raw 0x2c 0x01 0xae " + SBMR_RAW_EVENT["Platform_Error_Record"]["CPER"][0]
+    cmd_buf = IPMI_CMD + " raw 0x2c 0x01 0xae " + SBMR_RAW_EVENT["Platform_Error_Record"]["CPER"][0]
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
@@ -171,7 +172,7 @@ def send_boot_progress_code():
     """
 
     # Host processor power-on initialization
-    cmd_buf = "ipmitool raw 0x2c 0x02 0xae " + SBMR_RAW_EVENT["Boot_Progress_Code"]["Status"][0]
+    cmd_buf = IPMI_CMD + " raw 0x2c 0x02 0xae " + SBMR_RAW_EVENT["Boot_Progress_Code"]["Status"][0]
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
@@ -192,7 +193,7 @@ def get_boot_progress_code():
     by returning body code
     """
 
-    cmd_buf = "ipmitool raw 0x2c 0x03 0xae"
+    cmd_buf = IPMI_CMD + " raw 0x2c 0x03 0xae"
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)

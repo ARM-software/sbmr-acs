@@ -48,7 +48,7 @@ Check Redfish Serial Console Capability
     [Documentation]  Check Redfish Serial Console Capability
     [Tags]  M1_UART_1_Redfish_Serial_Console_Capability
 
-    ${resp}=  Redfish.Get Properties  /redfish/v1/Managers/${BMC_ID}
+    ${resp}=  Redfish.Get Properties  /redfish/v1/Systems/${SYSTEM_ID}
 
     Log  ${resp}
 
@@ -75,4 +75,3 @@ Suite Teardown Execution
     [Documentation]  Do the post suite teardown
 
     Redfish Delete All Sessions
-

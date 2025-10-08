@@ -32,7 +32,7 @@ Suite Teardown     Suite Teardown Execution
 ${DEFAULT_PYTHON}  python3
 ${rsv_dir_path}    Redfish-Service-Validator
 ${rsv_github_url}  https://github.com/DMTF/Redfish-Service-Validator.git
-${rsv_revision}    2.3.1
+${rsv_revision}    2.5.1
 ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishServiceValidator.py
 ...                --ip https://${BMC_HOST}:${HTTPS_PORT} --authtype=Session -u ${BMC_USERNAME}
 ...                -p ${BMC_PASSWORD} --logdir ${OUTPUT_DIR}${/}redfish-service-validator

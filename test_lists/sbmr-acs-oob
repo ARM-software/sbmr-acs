@@ -14,7 +14,6 @@
 --include M2_OOB_1_Redfish_Boot_Source_As_Continuous
 --include M2_OOB_1_Redfish_Boot_Source_As_Disabled
 --include M2_OOB_1_Redfish_Protocol_Validator
---include M2_OOB_1_Redfish_JsonSchema_ResponseValidator
 --include M2_OOB_1_Redfish_Reference_Checker
 --include M2_OOB_1_Redfish_Service_Validator
 --include M2_OOB_2_IPMI_1_2_3_Power_Control

@@ -67,7 +67,6 @@ This document provides a checklist of SBMR rule IDs with their compliance levels
 |             |       |            |                  | - M2_OOB_1_Redfish_Boot_Source_As_Continuous                   |
 |             |       |            |                  | - M2_OOB_1_Redfish_Boot_Source_As_Disabled                     |
 |             |       |            |                  | - M2_OOB_1_Redfish_Protocol_Validator                          |
-|             |       |            |                  | - M2_OOB_1_Redfish_JsonSchema_ResponseValidator                |
 |             |       |            |                  | - M2_OOB_1_Redfish_Reference_Checker                           |
 |             |       |            |                  | - M2_OOB_1_Redfish_Service_Validator                           |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+

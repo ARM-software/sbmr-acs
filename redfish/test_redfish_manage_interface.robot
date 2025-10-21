@@ -48,13 +48,16 @@ Check Redfish Serial Console Capability
     [Documentation]  Check Redfish Serial Console Capability
     [Tags]  M1_UART_1_Redfish_Serial_Console_Capability
 
-    ${resp}=  Redfish.Get Properties  /redfish/v1/Managers/${BMC_ID}
+    ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  SerialConsole  default=${None}
+    ${resp}=  Run Keyword If  '${resp}' == '${None}'
+    ...  Redfish.Get Attribute  /redfish/v1/Managers/${BMC_ID}  SerialConsole  default=${None}
+    ...  ELSE  Set Variable  ${resp}
 
     Log  ${resp}
 
-    Should Not Be Empty  ${resp['SerialConsole']}
+    Should Not Be Empty  ${resp}
     ...  msg=Failure: No Redfish SerialConsole Object Detect
-    Should Not Be Empty  ${resp['SerialConsole']['ConnectTypesSupported']}
+    Should Not Be Empty  ${resp['ConnectTypesSupported']}
     ...  msg=Failure: No Redfish SerialConsole Type Detect
 
 
@@ -75,4 +78,3 @@ Suite Teardown Execution
     [Documentation]  Do the post suite teardown
 
     Redfish Delete All Sessions
-

@@ -12,8 +12,8 @@ SBMR Architecture Compliance Suite (ACS) checks for compliance against the [Arm 
 
 
 ## Release details
- - Code Quality: v0.8 Beta-0
- - The tests are written for version 2.0 of the SBMR specification.
+ - Code Quality: v1.0
+ - The tests are written for version 2.1 of the SBMR specification, covering out-of-band and in-band interfaces.
  - The compliance suite is not a substitute for design verification.
  - To review the SBMR ACS logs, Arm licensees can contact Arm directly through their partner managers.
 

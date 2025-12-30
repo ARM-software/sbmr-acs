@@ -28,7 +28,7 @@ from robot.libraries.BuiltIn import BuiltIn
 MTLS_ENABLED = BuiltIn().get_variable_value("${MTLS_ENABLED}")
 host = BuiltIn().get_variable_value("${BMC_HOST}")
 
-BMC_ID = BuiltIn().get_variable_value("${BMC_ID}", default="bmc")
+BMC_ID = BuiltIn().get_variable_value("${BMC_ID}", "bmc")
 
 
 class bmc_redfish_utils(object):

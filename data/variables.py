@@ -23,9 +23,9 @@ import os
 
 from robot.libraries.BuiltIn import BuiltIn
 
-BMC_ID = BuiltIn().get_variable_value("${BMC_ID}", default="bmc")
-SYSTEM_ID = BuiltIn().get_variable_value("${SYSTEM_ID}", default="system")
-CHASSIS_ID = BuiltIn().get_variable_value("${CHASSIS_ID}", default="chassis")
+BMC_ID = BuiltIn().get_variable_value("${BMC_ID}", "bmc")
+SYSTEM_ID = BuiltIn().get_variable_value("${SYSTEM_ID}", "system")
+CHASSIS_ID = BuiltIn().get_variable_value("${CHASSIS_ID}", "chassis")
 
 # Logging URI variables
 REDFISH_BMC_LOGGING_ENTRY = (

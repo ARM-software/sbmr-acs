@@ -61,14 +61,10 @@ def bmc_execute_command(
     """
 
     # Get global BMC variable values.
-    bmc_host = BuiltIn().get_variable_value("${BMC_HOST}", default="")
-    ssh_port = BuiltIn().get_variable_value("${SSH_PORT}", default="22")
-    bmc_username = BuiltIn().get_variable_value(
-        "${BMC_USERNAME}", default=""
-    )
-    bmc_password = BuiltIn().get_variable_value(
-        "${BMC_PASSWORD}", default=""
-    )
+    bmc_host = BuiltIn().get_variable_value("${BMC_HOST}", "")
+    ssh_port = BuiltIn().get_variable_value("${SSH_PORT}", "22")
+    bmc_username = BuiltIn().get_variable_value("${BMC_USERNAME}", "")
+    bmc_password = BuiltIn().get_variable_value("${BMC_PASSWORD}", "")
 
     if not gv.valid_value(bmc_host):
         return "", "", 1
@@ -88,9 +84,9 @@ def bmc_execute_command(
     }
     login_args = {"username": bmc_username, "password": bmc_password}
 
-    bmc_user_type = os.environ.get(
-        "USER_TYPE", ""
-    ) or BuiltIn().get_variable_value("${USER_TYPE}", default="")
+    bmc_user_type = os.environ.get("USER_TYPE", "") or BuiltIn().get_variable_value(
+        "${USER_TYPE}", ""
+    )
     if bmc_user_type == "sudo":
         cmd_buf = "sudo -i " + cmd_buf
     return grs.execute_ssh_command(
@@ -146,15 +142,11 @@ def os_execute_command(
 
     # Get global OS variable values.
     if os_host == "":
-        os_host = BuiltIn().get_variable_value("${OS_HOST}", default="")
+        os_host = BuiltIn().get_variable_value("${OS_HOST}", "")
     if os_username == "":
-        os_username = BuiltIn().get_variable_value(
-            "${OS_USERNAME}", default=""
-        )
+        os_username = BuiltIn().get_variable_value("${OS_USERNAME}", "")
     if os_password == "":
-        os_password = BuiltIn().get_variable_value(
-            "${OS_PASSWORD}", default=""
-        )
+        os_password = BuiltIn().get_variable_value("${OS_PASSWORD}", "")
 
     if not gv.valid_value(os_host):
         return "", "", 1
@@ -212,14 +204,10 @@ def xcat_execute_command(
     """
 
     # Get global XCAT variable values.
-    xcat_host = BuiltIn().get_variable_value("${XCAT_HOST}", default="")
-    xcat_username = BuiltIn().get_variable_value(
-        "${XCAT_USERNAME}", default=""
-    )
-    xcat_password = BuiltIn().get_variable_value(
-        "${XCAT_PASSWORD}", default=""
-    )
-    xcat_port = BuiltIn().get_variable_value("${XCAT_PORT}", default="22")
+    xcat_host = BuiltIn().get_variable_value("${XCAT_HOST}", "")
+    xcat_username = BuiltIn().get_variable_value("${XCAT_USERNAME}", "")
+    xcat_password = BuiltIn().get_variable_value("${XCAT_PASSWORD}", "")
+    xcat_port = BuiltIn().get_variable_value("${XCAT_PORT}", "22")
 
     if not gv.valid_value(xcat_host):
         return "", "", 1
@@ -276,14 +264,10 @@ def device_write(cmd_buf, print_out=0, quiet=None, test_mode=None):
     """
 
     # Get global DEVICE variable values.
-    device_host = BuiltIn().get_variable_value("${DEVICE_HOST}", default="")
-    device_username = BuiltIn().get_variable_value(
-        "${DEVICE_USERNAME}", default=""
-    )
-    device_password = BuiltIn().get_variable_value(
-        "${DEVICE_PASSWORD}", default=""
-    )
-    device_port = BuiltIn().get_variable_value("${DEVICE_PORT}", default="22")
+    device_host = BuiltIn().get_variable_value("${DEVICE_HOST}", "")
+    device_username = BuiltIn().get_variable_value("${DEVICE_USERNAME}", "")
+    device_password = BuiltIn().get_variable_value("${DEVICE_PASSWORD}", "")
+    device_port = BuiltIn().get_variable_value("${DEVICE_PORT}", "22")
 
     if not gv.valid_value(device_host):
         return "", "", 1

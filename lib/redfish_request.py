@@ -54,10 +54,8 @@ class redfish_request(object):
         url        Url passed by user e.g. /redfish/v1/Systems/${SYSTEM_ID}.
         """
 
-        bmc_host = BuiltIn().get_variable_value(
-            "${BMC_HOST}", default=""
-        )
-        https_port = BuiltIn().get_variable_value("${HTTPS_PORT}", default="")
+        bmc_host = BuiltIn().get_variable_value("${BMC_HOST}", "")
+        https_port = BuiltIn().get_variable_value("${HTTPS_PORT}", "")
         form_url = (
             "https://" + str(bmc_host) + ":" + str(https_port) + str(url)
         )

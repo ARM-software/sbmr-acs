@@ -63,7 +63,7 @@ master_pid = os.environ.get("AUTOBOOT_MASTER_PID", program_pid)
 pgm_name = re.sub("\\.py$", "", os.path.basename(__file__))
 
 # Set up boot data structures.
-os_host = BuiltIn().get_variable_value("${OS_HOST}", default="")
+os_host = BuiltIn().get_variable_value("${OS_HOST}", "")
 
 boot_lists = read_boot_lists()
 
@@ -81,16 +81,16 @@ base_tool_dir_path = (
 
 boot_success = 0
 
-status_dir_path = os.environ.get(
-    "STATUS_DIR_PATH", ""
-) or BuiltIn().get_variable_value("${STATUS_DIR_PATH}", default="")
+status_dir_path = os.environ.get("STATUS_DIR_PATH", "") or BuiltIn().get_variable_value(
+    "${STATUS_DIR_PATH}", ""
+)
 if status_dir_path != "":
     status_dir_path = os.path.normpath(status_dir_path) + os.sep
     # For plugin expecting env gen_call_robot.py
     os.environ["STATUS_DIR_PATH"] = status_dir_path
 
 redfish_delete_sessions = int(
-    BuiltIn().get_variable_value("${REDFISH_DELETE_SESSIONS}", default=1)
+    BuiltIn().get_variable_value("${REDFISH_DELETE_SESSIONS}", 1)
 )
 
 redfish = BuiltIn().get_library_instance("redfish")

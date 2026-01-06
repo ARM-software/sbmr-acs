@@ -41,7 +41,7 @@ SBMR_RAW_EVENT = {
     },
 }
 
-IPMI_CMD = BuiltIn().get_variable_value("${IPMI_INBAND_CMD}", default="ipmitool")
+IPMI_CMD = BuiltIn().get_variable_value("${IPMI_INBAND_CMD}", "ipmitool")
 
 def get_system_interface_capabilities():
     r"""

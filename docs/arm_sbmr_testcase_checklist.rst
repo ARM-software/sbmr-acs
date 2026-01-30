@@ -5,7 +5,7 @@ SBMR ACS Testcase checklist
 This document provides a checklist of SBMR rule IDs with their compliance levels, indicating if the SBMR test suite covers these rules and includes tags to the actual tests.
 
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Category    | Level | Rule ID    | Covered by ACS?  | Test Tag(s)                                                    |
+| Category    | Level | Rule ID    | Covered by ACS?  | Test Tag(s) / Remarks                                          |
 +=============+=======+============+==================+================================================================+
 | In-Band     | M1    | M1_IB_1    | Yes              | - M1_IB_1_IPMI_SSIF_Functionality                              |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
@@ -67,6 +67,7 @@ This document provides a checklist of SBMR rule IDs with their compliance levels
 |             |       |            |                  | - M2_OOB_1_Redfish_Boot_Source_As_Continuous                   |
 |             |       |            |                  | - M2_OOB_1_Redfish_Boot_Source_As_Disabled                     |
 |             |       |            |                  | - M2_OOB_1_Redfish_Protocol_Validator                          |
+|             |       |            |                  | - M2_OOB_1_Redfish_JsonSchema_ResponseValidator                |
 |             |       |            |                  | - M2_OOB_1_Redfish_Reference_Checker                           |
 |             |       |            |                  | - M2_OOB_1_Redfish_Service_Validator                           |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
@@ -82,7 +83,7 @@ This document provides a checklist of SBMR rule IDs with their compliance levels
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
 | In-Band     | M21   | M21_IB_1   | Yes              | - M21_IB_1_IPMI_SSIF_Capability                                |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| In-Band     | M21   | M21_IB_2   | Yes              | - M21_IB_2_IPMI_SSIF_Interrupt                                 |
+| In-Band     | M21   | M21_IB_2   | No               |                                                                |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
 | PCIe        | M21   | M21_PCI_1  | Yes              | - M21_PCI_1_Interface_Availability                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
@@ -99,68 +100,92 @@ This document provides a checklist of SBMR rule IDs with their compliance levels
 |             |       |            |                  | - M21_IPMI_2_Send_Boot_Progress_Code_Command                   |
 |             |       |            |                  | - M21_IPMI_2_Get_Boot_Progress_Code                            |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_1    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_1    | No               | - M3_SB_1_9_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `Side_Band_Test_Case_001`_.                                    |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_2    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_2    | No               | - M3_SB_1_9_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `PLDM_Test_Case_001`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_3    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_3    | No               | - M3_SB_1_9_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_002`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_4    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_4    | No               | - M3_SB_1_9_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `PLDM_Test_Case_002`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_5    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_5    | No               | - M3_SB_1_9_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_6    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_6    | No               | - M3_SB_1_9_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_7    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_7    | No               | - M3_SB_1_9_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_8    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_8    | No               | - M3_SB_1_9_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M3    | M3_SB_9    | No               |                                                                |
+| Side-Band   | M3    | M3_SB_9    | No               | - M3_SB_1_9_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_001`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| JTAG        | M3    | M3_JTAG_1  | No               |                                                                |
+| JTAG        | M3    | M3_JTAG_2  | No               | - M3_JTAG_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| JTAG        | M3    | M3_JTAG_2  | No               |                                                                |
+| BMC-IO      | M3    | M3_IO_1    | No               | - M3_IO_1_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M3    | M3_IO_1    | No               |                                                                |
+| BMC-IO      | M3    | M3_IO_2    | No               | - M3_IO_1_2_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_001`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M3    | M3_IO_2    | No               |                                                                |
+| OOB         | M3    | M3_OOB_1   | No               | - M3_OOB_1_Interface_Declaration*                              |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| OOB         | M3    | M3_OOB_1   | No               |                                                                |
+| OOB         | M3    | M3_OOB_2   | No               | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Baseline           |
+|             |       |            |                  | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| OOB         | M3    | M3_OOB_2   | No               |                                                                |
+| SPDM        | M3    | M3_SPDM_1  | No               | - M3_SPDM_1_2_Interface_Declaration*                           |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| SPDM        | M3    | M3_SPDM_1  | No               |                                                                |
+| SPDM        | M3    | M3_SPDM_2  | No               | - M3_SPDM_1_2_Interface_Declaration*                           |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| SPDM        | M3    | M3_SPDM_2  | No               |                                                                |
+| RAS         | M3    | M3_RAS_1   | No               | - M3_RAS_1_Function_Declaration*                               |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| RAS         | M3    | M3_RAS_1   | No               |                                                                |
+| In-Band     | M4    | M4_IB_1    | Yes              | - M4_IB_1_Redfish_HI_Type                                      |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| In-Band     | M4    | M4_IB_1    | No               |                                                                |
+| Side-Band   | M4    | M4_SB_1    | No               | - M4_SB_1_Interface_Declaration*                               |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_003`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M4    | M4_SB_1    | No               |                                                                |
+| BMC-IO      | M4    | M4_IO_1    | No               | - M4_IO_1_3_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_002`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M4    | M4_IO_1    | No               |                                                                |
+| BMC-IO      | M4    | M4_IO_2    | No               | - M4_IO_1_3_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M4    | M4_IO_2    | No               |                                                                |
+| BMC-IO      | M4    | M4_IO_3    | No               | - M4_IO_1_3_Interface_Declaration*                             |
+|             |       |            |                  | Compliance for the rule could be manually tested using         |
+|             |       |            |                  | `MCTP_Test_Case_003`_.                                         |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M4    | M4_IO_3    | No               |                                                                |
+| In-Band     | M5a   | M5_IB_1    | No               | - M5_IB_1_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| In-Band     | M5a   | M5_IB_1    | No               |                                                                |
+| In-Band     | M5a   | M5_IB_2    | No               | - M5_IB_1_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| In-Band     | M5a   | M5_IB_2    | No               |                                                                |
+| Side-Band   | M5a   | M5_SB_1    | No               | - M5_SB_1_Interface_Declaration*                               |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Side-Band   | M5a   | M5_SB_1    | No               |                                                                |
+| BMC-IO      | M5a   | M5_IO_1    | No               | - M5_IO_1_Interface_Declaration*                               |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| BMC-IO      | M5a   | M5_IO_1    | No               |                                                                |
+| OOB         | M5a   | M5_OOB_1   | No               | - M5_OOB_1_Interface_Declaration*                              |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| OOB         | M5a   | M5_OOB_1   | No               |                                                                |
+| Host-SatMC  | M5a   | M5_HS_1    | No               | - M5_HS_1_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Host-SatMC  | M5a   | M5_HS_1    | No               |                                                                |
-+-------------+-------+------------+------------------+----------------------------------------------------------------+
-| Host-SatMC  | M5a   | M5_HS_2    | No               |                                                                |
+| Host-SatMC  | M5a   | M5_HS_2    | No               | - M5_HS_1_2_Interface_Declaration*                             |
 +-------------+-------+------------+------------------+----------------------------------------------------------------+
 
 Note: Some tests cannot assess functionality due to feasibility or interface limitations, requiring users to manually declare system compliance, tags of such tests are
 marked with \*
 
-*Copyright (c) 2024, Arm Limited and Contributors. All rights reserved.*
+.. _Side_Band_Test_Case_001: sideband_manual_testing.md#side_band_test_case_001
+.. _MCTP_Test_Case_001: sideband_manual_testing.md#mctp_test_case_001
+.. _MCTP_Test_Case_002: sideband_manual_testing.md#mctp_test_case_002
+.. _MCTP_Test_Case_003: sideband_manual_testing.md#mctp_test_case_003
+.. _PLDM_Test_Case_001: sideband_manual_testing.md#pldm_test_case_001
+.. _PLDM_Test_Case_002: sideband_manual_testing.md#pldm_test_case_002
+
+*Copyright (c) 2024-2026, Arm Limited and Contributors. All rights reserved.*

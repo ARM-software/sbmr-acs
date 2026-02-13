@@ -1,12 +1,29 @@
-# M1 Level
+# In-Band
+--include M2_IB_1_Redfish_Host_Interface_Capability
+--include M4_IB_1_Interface_Declaration
+
+# UART
 --include M1_UART_1_Redfish_Serial_Console_Capability
 --include M1_UART_2_IPMI_SOL
+
+# PCIe
+--include M21_PCI_1_Redfish_Graphical_Console_Capability
+
+# USB
+--include M21_USB_1_Redfish_Virtual_Media_Action_Uri
+
+# JTAG
+--include M1_JTAG_1_2_Interface_Declaration
+--include M2_JTAG_1_2_Interface_Declaration
+--include M3_JTAG_1_2_Interface_Declaration
+
+# SIDE-BAND
+--include M3_SB_1_9_Interface_Declaration
+--include M4_SB_1_Interface_Declaration
+
+# OOB
 --include M1_OOB_1_IPMI_1_2_3_Power_Control
 --include M1_OOB_1_IPMI_4_5_Boot_Device
---include M1_JTAG_1_2_Interface_Declaration
-
-# M2 Level
---include M2_IB_1_Redfish_Host_Interface_Capability
 --include M2_OOB_1_Redfish_Host_PowerOn
 --include M2_OOB_1_Redfish_Host_PowerOff
 --include M2_OOB_1_Redfish_Host_ForceRestart
@@ -14,21 +31,37 @@
 --include M2_OOB_1_Redfish_Boot_Source_As_Continuous
 --include M2_OOB_1_Redfish_Boot_Source_As_Disabled
 --include M2_OOB_1_Redfish_Protocol_Validator
+--include M2_OOB_1_Redfish_JsonSchema_ResponseValidator
 --include M2_OOB_1_Redfish_Reference_Checker
 --include M2_OOB_1_Redfish_Service_Validator
 --include M2_OOB_2_IPMI_1_2_3_Power_Control
 --include M2_OOB_2_IPMI_4_5_Boot_Device
 --include M2_OOB_3_Redfish_Interop_Validator_On_OCP_Baseline
 --include M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
---include M2_JTAG_1_2_Interface_Declaration
---include M2_IO_1_NCSI_Interface_Declaration
---include M2_RAS_1_2_Function_Declaration
+--include M3_OOB_1_2_Interface_Declaration
 
-# M21 Level
+# BMC-IO
+--include M2_IO_1_NCSI_Interface_Declaration
+--include M3_IO_1_2_Interface_Declaration
+--include M4_IO_1_3_Interface_Declaration
+
+# SPDM
+--include M3_SPDM_1_2_Interface_Declaration
+
+# RAS
+--include M2_RAS_1_2_Function_Declaration
+--include M3_RAS_1_Function_Declaration
+
+# IPMI
 --include M21_IPMI_1_Power_Control
 --include M21_IPMI_1_Boot_Device
---include M21_PCI_1_Redfish_Graphical_Console_Capability
---include M21_USB_1_Redfish_Virtual_Media_Action_Uri
+
+# SBMR future requirements
+--include M5_IB_1_2_Interface_Declaration
+--include M5_SB_1_Interface_Declaration
+--include M5_IO_1_Interface_Declaration
+--include M5_OOB_1_Interface_Declaration
+--include M5_HS_1_2_Interface_Declaration
 
 # Required Only If System Support
 --skiponfailure M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
@@ -36,3 +69,17 @@
 --skiponfailure M2_JTAG_1_2_Interface_Declaration
 --skiponfailure M2_IO_1_NCSI_Interface_Declaration
 --skiponfailure M2_RAS_1_2_Function_Declaration
+--skiponfailure M3_SB_1_9_Interface_Declaration
+--skiponfailure M3_JTAG_1_2_Interface_Declaration
+--skiponfailure M3_IO_1_2_Interface_Declaration
+--skiponfailure M3_OOB_1_2_Interface_Declaration
+--skiponfailure M3_SPDM_1_2_Interface_Declaration
+--skiponfailure M3_RAS_1_Function_Declaration
+--skiponfailure M4_IB_1_Interface_Declaration
+--skiponfailure M4_SB_1_Interface_Declaration
+--skiponfailure M4_IO_1_3_Interface_Declaration
+--skiponfailure M5_IB_1_2_Interface_Declaration
+--skiponfailure M5_SB_1_Interface_Declaration
+--skiponfailure M5_IO_1_Interface_Declaration
+--skiponfailure M5_OOB_1_Interface_Declaration
+--skiponfailure M5_HS_1_2_Interface_Declaration

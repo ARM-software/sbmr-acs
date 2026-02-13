@@ -1,19 +1,36 @@
-# M1 Level
+# In-Band
 --include M1_IB_1_IPMI_SSIF_Functionality
---include M1_OOB_1_IPMI_6_IB_Get_Manager_Info
---include M1_OOB_1_IPMI_7_IB_Add_User_Account
---include M1_RAS_1_2_Send_Platform_Error_Record_Command
-
-# M2 Level
 --include M2_IB_1_Redfish_HI_Functionality
 --include M2_IB_1_Redfish_HI_Type
 --include M2_IB_1_Redfish_HI_Service_Root
 --include M2_IB_2_IPMI_SSIF_Functionality
+--include M21_IB_1_IPMI_SSIF_Capability
+
+# UART
+
+# PCIe
+--include M21_PCI_1_Interface_Availability
+
+# USB
+
+# JTAG
+
+# SIDE-BAND
+
+# OOB
+--include M1_OOB_1_IPMI_6_IB_Get_Manager_Info
+--include M1_OOB_1_IPMI_7_IB_Add_User_Account
 --include M2_OOB_2_IPMI_6_IB_Get_Manager_Info
 --include M2_OOB_2_IPMI_7_IB_Add_User_Account
 
-# M21 Level
---include M21_IB_1_IPMI_SSIF_Capability
+# BMC-IO
+
+# SPDM
+
+# RAS
+--include M1_RAS_1_2_Send_Platform_Error_Record_Command
+
+# IPMI
 --include M21_IPMI_1_IPMI_8_Redfish_Host_Certificate_Fingerprint
 --include M21_IPMI_1_IPMI_8_Redfish_Host_Get_Account_Credential
 --include M21_IPMI_1_IB_Get_Manager_Info
@@ -21,7 +38,7 @@
 --include M21_IPMI_2_Send_Platform_Error_Record_Command
 --include M21_IPMI_2_Send_Boot_Progress_Code_Command
 --include M21_IPMI_2_Get_Boot_Progress_Code
---include M21_PCI_1_Interface_Availability
+
 
 # M21_IPMI1 Redfish HI Credential required only if platform support
 --skiponfailure M21_IPMI_1_IPMI_8_Redfish_Host_Certificate_Fingerprint

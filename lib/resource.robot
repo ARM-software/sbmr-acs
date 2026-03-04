@@ -150,7 +150,7 @@ ${M2_JTAG_1_2_Interface_Declaration}     0
 ${M2_IO_1_NCSI_Interface_Declaration}    0
 ${M2_RAS_1_2_Function_Declaration}       0
 ${M3_SB_1_9_Interface_Declaration}       0
-${M3_JTAG_2_Interface_Declaration}       0
+${M3_JTAG_1_2_Interface_Declaration}     0
 ${M3_IO_1_2_Interface_Declaration}       0
 ${M3_OOB_1_Interface_Declaration}        0
 ${M3_SPDM_1_2_Interface_Declaration}     0

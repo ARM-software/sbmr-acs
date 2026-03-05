@@ -45,20 +45,53 @@ Check Redfish Graphical Console Capability
 
 
 Check Redfish Serial Console Capability
-    [Documentation]  Check Redfish Serial Console Capability
+    [Documentation]  Check Redfish Serial Console Capability.
+    ...
+    ...  ComputerSystem (Systems) schema v1.13.0+ defines SerialConsole as
+    ...  HostSerialConsole type with named sub-objects (IPMI, SSH, Telnet, WebSocket etc).
+    ...  Manager schema defines SerialConsole with a ConnectTypesSupported array.
+    ...  This test checks Systems first, then falls back to Managers.
     [Tags]  M1_UART_1_Redfish_Serial_Console_Capability
 
+    # Known HostSerialConsole connection type sub-objects per DMTF schema:
+    #   IPMI      - v1.13.0  (IPMI Serial-over-LAN)
+    #   SSH       - v1.13.0  (Secure Shell)
+    #   Telnet    - v1.13.0  (Telnet)
+    #   WebSocket - v1.27.0  (WebSocket)
+    @{HOST_SERIAL_CONSOLE_TYPES}=  Create List  IPMI  SSH  Telnet  WebSocket
+
+    # Try ComputerSystem endpoint first (HostSerialConsole type, v1.13.0+).
     ${resp}=  Redfish.Get Attribute  /redfish/v1/Systems/${SYSTEM_ID}  SerialConsole  default=${None}
-    ${resp}=  Run Keyword If  '${resp}' == '${None}'
+    ${source}=  Set Variable  Systems
+
+    # Fall back to Manager endpoint (Manager SerialConsole type).
+    ${resp}=  Run Keyword If  $resp is None
     ...  Redfish.Get Attribute  /redfish/v1/Managers/${BMC_ID}  SerialConsole  default=${None}
     ...  ELSE  Set Variable  ${resp}
+    ${source}=  Run Keyword If  $resp is not None and '${source}' != 'Systems'
+    ...  Set Variable  Managers
+    ...  ELSE IF  $resp is None  Set Variable  None
+    ...  ELSE  Set Variable  ${source}
 
-    Log  ${resp}
+    Log  SerialConsole source: ${source}, response: ${resp}
 
     Should Not Be Empty  ${resp}
-    ...  msg=Failure: No Redfish SerialConsole Object Detect
-    Should Not Be Empty  ${resp['ConnectTypesSupported']}
-    ...  msg=Failure: No Redfish SerialConsole Type Detect
+    ...  msg=Failure: No Redfish SerialConsole Object found on Systems or Managers endpoint
+
+    # Validate based on which endpoint provided the data.
+    # Manager schema: has ConnectTypesSupported array (e.g. ["IPMI", "SSH", "Telnet"]).
+    # ComputerSystem HostSerialConsole schema: has named sub-objects from the list above.
+    ${has_connect_types}=  Run Keyword And Return Status
+    ...  Dictionary Should Contain Key  ${resp}  ConnectTypesSupported
+    IF  ${has_connect_types}
+        Should Not Be Empty  ${resp['ConnectTypesSupported']}
+        ...  msg=Failure: No Redfish SerialConsole Type Detect (ConnectTypesSupported is empty)
+    ELSE
+        @{resp_keys}=  Get Dictionary Keys  ${resp}
+        ${found}=  Evaluate  bool(set($resp_keys) & set($HOST_SERIAL_CONSOLE_TYPES))
+        Should Be True  ${found}
+        ...  msg=Failure: No known HostSerialConsole type found. Expected one of: ${HOST_SERIAL_CONSOLE_TYPES}. Got keys: ${resp_keys}
+    END
 
 
 Check Redfish Host Interface Capability

@@ -89,7 +89,7 @@ Verify BSA Compliant UART From Boot Log
     # Accept both:
     #   printk: console [ttyAMA0] enabled
     #   printk: legacy console [ttyAMA0] enabled
-    ${ttyConsole}=  Get Regexp Matches  ${output}  (?m)printk: (?:legacy )?console \[(tty[^\]]+)\] enabled  1
+    ${ttyConsole}=  Get Regexp Matches  ${output}  (?m)printk: (?:legacy )?console \\[(tty[^\\]]+)\\] enabled  1
 
     Dictionary Should Contain Key  ${spcr_tty_lists}  ${ttyConsole}[0]
     ...  msg=Failure: Console UART not a BSA compliant UART

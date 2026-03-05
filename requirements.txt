@@ -21,3 +21,5 @@ pyasn1
 pyasn1_modules
 robotframework-lint
 jsonschema==3.2.0
+beautifulsoup4
+lxml

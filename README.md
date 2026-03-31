@@ -12,8 +12,10 @@ SBMR Architecture Compliance Suite (ACS) checks for compliance against the [Arm 
 
 
 ## Release details
- - Code Quality: v1.0
- - The tests are written for version 2.1 of the SBMR specification, covering out-of-band and in-band interfaces.
+ - **Code Quality:** BETA
+ - **Latest tag version:** `v26.03_SBMR_2.1.0`
+ - **Specification coverage:** [SBMR 2.1](https://developer.arm.com/documentation/den0069/e/?lang=en)
+ - The tests are written for version 2.1 of the SBMR specification, covering out-of-band, in-band interfaces and guidance for manually testing side-band interfaces.
  - The compliance suite is not a substitute for design verification.
  - To review the SBMR ACS logs, Arm licensees can contact Arm directly through their partner managers.
 
@@ -24,7 +26,7 @@ SBMR-ACS can be executed in the below modes
 | ------ |:-----------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mode 1 | Out-of-Band | OOB tests: SBMR-ACS may be downloaded and run on any external host machine (x86, AArch64) with Linux<br>Note: Pre-requisites mentioned in the README must be installed.                                     | Note: For Ubuntu, automated scripts to install the pre-requisites is supported in the package.<br>For other Distros, this must be done manually.                                    |
 | Mode 2 | In-Band     | In-Band tests: Download and run SBMR ACS on any Linux distro (based on AArch64) installed on the system-under-test.<br>Note: Pre-requisites must be installed.                                                 | Please Note: For Ubuntu, automated scripts to install the pre-requisites is supported in the package.<br>For other Distros, this must be done manually.                             |
-| Mode 3 | In-Band     | In-Band tests: Run the SBMR ACS in-built into the SystemReady SR ACS image through a simple automation on the ACS Linux<br>For more details, please see: https://github.com/ARM-software/arm-systemready/tree/main/SR. | Pre-built SR ACS image inbuilt with SBMR ACS is provided.<br>Choose the grub option "Server Base Manageability Requirements (SBMR) ACS In-band Tests (optional)" to run the tests.  |
+| Mode 3 | In-Band     | In-Band tests: Run the SBMR ACS in-built into the SystemReady-band ACS image through a simple automation on the ACS Linux<br>For more details, please see: https://github.com/ARM-software/arm-systemready/blob/main/SystemReady-band/README.md. | Pre-built SystemReady-band ACS image inbuilt with SBMR ACS can be found at [SystemReady-band Pre-built images](https://github.com/ARM-software/arm-systemready/tree/main/SystemReady-band/prebuilt_images).<br><br> Choose the grub option "Linux boot" to run the in-band tests as part of ACS automation or refer the [SystemReady Band Execution Enviroment and Configuration User Guide](https://github.com/ARM-software/arm-systemready/blob/main/docs/SystemReady_Execution_Enviroment_and_Config_Guide.md) to modify acs_run_config.ini to run SBMR in-band tests specifically.  |
 
 ## Steps for Installation of Pre-requisites
 - Clone the SBMR-ACS GitHub repository
@@ -33,7 +35,7 @@ SBMR-ACS can be executed in the below modes
   cd sbmr-acs
   ```
 
-- You can automatically install ubuntu utility & python package by executing below script (ubuntu 20.04).
+- You can automatically install ubuntu utility & python package by executing below script (ubuntu 20.04) or later.
 
   ```
   $ ./install_package.sh
@@ -237,4 +239,4 @@ SBMR ACS is distributed under Apache v2.0 License.
 
 --------------
 
-*Copyright (c) 2023-2024, Arm Limited and Contributors. All rights reserved.*
+*Copyright (c) 2023-2026, Arm Limited and Contributors. All rights reserved.*

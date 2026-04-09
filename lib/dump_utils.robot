@@ -16,6 +16,7 @@
 *** Settings ***
 Documentation  This module provides general keywords for dump.
 
+Library         redfish_instance_discovery.py
 Variables       ../data/variables.py
 
 *** Variables ***
@@ -227,4 +228,3 @@ Wait For Task Completion
 
         Sleep  5s
     END
-

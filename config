@@ -3,9 +3,11 @@
 -v BMC_USERNAME:admin
 -v BMC_PASSWORD:password
 
--v BMC_ID:bmc
--v SYSTEM_ID:system
--v CHASSIS_ID:chassis
+# Redfish instance IDs are auto-discovered for OOB runs when left commented.
+# Uncomment any entry below to use that explicit value instead of auto-discovery.
+#-v BMC_ID:<manager-id>
+#-v SYSTEM_ID:<system-id>
+#-v CHASSIS_ID:<chassis-id>
 
 # relative or absolute path of logs directory
 --outputdir=logs

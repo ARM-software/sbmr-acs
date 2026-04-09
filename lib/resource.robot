@@ -14,6 +14,7 @@
 # limitations under the License.
 
 *** Settings ***
+Library           redfish_instance_discovery.py
 Library           Collections
 Library           String
 Library           RequestsLibrary
@@ -38,9 +39,9 @@ ${SERVICE_USER_PASSWORD}   0penBmc
 # For users privilege admin or sudo.
 ${USER_TYPE}          ${EMPTY}
 
-${BMC_ID}       bmc
-${SYSTEM_ID}    system
-${CHASSIS_ID}   chassis
+${BMC_ID}       ${EMPTY}
+${SYSTEM_ID}    ${EMPTY}
+${CHASSIS_ID}   ${EMPTY}
 
 # MTLS_ENABLED indicates whether mTLS is enabled.
 ${MTLS_ENABLED}        False

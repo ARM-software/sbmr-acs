@@ -143,7 +143,7 @@ Before running the test suite, setup for configurations in the [*config*](config
  * `Self-Declaration Information`
 
 For BMC configuration, `BMC ip address`, `BMC username`, and `BMC password` needs to be set.
-Also, `Redfish instance` name needs to be set as per your system. `*CHASSIS_ID*` is main chassis that in charge of power status.
+For OOB runs started with `run-sbmr-acs.sh`, Redfish instance IDs are auto-discovered by default. If needed, uncomment `BMC_ID`, `SYSTEM_ID`, or `CHASSIS_ID` in [*config*](config) to override auto-discovery. `*CHASSIS_ID*` should refer to the main chassis that is in charge of power status.
 
 For Host configuration, Host OS `login prompt`, Host OS `username` and Host OS `password` needs to be set. Ensure that the HOST OS is set as the first entry in the boot order of the system under test (SUT) for IPMI SOL test to work.
 

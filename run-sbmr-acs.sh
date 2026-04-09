@@ -54,7 +54,7 @@ case "$INTERFACE" in
     ;;
   'linux')
     echo "===== Running sbmr-acs-linux test suite ====="
-    robot --argumentfile config --argumentfile test_lists/sbmr-acs-linux $DEBUG \
+    robot --argumentfile config -v AUTO_DISCOVER_REDFISH_IDS:0 --argumentfile test_lists/sbmr-acs-linux $DEBUG \
       --name "SBMR-ACS IB" ./redfish ./ipmi ./host | tee $CONSOLE_LOG
     ;;
   *)
@@ -62,4 +62,3 @@ case "$INTERFACE" in
     echo -e "Example:\n\t ./run-sbmr-acs oob\n\t ./run-sbmr-acs oob -d\n\t"
     ;;
 esac
-

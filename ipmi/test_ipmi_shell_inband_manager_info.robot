@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2024, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2026, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,7 @@ Resource         ../lib/ipmi_shell_client.robot
 
 Test Host IPMI Inband Get Manager Info
     [Documentation]  Verify IPMI Inband Get Manager Info on Host
-    [Tags]  M1_OOB_1_IPMI_6_IB_Get_Manager_Info  M2_OOB_2_IPMI_6_IB_Get_Manager_Info
-    ...     M21_IPMI_1_IB_Get_Manager_Info
+    [Tags]  M1_OOB_1_IPMI_6_IB_Get_Manager_Info  M21_IPMI1_IB_Get_Manager_Info
 
     ## mc info
     ${ipmi_output}=  Run Shell Inband IPMI Standard Command  mc info

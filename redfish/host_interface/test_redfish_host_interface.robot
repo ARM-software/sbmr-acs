@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2026, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,7 +45,7 @@ Test Host Redfish Host Interface Functionality
 
 Test Host Redfish Host Interface Type
     [Documentation]  Verify Redfish Host Interface Type on Host
-    [Tags]  M2_IB_1_Redfish_HI_Type  M4_IB_1_Redfish_HI_Type
+    [Tags]  M2_IB_1_Redfish_HI_Type
 
     ${rc}  ${stdout}  ${stderr}=  Shell Cmd  ${DMIDECODE_CMD_42}
     ...  return_stderr=True

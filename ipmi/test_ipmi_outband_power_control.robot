@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2026, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,7 @@ Suite Teardown   Suite Teardown Execution
 
 Test IPMI Out-of-band Power Control
     [Documentation]  Verify IPMI Out-of-band Power Control
-    [Tags]  M1_OOB_1_IPMI_1_2_3_Power_Control  M2_OOB_2_IPMI_1_2_3_Power_Control
-    ...     M21_IPMI_1_Power_Control
+    [Tags]  M1_OOB_1_IPMI_1_2_3_Power_Control  M21_IPMI1_Power_Control
 
     IPMI Power Off
     ${ipmi_state}=  Get Host State Via External IPMI

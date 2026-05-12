@@ -30,9 +30,9 @@ Declaration For BMC M1_JTAG Interface Support
 
 Declaration For BMC M2_JTAG Interface Support
     [Documentation]  Declaration for BMC M2_JTAG interface support
-    [Tags]  M2_JTAG_1_2_Interface_Declaration
+    [Tags]  M2_JTAG_2_Interface_Declaration
     [Template]  Verify Declaration
-    ${M2_JTAG_1_2_Interface_Declaration}  M2_JTAG_1_2
+    ${M2_JTAG_2_Interface_Declaration}  M2_JTAG_2
 
 
 Declaration For BMC M2_IO_1 NC-SI Interface Support
@@ -44,9 +44,9 @@ Declaration For BMC M2_IO_1 NC-SI Interface Support
 
 Declaration For BMC M2_RAS Functionality Support
     [Documentation]  Declaration for BMC M2_RAS functionality support
-    [Tags]  M2_RAS_1_2_Function_Declaration
+    [Tags]  M2_RAS_2_Function_Declaration
     [Template]  Verify Declaration
-    ${M2_RAS_1_2_Function_Declaration}  M2_RAS_1_2
+    ${M2_RAS_2_Function_Declaration}  M2_RAS_2
 
 
 Declaration For BMC M3_SB Interface Support
@@ -58,9 +58,9 @@ Declaration For BMC M3_SB Interface Support
 
 Declaration For BMC M3_JTAG Interface Support
     [Documentation]  Declaration for BMC M3_JTAG interface support
-    [Tags]  M3_JTAG_1_2_Interface_Declaration
+    [Tags]  M3_JTAG_2_Interface_Declaration
     [Template]  Verify Declaration
-    ${M3_JTAG_1_2_Interface_Declaration}  M3_JTAG_1_2
+    ${M3_JTAG_2_Interface_Declaration}  M3_JTAG_2
 
 
 Declaration For BMC M3_IO Interface Support
@@ -82,13 +82,6 @@ Declaration For BMC M3_SPDM Interface Support
     [Tags]  M3_SPDM_1_2_Interface_Declaration
     [Template]  Verify Declaration
     ${M3_SPDM_1_2_Interface_Declaration}  M3_SPDM_1_2
-
-
-Declaration For BMC M3_RAS Functionality Support
-    [Documentation]  Declaration for BMC M3_RAS functionality support
-    [Tags]  M3_RAS_1_Function_Declaration
-    [Template]  Verify Declaration
-    ${M3_RAS_1_Function_Declaration}  M3_RAS_1
 
 
 Declaration For BMC M4_SB Interface Support

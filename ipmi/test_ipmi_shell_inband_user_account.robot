@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2024, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2026, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ Test Teardown    Sleep  ${IPMI_DELAY}
 
 Test Host IPMI Inband Add User Account
     [Documentation]  Verify IPMI Inband Add User Account on Host
-    [Tags]  M1_OOB_1_IPMI_7_IB_Add_User_Account  M2_OOB_2_IPMI_7_IB_Add_User_Account
-    ...     M21_IPMI_1_IB_Add_User_Account
+    [Tags]  M1_OOB_1_IPMI_7_IB_Add_User_Account  M21_IPMI1_IB_Add_User_Account
 
     ${random_username}=  Generate Random String  8  [LETTERS]
     ${random_userid}=  Evaluate  random.randint(3, 10)  modules=random

@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
+# Copyright (c) 2023-2026, Arm Limited or its affiliates. All rights reserved.
 # SPDX-License-Identifier : Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ ${SBMR_COMMAND_LIST}   ${EMPTY}
 
 Test Host IPMI Inband Interface Send Platform Error Record Command
     [Documentation]  Verify IPMI Inband Interface Send Platform Error Record Command
-    [Tags]  M21_IPMI_2_Send_Platform_Error_Record_Command
+    [Tags]  M21_IPMI2_Send_Platform_Error_Record_Command
     ...     M1_RAS_1_2_Send_Platform_Error_Record_Command
 
     # If command not support, then fallback to send command directly
@@ -44,7 +44,7 @@ Test Host IPMI Inband Interface Send Platform Error Record Command
 
 Test Host IPMI Inband Interface Send Boot Progress Code Command
     [Documentation]  Verify IPMI Inband Interface Send Boot Progress Code Command
-    [Tags]  M21_IPMI_2_Send_Boot_Progress_Code_Command
+    [Tags]  M21_IPMI2_Send_Boot_Progress_Code_Command
 
     # If command not support, then fallback to send command directly
     ${rc}=  Run Keyword If  ${SBMR_COMMAND_LIST["send_boot_progress_code"]} == ${1}
@@ -57,7 +57,7 @@ Test Host IPMI Inband Interface Send Boot Progress Code Command
 
 Test Host IPMI Inband Interface Get Boot Progress Code Command
     [Documentation]  Verify IPMI Inband Interface Get_Boot Progress Code Command
-    [Tags]  M21_IPMI_2_Get_Boot_Progress_Code
+    [Tags]  M21_IPMI2_Get_Boot_Progress_Code
 
     # If command not support, then fallback to send command directly
     ${rc}=  Run Keyword If  ${SBMR_COMMAND_LIST["get_boot_progress_code"]} == ${1}

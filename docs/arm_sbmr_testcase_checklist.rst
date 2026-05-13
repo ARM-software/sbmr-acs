@@ -53,6 +53,8 @@ SBMR checklist
 |                          | M21_IPMI2    | Level M2.1                             | Yes             | IB                 | - M21_IPMI2_Send_Platform_Error_Record_Command (conditional)                       |
 |                          |              |                                        |                 |                    | - M21_IPMI2_Send_Boot_Progress_Code_Command (conditional)                          |
 |                          |              |                                        |                 |                    | - M21_IPMI2_Get_Boot_Progress_Code (conditional)                                   |
+|                          |              |                                        |                 |                    | - M21_IPMI2_Send_Boot_Progress_Code_2_Command (conditional)                        |
+|                          |              |                                        |                 |                    | - M21_IPMI2_Get_Boot_Progress_2_Code (conditional)                                 |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | UART                     | M1_UART_1    | Level M1                               | Yes             | OOB                | - M1_UART_1_Redfish_Serial_Console_Capability                                      |

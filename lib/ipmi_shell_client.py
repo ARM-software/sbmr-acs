@@ -38,6 +38,10 @@ SBMR_RAW_EVENT = {
             # Host processor power-on initialization
             "0x01 0x00 0x00 0x00 0x00 0x10 0x01 0x00 0x00"
         ],
+        "Status_2": [
+            # Record format, length, host processor power-on initialization, unknown instance
+            "0x01 0x08 0x01 0x00 0x00 0x00 0x00 0x10 0x01 0x00 0xff 0xff 0xff 0xff"
+        ],
     },
 }
 
@@ -106,6 +110,8 @@ def get_sbmr_command_support():
        [send_platform_error_record]      false
        [send_boot_progress_code]         false
        [get_boot_progress_code]          false
+       [send_boot_progress_code_2]       false
+       [get_boot_progress_code_2]        false
     """
 
     cmd_buf = IPMI_CMD + " raw 0x06 0x0a 0x0e 0x2c 0x00 0xae"
@@ -121,27 +127,39 @@ def get_sbmr_command_support():
     send_platform_error_record = 0
     send_boot_progress_code = 0
     get_boot_progress_code = 0
+    send_boot_progress_code_2 = 0
+    get_boot_progress_code_2 = 0
 
     if rc != 0:
         return vf.create_var_dict(send_platform_error_record,
                                   send_boot_progress_code,
-                                  get_boot_progress_code)
+                                  get_boot_progress_code,
+                                  send_boot_progress_code_2,
+                                  get_boot_progress_code_2)
 
     ipmi_output = stdout.split()
 
     # Command 0x0 ~ 0x7
     cmds = int(ipmi_output[0], 16)
 
-    if cmds & int(0x2):
+    # As per IPMIv2.0 rev 1.1 Section 21.3 Get Command Support, a cleared bit means
+    # command available.
+    if cmds & int(0x2) == 0:
         send_platform_error_record = 1
-    if cmds & int(0x4):
+    if cmds & int(0x4) == 0:
         send_boot_progress_code = 1
-    if cmds & int(0x8):
+    if cmds & int(0x8) == 0:
         get_boot_progress_code = 1
+    if cmds & int(0x10) == 0:
+        send_boot_progress_code_2 = 1
+    if cmds & int(0x20) == 0:
+        get_boot_progress_code_2 = 1
 
     return vf.create_var_dict(send_platform_error_record,
                               send_boot_progress_code,
-                              get_boot_progress_code)
+                              get_boot_progress_code,
+                              send_boot_progress_code_2,
+                              get_boot_progress_code_2)
 
 
 def send_platform_error_record():
@@ -194,6 +212,49 @@ def get_boot_progress_code():
     """
 
     cmd_buf = IPMI_CMD + " raw 0x2c 0x03 0xae"
+    BuiltIn().log("Issue : " + cmd_buf)
+
+    rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
+
+    if rc == 0:
+        BuiltIn().log("Response : " + stdout)
+    BuiltIn().should_be_equal(rc, 0, stderr)
+
+    # Get Body Code
+    ipmi_output = stdout.split()
+
+    return int(ipmi_output[0], 16)
+
+
+def send_boot_progress_code_2():
+    r"""
+    Issue Send Boot Progress Code 2 Command and check the capability
+    by returning body code
+    """
+
+    # Host processor power-on initialization
+    cmd_buf = IPMI_CMD + " raw 0x2c 0x04 0xae " + SBMR_RAW_EVENT["Boot_Progress_Code"]["Status_2"][0]
+    BuiltIn().log("Issue : " + cmd_buf)
+
+    rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)
+
+    if rc == 0:
+        BuiltIn().log("Response : " + stdout)
+    BuiltIn().should_be_equal(rc, 0, stderr)
+
+    # Get Body Code
+    ipmi_output = stdout.split()
+
+    return int(ipmi_output[0], 16)
+
+
+def get_boot_progress_code_2():
+    r"""
+    Issue Get Boot Progress Code 2 Command and check the capability
+    by returning body code
+    """
+
+    cmd_buf = IPMI_CMD + " raw 0x2c 0x05 0xae 0x01"
     BuiltIn().log("Issue : " + cmd_buf)
 
     rc, stdout, stderr = gc.shell_cmd(cmd_buf, return_stderr=1)

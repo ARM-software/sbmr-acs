@@ -68,6 +68,32 @@ Test Host IPMI Inband Interface Get Boot Progress Code Command
     Should Be Equal  ${rc}  ${True}
 
 
+Test Host IPMI Inband Interface Send Boot Progress Code 2 Command
+    [Documentation]  Verify IPMI Inband Interface Send Boot Progress Code 2 Command
+    [Tags]  M21_IPMI2_Send_Boot_Progress_Code_2_Command
+
+    # If command not support, then fallback to send command directly
+    ${rc}=  Run Keyword If  ${SBMR_COMMAND_LIST["send_boot_progress_code_2"]} == ${1}
+    ...        Set Variable  ${True}
+    ...    ELSE
+    ...        Run Keyword And Return Status  Issue Send Boot Progress Code 2 Command
+
+    Should Be Equal  ${rc}  ${True}
+
+
+Test Host IPMI Inband Interface Get Boot Progress Code 2 Command
+    [Documentation]  Verify IPMI Inband Interface Get Boot Progress Code 2 Command
+    [Tags]  M21_IPMI2_Get_Boot_Progress_2_Code
+
+    # If command not support, then fallback to send command directly
+    ${rc}=  Run Keyword If  ${SBMR_COMMAND_LIST["get_boot_progress_code_2"]} == ${1}
+    ...        Set Variable  ${True}
+    ...    ELSE
+    ...        Run Keyword And Return Status  Issue Get Boot Progress Code 2 Command
+
+    Should Be Equal  ${rc}  ${True}
+
+
 *** Keywords ***
 
 Issue Send Platform Error Record Command
@@ -90,6 +116,22 @@ Issue Get Boot Progress Code Command
     [Documentation]  Issue Get Boot Progress Code Command
 
     ${output}=  Get Boot Progress Code
+
+    Should Be Equal  ${output}  ${0xAE}
+
+
+Issue Send Boot Progress Code 2 Command
+    [Documentation]  Issue Send Boot Progress Code 2 Command
+
+    ${output}=  Send Boot Progress Code 2
+
+    Should Be Equal  ${output}  ${0xAE}
+
+
+Issue Get Boot Progress Code 2 Command
+    [Documentation]  Issue Get Boot Progress Code 2 Command
+
+    ${output}=  Get Boot Progress Code 2
 
     Should Be Equal  ${output}  ${0xAE}
 

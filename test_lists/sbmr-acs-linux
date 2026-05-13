@@ -12,6 +12,8 @@
 --include M21_IPMI2_Send_Platform_Error_Record_Command
 --include M21_IPMI2_Send_Boot_Progress_Code_Command
 --include M21_IPMI2_Get_Boot_Progress_Code
+--include M21_IPMI2_Send_Boot_Progress_Code_2_Command
+--include M21_IPMI2_Get_Boot_Progress_2_Code
 
 # PCIe
 --include M21_PCI_1_Interface_Availability
@@ -30,6 +32,8 @@
 --skiponfailure M21_IPMI2_Send_Platform_Error_Record_Command
 --skiponfailure M21_IPMI2_Send_Boot_Progress_Code_Command
 --skiponfailure M21_IPMI2_Get_Boot_Progress_Code
+--skiponfailure M21_IPMI2_Send_Boot_Progress_Code_2_Command
+--skiponfailure M21_IPMI2_Get_Boot_Progress_2_Code
 
 # PCIe conditional
 --skiponfailure M21_PCI_1_Interface_Availability

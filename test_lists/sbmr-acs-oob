@@ -1,5 +1,7 @@
 # In-Band
+--include MFSPX_Interface_Declaration
 --include M2_IB_1_Redfish_Host_Interface_Capability
+--include RXNXV_Redfish_Platform_Error_Record_Declaration
 --include M21_IPMI1_Power_Control
 --include M21_IPMI1_Boot_Device
 
@@ -36,6 +38,7 @@
 --include M2_OOB_1_Redfish_Service_Validator
 --include M2_OOB_3_Redfish_Interop_Validator_On_OCP_Baseline
 --include M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
+--include M3_OOB_2_Redfish_Service_Validator
 --include M3_OOB_2_Redfish_Interop_Validator_On_OCP_Baseline
 --include M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server
 --include M3_OOB_1_Interface_Declaration
@@ -68,6 +71,10 @@
 --include M5_HS_1_2_Interface_Declaration
 
 # Required Only If System Support
+# In-Band conditional
+--skiponfailure MFSPX_Interface_Declaration
+--skiponfailure RXNXV_Redfish_Platform_Error_Record_Declaration
+
 # PCIe conditional
 --skiponfailure M21_PCI_1_Redfish_Graphical_Console_Capability
 

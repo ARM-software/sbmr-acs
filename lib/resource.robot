@@ -146,6 +146,7 @@ ${GROUP_NAME}               ${EMPTY}
 ${LDAP_SERVER_URI}          ldap://${LDAP_SERVER_HOST}
 
 # Self Declaration
+${MFSPX_Interface_Declaration}           0
 ${M1_JTAG_1_2_Interface_Declaration}     0
 ${M2_JTAG_2_Interface_Declaration}       0
 ${M2_IO_1_NCSI_Interface_Declaration}    0

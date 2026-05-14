@@ -41,6 +41,9 @@
 ##### Self Declaration For SBMR Interface #####
 # If system supports the compliant interfaces, change corresponding variable to 1.
 
+# In-Band
+-v MFSPX_Interface_Declaration:0
+
 # JTAG
 -v M1_JTAG_1_2_Interface_Declaration:0
 -v M2_JTAG_2_Interface_Declaration:0

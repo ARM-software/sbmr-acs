@@ -4,6 +4,7 @@
 --include M2_IB_1_Redfish_HI_Type
 --include M2_IB_1_Redfish_HI_Service_Root
 --include M2_IB_2_IPMI_SSIF_Functionality
+--include RXNXV_Send_Platform_Error_Record_Command
 --include M21_IB_1_IPMI_SSIF_Capability
 --include M21_IPMI1_IPMI_8_Redfish_Host_Certificate_Fingerprint
 --include M21_IPMI1_IPMI_8_Redfish_Host_Get_Account_Credential
@@ -29,6 +30,7 @@
 # In-Band conditional
 --skiponfailure M21_IPMI1_IPMI_8_Redfish_Host_Certificate_Fingerprint
 --skiponfailure M21_IPMI1_IPMI_8_Redfish_Host_Get_Account_Credential
+--skiponfailure RXNXV_Send_Platform_Error_Record_Command
 --skiponfailure M21_IPMI2_Send_Platform_Error_Record_Command
 --skiponfailure M21_IPMI2_Send_Boot_Progress_Code_Command
 --skiponfailure M21_IPMI2_Get_Boot_Progress_Code

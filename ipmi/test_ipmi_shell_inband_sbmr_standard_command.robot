@@ -32,6 +32,7 @@ Test Host IPMI Inband Interface Send Platform Error Record Command
     [Documentation]  Verify IPMI Inband Interface Send Platform Error Record Command
     [Tags]  M21_IPMI2_Send_Platform_Error_Record_Command
     ...     M1_RAS_1_2_Send_Platform_Error_Record_Command
+    ...     RXNXV_Send_Platform_Error_Record_Command
 
     # If command not support, then fallback to send command directly
     ${rc}=  Run Keyword If  ${SBMR_COMMAND_LIST["send_platform_error_record"]} == ${1}

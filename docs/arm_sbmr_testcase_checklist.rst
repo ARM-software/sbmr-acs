@@ -26,7 +26,7 @@ SBMR checklist
 | In-Band                  | M1_IB_1      | Level M1                               | Yes             | IB                 | - M1_IB_1_IPMI_SSIF_Functionality                                                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | MFSPX        | Level M1                               | No              | Not covered        | No ACS test tag currently available                                                |
+|                          | MFSPX        | Level M1                               | No              | Self Declaration   | - MFSPX_Interface_Declaration*                                                     |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M2_IB_1      | Level M2                               | Yes             | IB, OOB            | - M2_IB_1_Redfish_HI_Functionality                                                 |
 |                          |              |                                        |                 |                    | - M2_IB_1_Redfish_HI_Type                                                          |
@@ -37,7 +37,8 @@ SBMR checklist
 |                          | M2_IB_2      | Level M2                               | Yes             | IB                 | - M2_IB_2_IPMI_SSIF_Functionality                                                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | RXNXV        | Level M2.1                             | No              | Not covered        | No ACS test tag currently available                                                |
+|                          | RXNXV        | Level M2.1                             | Partial         | IB,                | - RXNXV_Send_Platform_Error_Record_Command                                         |
+|                          |              |                                        |                 | Self Declaration   | - RXNXV_Redfish_Platform_Error_Record_Declaration* (conditional)                   |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M21_IB_1     | Level M2.1                             | Yes             | IB                 | - M21_IB_1_IPMI_SSIF_Capability                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
@@ -144,7 +145,8 @@ SBMR checklist
 |                          | M3_OOB_1     | Level M3                               | No              | Self Declaration   | - M3_OOB_1_Interface_Declaration* (implementation choice)                          |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_OOB_2     | Level M3                               | Yes             | OOB                | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Baseline                               |
+|                          | M3_OOB_2     | Level M3                               | Yes             | OOB                | - M3_OOB_2_Redfish_Service_Validator                                               |
+|                          |              |                                        |                 |                    | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Baseline                               |
 |                          |              |                                        |                 |                    | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server (recommended)                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
@@ -228,7 +230,7 @@ SBMR future requirements checklist
 | BMC-IO                     | M5_IO_1      | No              | Self Declaration   | - M5_IO_1_Interface_Declaration*                                                   |
 |                            |              |                 |                    |                                                                                    |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| OOB                        | M5_OOB_1     | Yes             | OOB                | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)                          |
+| OOB                        | M5_OOB_1     | Yes             | OOB                | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)                           |
 |                            |              |                 |                    |                                                                                    |
 |                            |              |                 |                    | User should declare whether the server platform supports                           |
 |                            |              |                 |                    | user-accessible BIOS settings using                                                |

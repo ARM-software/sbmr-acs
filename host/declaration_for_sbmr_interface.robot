@@ -21,6 +21,13 @@ Resource         ../lib/resource.robot
 
 *** Test Cases ***
 
+Declaration For MFSPX Support
+    [Documentation]  Declaration for MFSPX support
+    [Tags]  MFSPX_Interface_Declaration
+    [Template]  Verify Declaration
+    ${MFSPX_Interface_Declaration}  MFSPX
+
+
 Declaration For BMC M1_JTAG Interface Support
     [Documentation]  Declaration for BMC M1_JTAG interface support
     [Tags]  M1_JTAG_1_2_Interface_Declaration
@@ -45,6 +52,7 @@ Declaration For BMC M2_IO_1 NC-SI Interface Support
 Declaration For BMC M2_RAS Functionality Support
     [Documentation]  Declaration for BMC M2_RAS functionality support
     [Tags]  M2_RAS_2_Function_Declaration
+    ...     RXNXV_Redfish_Platform_Error_Record_Declaration
     [Template]  Verify Declaration
     ${M2_RAS_2_Function_Declaration}  M2_RAS_2
 

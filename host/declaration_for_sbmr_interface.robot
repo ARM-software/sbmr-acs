@@ -125,14 +125,6 @@ Declaration For BMC M5_IO Interface Support
     [Template]  Verify Declaration
     ${M5_IO_1_Interface_Declaration}  M5_IO_1
 
-
-Declaration For BMC M5_OOB Interface Support
-    [Documentation]  Declaration for BMC M5_OOB interface support
-    [Tags]  M5_OOB_1_Interface_Declaration
-    [Template]  Verify Declaration
-    ${M5_OOB_1_Interface_Declaration}  M5_OOB_1
-
-
 Declaration For BMC M5_HS Interface Support
     [Documentation]  Declaration for BMC M5_HS interface support
     [Tags]  M5_HS_1_2_Interface_Declaration

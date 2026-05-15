@@ -161,8 +161,8 @@ ${M4_IO_1_3_Interface_Declaration}       0
 ${M5_IB_1_2_Interface_Declaration}       0
 ${M5_SB_1_Interface_Declaration}         0
 ${M5_IO_1_Interface_Declaration}         0
-${M5_OOB_1_Interface_Declaration}        0
 ${M5_HS_1_2_Interface_Declaration}       0
+${M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT}  0
 
 *** Keywords ***
 Get Inventory Schema

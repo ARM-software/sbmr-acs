@@ -56,8 +56,11 @@
 -v M5_IB_1_2_Interface_Declaration:0
 -v M5_SB_1_Interface_Declaration:0
 -v M5_IO_1_Interface_Declaration:0
--v M5_OOB_1_Interface_Declaration:0
 -v M5_HS_1_2_Interface_Declaration:0
+# Add user-controlled flag to decide whether BIOS settings are exposed and the test should run.
+# 0 means BIOS settings are not exposed and the test will be skipped.
+# 1 means BIOS settings are exposed and the test will be executed.
+-v M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT:0
 
 ##### Debug : Redfish Mockup Creator #####
 #--include Test_BMC_Redfish_Using_Redfish_Mockup_Creator

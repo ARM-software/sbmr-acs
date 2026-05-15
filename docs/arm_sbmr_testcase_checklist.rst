@@ -187,7 +187,11 @@ The checklist indicates whether each test is executed via automation or requires
 +------------+-------+------------+-----------------+--------------------+----------------------------------------------------------------------+
 | BMC-IO     | M5a   | M5_IO_1    | No              | - Self Declaration | - M5_IO_1_Interface_Declaration*                                     |
 +------------+-------+------------+-----------------+--------------------+----------------------------------------------------------------------+
-| OOB        | M5a   | M5_OOB_1   | No              | - Self Declaration | - M5_OOB_1_Interface_Declaration* (conditional)                      |
+| OOB        | M5a   | M5_OOB_1   | yes             | - OOB              | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)             |
+|            |       |            |                 |                    |                                                                      |
+|            |       |            |                 |                    | User should declare whether the server platform supports             |
+|            |       |            |                 |                    | user-accessible BIOS settings using                                  |
+|            |       |            |                 |                    | M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT flag in config.                |
 +------------+-------+------------+-----------------+--------------------+----------------------------------------------------------------------+
 | Host-SatMC | M5a   | M5_HS_1    | No              | - Self Declaration | - M5_HS_1_2_Interface_Declaration* (conditional)                     |
 +------------+-------+------------+-----------------+--------------------+----------------------------------------------------------------------+

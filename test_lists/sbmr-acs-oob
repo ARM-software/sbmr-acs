@@ -48,7 +48,7 @@
 --include M5_IB_1_2_Interface_Declaration
 --include M5_SB_1_Interface_Declaration
 --include M5_IO_1_Interface_Declaration
---include M5_OOB_1_Interface_Declaration
+--include M5_OOB_1_Redfish_BIOS_Settings_Resource
 --include M5_HS_1_2_Interface_Declaration
 
 # Required Only If System Support
@@ -61,7 +61,6 @@
 --skiponfailure M3_JTAG_1_2_Interface_Declaration
 --skiponfailure M3_IO_1_2_Interface_Declaration
 --skiponfailure M4_IO_1_3_Interface_Declaration
---skiponfailure M5_OOB_1_Interface_Declaration
 --skiponfailure M5_HS_1_2_Interface_Declaration
 --skiponfailure M21_PCI_1_Redfish_Graphical_Console_Capability
 --skiponfailure M5_IB_1_2_Interface_Declaration

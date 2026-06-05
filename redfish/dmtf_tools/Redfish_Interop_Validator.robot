@@ -29,7 +29,7 @@ Suite Teardown     Suite Teardown Execution
 ${DEFAULT_PYTHON}  python3
 ${rsv_dir_path}    Redfish-Interop-Validator
 ${rsv_github_url}  https://github.com/DMTF/Redfish-Interop-Validator.git
-${rsv_revision}    2.1.3
+${rsv_revision}    2.3.5
 ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishInteropValidator.py
 ...                --ip https://${BMC_HOST}:${HTTPS_PORT} --authtype=Session -u ${BMC_USERNAME}
 ...                -p ${BMC_PASSWORD} --logdir ${OUTPUT_DIR}${/}redfish-interop-validator
@@ -48,7 +48,7 @@ Test BMC Redfish Using Redfish Interop Validator On OCP Baseline Profile
     [Template]  Run Redfish Interop Validator With Profile
 
     # profile
-    HWMgmt${/}OCPBaselineHardwareManagement.v1_1_0.json
+    OCPBaselineHardwareManagement.v1_1_1.json
 
 
 Test BMC Redfish Using Redfish Interop Validator On OCP Server Profile

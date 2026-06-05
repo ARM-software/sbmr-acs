@@ -154,7 +154,7 @@ For self-declaration information, sbmr-acs has a limitation to verify some SBMR-
 **Robot Command Line**
 
 After following [configure](#configure) and [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) steps on an external host machine.
-Run run-sbmr-acs.sh with "oob" argument.
+Run run-sbmr-acs.sh with "oob" argument. If no SBMR level is passed, the suite defaults to SBMR 3.0 baseline requirements (M4).
 
   ```
   ./run-sbmr-acs.sh oob
@@ -164,7 +164,7 @@ The logs for the OOB tests will be stored in the 'logs' directory, which is loca
 
 ### Running SBMR-ACS in-band(IB) tests:
 
-After following [configure](#configure) and [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) steps on any Linux distro (based on AArch64) installed on the system-under-test. Run run-sbmr-acs.sh with "linux" argument.
+After following [configure](#configure) and [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) steps on any Linux distro (based on AArch64) installed on the system-under-test. Run run-sbmr-acs.sh with "linux" argument. If no SBMR level is passed, the suite defaults to SBMR 3.0 baseline requirements (M4).
 
   ```
   ./run-sbmr-acs.sh linux
@@ -181,16 +181,35 @@ The logs for the IB tests will be stored in the 'logs' directory, which is locat
   ./run-sbmr-acs.sh oob -d
   ```
 
-- Execute SBMR OOB test cases:
+- Execute SBMR test script for an explicit historical level:
 
   ```
-  $ robot --argumentfile config --argumentfile test_lists/sbmr-acs-oob .
+  ./run-sbmr-acs.sh oob --level M1
+  ./run-sbmr-acs.sh linux -l M2.1
   ```
 
-- Execute SBMR IB test cases:
+- Execute SBMR future requirement test cases:
 
   ```
-  $ robot --argumentfile config --argumentfile test_lists/sbmr-acs-linux ./redfish ./ipmi ./host
+  ./run-sbmr-acs.sh oob --level FR
+  ```
+
+- Generate SBMR OOB test cases manually:
+
+  ```
+  $ ./bin/generate_level_argumentfile.py --suite oob --level M3 --output logs/sbmr-acs-oob-M3.args
+  ```
+
+- Execute SBMR OOB test cases with a generated argument file:
+
+  ```
+  $ robot --argumentfile config --argumentfile logs/sbmr-acs-oob-M3.args .
+  ```
+
+- Execute SBMR IB test cases with a generated argument file:
+
+  ```
+  $ robot --argumentfile config --argumentfile logs/sbmr-acs-linux-M3.args ./redfish ./ipmi ./host
   ```
 
 - Execute single/multiple test case:
@@ -216,7 +235,7 @@ Test Layout in sbmr-acs repository can be classified as follows:
 
 `lib/`: Contains python library for dealing with complex test case.
 
-`test_list/`: Contains the argument files used for grouping test cases (e.g sbmr-acs-oob, sbmr-acs-linux.)
+`test_list/`: Contains SBMR level metadata and legacy argument files used for grouping test cases.
 
 `ipmi/`: Contains test cases for ipmi in-band & out-of-band interface.
 

@@ -214,6 +214,10 @@ Deactivate SOL Via IPMI
     # terminate process for boot test procedure
     Run Keyword And Ignore Error  Terminate Process  sol_proc
 
+    ${file_exists}=  Run Keyword And Return Status
+    ...  OperatingSystem.File Should Exist  ${file_path}
+    Run Keyword If  ${file_exists} == ${False}  Return From Keyword  ${output}
+
     ${output}=  OperatingSystem.Get File  ${file_path}  encoding_errors=ignore
 
     # Logging SOL output for debug purpose.

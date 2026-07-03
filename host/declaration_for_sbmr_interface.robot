@@ -84,13 +84,6 @@ Declaration For M3_SB_2 PLDM Platform Functions
     ${M3_SB_2_PLDM_PLATFORM_FUNCTIONS_SUPPORT}  M3_SB_2  PLDM platform-level data models and functions
 
 
-Declaration For M3_SB_3 MCTP Transport Protocol
-    [Documentation]  Declaration for MCTP as the transport protocol format.
-    [Tags]  M3_SB_3_MCTP_Transport_Protocol_Declaration
-    [Template]  Verify Declaration
-    ${M3_SB_3_MCTP_TRANSPORT_PROTOCOL_SUPPORT}  M3_SB_3  MCTP transport protocol format
-
-
 Declaration For M3_SB_4 PLDM Over MCTP Binding
     [Documentation]  Declaration for PLDM over MCTP message binding.
     [Tags]  M3_SB_4_PLDM_Over_MCTP_Binding_Declaration
@@ -126,13 +119,6 @@ Declaration For M3_SB_8 SPDM Secure Messages MCTP Binding
     ${M3_SB_8_SPDM_SECURE_MESSAGES_MCTP_BINDING_SUPPORT}  M3_SB_8  SPDM secure messages over MCTP binding
 
 
-Declaration For M3_SB_9 MCTP I2C Physical Binding
-    [Documentation]  Declaration for MCTP over SMBus/I2C physical binding.
-    [Tags]  M3_SB_9_MCTP_I2C_Physical_Binding_Declaration
-    [Template]  Verify Declaration
-    ${M3_SB_9_MCTP_I2C_PHYSICAL_BINDING_SUPPORT}  M3_SB_9  MCTP over SMBus/I2C physical binding
-
-
 Declaration For M3_JTAG_2 Production Disable Support
     [Documentation]  Declaration for production JTAG disable and access control methods.
     [Tags]  M3_JTAG_2_Production_JTAG_Disable_Declaration
@@ -145,13 +131,6 @@ Declaration For M3_IO_1 NC-SI RBT Or MCTP Support
     [Tags]  M3_IO_1_NCSI_RBT_Or_MCTP_Declaration
     [Template]  Verify Declaration
     ${M3_IO_1_NCSI_RBT_OR_MCTP_SUPPORT}  M3_IO_1  NC-SI over RBT or MCTP on shared NIC interfaces
-
-
-Declaration For M3_IO_2 MCTP IO Physical Binding
-    [Documentation]  Declaration for MCTP physical binding for IO device management.
-    [Tags]  M3_IO_2_MCTP_IO_Physical_Binding_Declaration
-    [Template]  Verify Declaration
-    ${M3_IO_2_MCTP_IO_PHYSICAL_BINDING_SUPPORT}  M3_IO_2  MCTP physical binding for IO device management
 
 
 Declaration For M3_OOB_1 IPMI OOB Optional Support
@@ -175,32 +154,11 @@ Declaration For M3_SPDM_2 SPDM MCTP Binding Support
     ${M3_SPDM_2_SPDM_MCTP_BINDING_SUPPORT}  M3_SPDM_2  SPDM over MCTP binding conformance
 
 
-Declaration For M4_SB_1 MCTP I3C Physical Binding
-    [Documentation]  Declaration for MCTP over I3C physical binding.
-    [Tags]  M4_SB_1_MCTP_I3C_Physical_Binding_Declaration
-    [Template]  Verify Declaration
-    ${M4_SB_1_MCTP_I3C_PHYSICAL_BINDING_SUPPORT}  M4_SB_1  MCTP over I3C physical binding
-
-
-Declaration For M4_IO_1 PCIe Device MCTP PLDM Management
-    [Documentation]  Declaration for PCIe device management using MCTP/PLDM.
-    [Tags]  M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration
-    [Template]  Verify Declaration
-    ${M4_IO_1_PCIE_DEVICE_MCTP_PLDM_MANAGEMENT_SUPPORT}  M4_IO_1  PCIe device management using MCTP/PLDM
-
-
 Declaration For M4_IO_2 NVMe MI Over MCTP
     [Documentation]  Declaration for NVMe-MI management over MCTP.
     [Tags]  M4_IO_2_NVMe_MI_Over_MCTP_Declaration
     [Template]  Verify Declaration
     ${M4_IO_2_NVME_MI_OVER_MCTP_SUPPORT}  M4_IO_2  NVMe-MI management over MCTP
-
-
-Declaration For M4_IO_3 MCTP I3C PCIe VDM Binding
-    [Documentation]  Declaration for MCTP over I3C or PCIe VDM binding.
-    [Tags]  M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration
-    [Template]  Verify Declaration
-    ${M4_IO_3_MCTP_I3C_PCIE_VDM_BINDING_SUPPORT}  M4_IO_3  MCTP over I3C or PCIe VDM binding
 
 
 Declaration For M5_IB_1 MMBI Interface Support

@@ -145,6 +145,10 @@ ${GROUP_PRIVILEGE}          ${EMPTY}
 ${GROUP_NAME}               ${EMPTY}
 ${LDAP_SERVER_URI}          ldap://${LDAP_SERVER_HOST}
 
+# MCTP interface role mapping
+${MCTP_SB_INTERFACES}       ${EMPTY}
+${MCTP_IO_INTERFACES}       ${EMPTY}
+
 # Self Declaration
 ${MFSPX_SMBUS_SSIF_SUPPORT}                              0
 ${RXNXV_REDFISH_PLATFORM_ERROR_RECORD_SUPPORT}           0

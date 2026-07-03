@@ -45,10 +45,10 @@ skip_on_failure:
     - M3_JTAG_2_Production_JTAG_Disable_Declaration
     - M2_IO_1_NCSI_RBT_Declaration
     - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration
-    - M3_IO_2_MCTP_IO_Physical_Binding_Declaration
-    - M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration
+    - M3_IO_2_MCTP_Physical_Binding
+    - M4_IO_1_MCTP_Transport_Protocol
     - M4_IO_2_NVMe_MI_Over_MCTP_Declaration
-    - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration
+    - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding
     - M3_SPDM_1_SPDM_Protocol_Declaration
     - M3_SPDM_2_SPDM_MCTP_Binding_Declaration
     - M1_RAS_1_2_Send_Platform_Error_Record_Command
@@ -211,7 +211,7 @@ rules:
     category: Side-Band
     suites:
       oob:
-        - M3_SB_3_MCTP_Transport_Protocol_Declaration
+        - M3_SB_3_MCTP_Transport_Protocol
 
   - id: M3_SB_4
     introduced: M3
@@ -254,14 +254,14 @@ rules:
     category: Side-Band
     suites:
       oob:
-        - M3_SB_9_MCTP_I2C_Physical_Binding_Declaration
+        - M3_SB_9_MCTP_Physical_Binding
 
   - id: M4_SB_1
     introduced: M4
     category: Side-Band
     suites:
       oob:
-        - M4_SB_1_MCTP_I3C_Physical_Binding_Declaration
+        - M4_SB_1_MCTP_I3C_PCIE_VDM_Binding
 
   - id: M1_OOB_1
     introduced: M1
@@ -338,14 +338,14 @@ rules:
     category: BMC-IO
     suites:
       oob:
-        - M3_IO_2_MCTP_IO_Physical_Binding_Declaration
+        - M3_IO_2_MCTP_Physical_Binding
 
   - id: M4_IO_1
     introduced: M4
     category: BMC-IO
     suites:
       oob:
-        - M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration
+        - M4_IO_1_MCTP_Transport_Protocol
 
   - id: M4_IO_2
     introduced: M4
@@ -359,7 +359,7 @@ rules:
     category: BMC-IO
     suites:
       oob:
-        - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration
+        - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding
 
   - id: M3_SPDM_1
     introduced: M3

@@ -63,6 +63,7 @@ Verify that MCTP communication supports SMBus/I2C or a higher-bandwidth binding 
 #### Pre-requisites
 - M3_SB_3 is compliant
 - Check the platform I2C/I3C/PCIe topology used for MCTP on both side-band and I/O device interfaces.
+- For automation, set `MCTP_SB_INTERFACES` and `MCTP_IO_INTERFACES` in `config` to comma-separated, role-exclusive interface names from `mctp link`.
 Note: See [Appendix C](#appendix_c_mctp_example) for an example walk-through.
 
 #### Test Cases
@@ -98,6 +99,7 @@ Verify that MCTP is implemented and used as a transport protocol, providing a bu
 - Access to the BMC console
 - `systemctl`, `busctl`, `mctp` utilities installed
 - Check the platform I2C/I3C/PCIe topology used for MCTP on both side-band and I/O device interfaces.
+- For automation, set `MCTP_SB_INTERFACES` and `MCTP_IO_INTERFACES` in `config` to comma-separated, role-exclusive interface names from `mctp link`.
 - See [Appendix A](#appendix_a_pldm_args) to get the MCTP endpoint ID for PLDM command arguments.
 - See [Appendix C](#appendix_c_mctp_example) for an example walk-through.
 
@@ -166,6 +168,7 @@ Verify that MCTP communication uses I3C or PCIe VDM binding at SBMR Level M4 (SM
 #### Pre-requisites
 - Platform claims SBMR Level M4
 - Check the platform I2C/I3C/PCIe topology used for MCTP on both side-band and I/O device interfaces.
+- For automation, set `MCTP_SB_INTERFACES` and `MCTP_IO_INTERFACES` in `config` to comma-separated, role-exclusive interface names from `mctp link`.
 Note: See [Appendix C](#appendix_c_mctp_example) for an example walk-through.
 
 #### Test Cases

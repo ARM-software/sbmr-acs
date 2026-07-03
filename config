@@ -27,6 +27,19 @@
 -v SOL_LOGIN_PASSWORD:password
 
 
+##### MCTP Interface Role Mapping #####
+# MCTP automation requires separate Linux MCTP interfaces for the SIDE-BAND
+# and BMC-IO connections. Use exact interface names reported by `mctp link`.
+# Separate multiple interfaces with commas and do not use the same interface
+# in both variables.
+#
+# Example:
+# -v MCTP_SB_INTERFACES:mctpi3c6
+# -v MCTP_IO_INTERFACES:mctpi2c1,mctpi3c1
+-v MCTP_SB_INTERFACES:
+-v MCTP_IO_INTERFACES:
+
+
 ##### Virtual Media #####
 -v VM_URL:https://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04.2-live-server-arm64.iso
 

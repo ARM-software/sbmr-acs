@@ -153,6 +153,7 @@ Before running the test suite, set up the configuration values in the [*config*]
 
  * `BMC Information`
  * `Host Information`
+ * `MCTP Interface Role Mapping`
  * `SOL Information`
  * `Virtual Media Information`
  * `Self-Declaration Information`
@@ -161,6 +162,13 @@ For BMC configuration, `BMC_HOST`, `BMC_USERNAME`, and `BMC_PASSWORD` must be se
 For OOB runs started with `run-sbmr-acs.sh`, Redfish instance IDs are auto-discovered by default. If needed, uncomment `BMC_ID`, `SYSTEM_ID`, or `CHASSIS_ID` in [*config*](config) to override auto-discovery. `CHASSIS_ID` should refer to the main chassis that is in charge of power status.
 
 For Host configuration, Host OS `SOL_LOGIN_OUTPUT`, `SOL_LOGIN_USERNAME`, and `SOL_LOGIN_PASSWORD` must be set. `SOL_LOGIN_OUTPUT` is the login prompt that appears when the host boots, and it helps the suite detect that the host has booted before providing credentials. Ensure that the Host OS is set as the first entry in the boot order of the system under test (SUT) for IPMI SOL test to work.
+
+For MCTP and PLDM-over-MCTP testing, configure the Linux MCTP interfaces that connect the BMC to the server SoC and IO devices. Set `MCTP_SB_INTERFACES` for SIDE-BAND connections and `MCTP_IO_INTERFACES` for BMC-IO connections. Use the exact interface names reported by `mctp link`, separate multiple interfaces with commas, and do not assign an interface to both roles. For example:
+
+```
+-v MCTP_SB_INTERFACES:mctpi3c6
+-v MCTP_IO_INTERFACES:mctpi2c1,mctpi3c1
+```
 
 For Serial over LAN (SOL) configuration, SBMR-ACS will verify SOL capability and SOL methods can be IPMI SOL and SSH-based SOL. The default method is IPMI SOL, so no SOL configuration change is required by default. To use SSH-based SOL, set `SOL_TYPE` to `ssh` and set `SOL_SSH_PORT` if a non-default SSH port is required. If extra commands are needed to start SOL over SSH, set `SOL_SSH_CMD`.
 

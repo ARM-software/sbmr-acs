@@ -26,7 +26,7 @@ levels:
 
 skip_on_failure:
   always:
-    - MFSPX_Interface_Declaration
+    - MFSPX_SMBus_SSIF_Declaration
     - RXNXV_Redfish_Platform_Error_Record_Declaration
     - RXNXV_Send_Platform_Error_Record_Command
     - M21_IPMI1_IPMI_8_Redfish_Host_Certificate_Fingerprint
@@ -39,20 +39,27 @@ skip_on_failure:
     - M21_PCI_1_Interface_Availability
     - M21_PCI_1_Redfish_Graphical_Console_Capability
     - M21_USB_1_Redfish_Virtual_Media_Action_Uri
-    - M1_JTAG_1_2_Interface_Declaration
-    - M2_JTAG_2_Interface_Declaration
-    - M3_JTAG_2_Interface_Declaration
-    - M2_IO_1_NCSI_Interface_Declaration
-    - M3_IO_1_2_Interface_Declaration
-    - M4_IO_1_3_Interface_Declaration
-    - M3_SPDM_1_2_Interface_Declaration
+    - M1_JTAG_1_JTAG_Remote_Debug_Declaration
+    - M1_JTAG_2_ADI_TAP_Access_Declaration
+    - M2_JTAG_2_JTAG_Debug_Capability_Declaration
+    - M3_JTAG_2_Production_JTAG_Disable_Declaration
+    - M2_IO_1_NCSI_RBT_Declaration
+    - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration
+    - M3_IO_2_MCTP_IO_Physical_Binding_Declaration
+    - M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration
+    - M4_IO_2_NVMe_MI_Over_MCTP_Declaration
+    - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration
+    - M3_SPDM_1_SPDM_Protocol_Declaration
+    - M3_SPDM_2_SPDM_MCTP_Binding_Declaration
     - M1_RAS_1_2_Send_Platform_Error_Record_Command
-    - M2_RAS_2_Function_Declaration
-    - M5_IB_1_2_Interface_Declaration
-    - M5_HS_1_2_Interface_Declaration
+    - M2_RAS_2_Redfish_Platform_Error_Record_Declaration
+    - M5_IB_1_MMBI_Interface_Declaration
+    - M5_IB_2_MCTP_Host_Interface_Discovery_Declaration
+    - M5_HS_1_MCTP_Over_PCC_Mailbox_Declaration
+    - M5_HS_2_MCTP_Host_Interface_Discovery_Declaration
     - M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
     - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server
-    - M3_OOB_1_Interface_Declaration
+    - M3_OOB_1_IPMI_OOB_Optional_Declaration
 
 rules:
   - id: M1_IB_1
@@ -67,7 +74,7 @@ rules:
     category: In-Band
     suites:
       oob:
-        - MFSPX_Interface_Declaration
+        - MFSPX_SMBus_SSIF_Declaration
 
   - id: M2_IB_1
     introduced: M2
@@ -162,84 +169,84 @@ rules:
     category: JTAG
     suites:
       oob:
-        - M1_JTAG_1_2_Interface_Declaration
+        - M1_JTAG_1_JTAG_Remote_Debug_Declaration
 
   - id: M1_JTAG_2
     introduced: M1
     category: JTAG
     suites:
       oob:
-        - M1_JTAG_1_2_Interface_Declaration
+        - M1_JTAG_2_ADI_TAP_Access_Declaration
 
   - id: M2_JTAG_2
     introduced: M2
     category: JTAG
     suites:
       oob:
-        - M2_JTAG_2_Interface_Declaration
+        - M2_JTAG_2_JTAG_Debug_Capability_Declaration
 
   - id: M3_JTAG_2
     introduced: M3
     category: JTAG
     suites:
       oob:
-        - M3_JTAG_2_Interface_Declaration
+        - M3_JTAG_2_Production_JTAG_Disable_Declaration
 
   - id: M3_SB_1
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_1_PMCI_Side_Band_Interface_Declaration
 
   - id: M3_SB_2
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_2_PLDM_Platform_Functions_Declaration
 
   - id: M3_SB_3
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_3_MCTP_Transport_Protocol_Declaration
 
   - id: M3_SB_4
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_4_PLDM_Over_MCTP_Binding_Declaration
 
   - id: M3_SB_5
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_5_SPDM_Security_Protocol_Declaration
 
   - id: M3_SB_6
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_6_SPDM_Over_MCTP_Binding_Declaration
 
   - id: M3_SB_7
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_7_SPDM_Secure_Messages_Declaration
 
   - id: M3_SB_8
     introduced: M3
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_8_SPDM_Secure_Messages_MCTP_Binding_Declaration
 
   - id: M3_SB_9
     introduced: M3
@@ -247,14 +254,14 @@ rules:
     category: Side-Band
     suites:
       oob:
-        - M3_SB_1_9_Interface_Declaration
+        - M3_SB_9_MCTP_I2C_Physical_Binding_Declaration
 
   - id: M4_SB_1
     introduced: M4
     category: Side-Band
     suites:
       oob:
-        - M4_SB_1_Interface_Declaration
+        - M4_SB_1_MCTP_I3C_Physical_Binding_Declaration
 
   - id: M1_OOB_1
     introduced: M1
@@ -299,7 +306,7 @@ rules:
     category: OOB
     suites:
       oob:
-        - M3_OOB_1_Interface_Declaration
+        - M3_OOB_1_IPMI_OOB_Optional_Declaration
 
   - id: M3_OOB_2
     introduced: M3
@@ -316,14 +323,14 @@ rules:
     category: BMC-IO
     suites:
       oob:
-        - M2_IO_1_NCSI_Interface_Declaration
+        - M2_IO_1_NCSI_RBT_Declaration
 
   - id: M3_IO_1
     introduced: M3
     category: BMC-IO
     suites:
       oob:
-        - M3_IO_1_2_Interface_Declaration
+        - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration
 
   - id: M3_IO_2
     introduced: M3
@@ -331,42 +338,42 @@ rules:
     category: BMC-IO
     suites:
       oob:
-        - M3_IO_1_2_Interface_Declaration
+        - M3_IO_2_MCTP_IO_Physical_Binding_Declaration
 
   - id: M4_IO_1
     introduced: M4
     category: BMC-IO
     suites:
       oob:
-        - M4_IO_1_3_Interface_Declaration
+        - M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration
 
   - id: M4_IO_2
     introduced: M4
     category: BMC-IO
     suites:
       oob:
-        - M4_IO_1_3_Interface_Declaration
+        - M4_IO_2_NVMe_MI_Over_MCTP_Declaration
 
   - id: M4_IO_3
     introduced: M4
     category: BMC-IO
     suites:
       oob:
-        - M4_IO_1_3_Interface_Declaration
+        - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration
 
   - id: M3_SPDM_1
     introduced: M3
     category: SPDM
     suites:
       oob:
-        - M3_SPDM_1_2_Interface_Declaration
+        - M3_SPDM_1_SPDM_Protocol_Declaration
 
   - id: M3_SPDM_2
     introduced: M3
     category: SPDM
     suites:
       oob:
-        - M3_SPDM_1_2_Interface_Declaration
+        - M3_SPDM_2_SPDM_MCTP_Binding_Declaration
 
   - id: M1_RAS_1
     introduced: M1
@@ -387,7 +394,7 @@ rules:
     category: RAS
     suites:
       oob:
-        - M2_RAS_2_Function_Declaration
+        - M2_RAS_2_Redfish_Platform_Error_Record_Declaration
 
   - id: IPMI_1
     introduced: M1
@@ -456,28 +463,28 @@ rules:
     category: In-Band
     suites:
       oob:
-        - M5_IB_1_2_Interface_Declaration
+        - M5_IB_1_MMBI_Interface_Declaration
 
   - id: M5_IB_2
     introduced: FR
     category: In-Band
     suites:
       oob:
-        - M5_IB_1_2_Interface_Declaration
+        - M5_IB_2_MCTP_Host_Interface_Discovery_Declaration
 
   - id: M5_SB_1
     introduced: FR
     category: Side-Band
     suites:
       oob:
-        - M5_SB_1_Interface_Declaration
+        - M5_SB_1_MCTP_High_Bandwidth_Binding_Declaration
 
   - id: M5_IO_1
     introduced: FR
     category: BMC-IO
     suites:
       oob:
-        - M5_IO_1_Interface_Declaration
+        - M5_IO_1_MCTP_IO_High_Bandwidth_Binding_Declaration
 
   - id: M5_OOB_1
     introduced: FR
@@ -491,11 +498,11 @@ rules:
     category: Host-to-SatMC interface
     suites:
       oob:
-        - M5_HS_1_2_Interface_Declaration
+        - M5_HS_1_MCTP_Over_PCC_Mailbox_Declaration
 
   - id: M5_HS_2
     introduced: FR
     category: Host-to-SatMC interface
     suites:
       oob:
-        - M5_HS_1_2_Interface_Declaration
+        - M5_HS_2_MCTP_Host_Interface_Discovery_Declaration

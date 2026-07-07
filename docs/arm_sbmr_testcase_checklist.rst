@@ -26,7 +26,7 @@ SBMR checklist
 | In-Band                  | M1_IB_1      | Level M1                               | Yes             | IB                 | - M1_IB_1_IPMI_SSIF_Functionality                                                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | MFSPX        | Level M1                               | No              | Self Declaration   | - MFSPX_Interface_Declaration*                                                     |
+|                          | MFSPX        | Level M1                               | No              | Self Declaration   | - MFSPX_SMBus_SSIF_Declaration*                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M2_IB_1      | Level M2                               | Yes             | IB, OOB            | - M2_IB_1_Redfish_HI_Functionality                                                 |
 |                          |              |                                        |                 |                    | - M2_IB_1_Redfish_HI_Type                                                          |
@@ -71,51 +71,51 @@ SBMR checklist
 | USB                      | M21_USB_1    | Level M2.1                             | Yes             | OOB                | - M21_USB_1_Redfish_Virtual_Media_Action_Uri (conditional)                         |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| JTAG                     | M1_JTAG_1    | Level M1                               | No              | Self Declaration   | - M1_JTAG_1_2_Interface_Declaration* (conditional)                                 |
+| JTAG                     | M1_JTAG_1    | Level M1                               | No              | Self Declaration   | - M1_JTAG_1_JTAG_Remote_Debug_Declaration* (conditional)                           |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M1_JTAG_2    | Level M1                               | No              | Self Declaration   | - M1_JTAG_1_2_Interface_Declaration* (conditional)                                 |
+|                          | M1_JTAG_2    | Level M1                               | No              | Self Declaration   | - M1_JTAG_2_ADI_TAP_Access_Declaration* (conditional)                              |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M2_JTAG_2    | Level M2                               | No              | Self Declaration   | - M2_JTAG_2_Interface_Declaration* (conditional)                                   |
+|                          | M2_JTAG_2    | Level M2                               | No              | Self Declaration   | - M2_JTAG_2_JTAG_Debug_Capability_Declaration* (conditional)                       |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_JTAG_2    | Level M3                               | No              | Self Declaration   | - M3_JTAG_2_Interface_Declaration* (conditional)                                   |
+|                          | M3_JTAG_2    | Level M3                               | No              | Self Declaration   | - M3_JTAG_2_Production_JTAG_Disable_Declaration* (conditional)                     |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Side-Band                | M3_SB_1      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+| Side-Band                | M3_SB_1      | Level M3                               | No              | Self Declaration   | - M3_SB_1_PMCI_Side_Band_Interface_Declaration*                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `Side_Band_Test_Case_001`_                                            |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_2      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_2      | Level M3                               | No              | Self Declaration   | - M3_SB_2_PLDM_Platform_Functions_Declaration*                                     |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `PLDM_Test_Case_001`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_3      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_3      | Level M3                               | No              | Self Declaration   | - M3_SB_3_MCTP_Transport_Protocol_Declaration*                                     |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_002`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_4      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_4      | Level M3                               | No              | Self Declaration   | - M3_SB_4_PLDM_Over_MCTP_Binding_Declaration*                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `PLDM_Test_Case_002`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_5      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_5      | Level M3                               | No              | Self Declaration   | - M3_SB_5_SPDM_Security_Protocol_Declaration*                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_6      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_6      | Level M3                               | No              | Self Declaration   | - M3_SB_6_SPDM_Over_MCTP_Binding_Declaration*                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_7      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_7      | Level M3                               | No              | Self Declaration   | - M3_SB_7_SPDM_Secure_Messages_Declaration*                                        |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_8      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_8      | Level M3                               | No              | Self Declaration   | - M3_SB_8_SPDM_Secure_Messages_MCTP_Binding_Declaration*                           |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_9      | Level M3                               | No              | Self Declaration   | - M3_SB_1_9_Interface_Declaration*                                                 |
+|                          | M3_SB_9      | Level M3                               | No              | Self Declaration   | - M3_SB_9_MCTP_I2C_Physical_Binding_Declaration*                                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_001`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_SB_1      | Level M4                               | No              | Self Declaration   | - M4_SB_1_Interface_Declaration*                                                   |
+|                          | M4_SB_1      | Level M4                               | No              | Self Declaration   | - M4_SB_1_MCTP_I3C_Physical_Binding_Declaration*                                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_003`_                                                 |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
@@ -142,7 +142,7 @@ SBMR checklist
 |                          |              |                                        |                 |                    | - M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server (recommended)                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_OOB_1     | Level M3                               | No              | Self Declaration   | - M3_OOB_1_Interface_Declaration* (implementation choice)                          |
+|                          | M3_OOB_1     | Level M3                               | No              | Self Declaration   | - M3_OOB_1_IPMI_OOB_Optional_Declaration* (implementation choice)                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M3_OOB_2     | Level M3                               | Yes             | OOB                | - M3_OOB_2_Redfish_Service_Validator                                               |
@@ -150,31 +150,31 @@ SBMR checklist
 |                          |              |                                        |                 |                    | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server (recommended)                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| BMC-IO                   | M2_IO_1      | Level M2                               | No              | Self Declaration   | - M2_IO_1_NCSI_Interface_Declaration* (conditional)                                |
+| BMC-IO                   | M2_IO_1      | Level M2                               | No              | Self Declaration   | - M2_IO_1_NCSI_RBT_Declaration* (conditional)                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_IO_1      | Level M3                               | No              | Self Declaration   | - M3_IO_1_2_Interface_Declaration* (conditional)                                   |
+|                          | M3_IO_1      | Level M3                               | No              | Self Declaration   | - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration* (conditional)                              |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_IO_2      | Level M3                               | No              | Self Declaration   | - M3_IO_1_2_Interface_Declaration* (conditional)                                   |
+|                          | M3_IO_2      | Level M3                               | No              | Self Declaration   | - M3_IO_2_MCTP_IO_Physical_Binding_Declaration* (conditional)                      |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_001`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_1      | Level M4                               | No              | Self Declaration   | - M4_IO_1_3_Interface_Declaration* (conditional)                                   |
+|                          | M4_IO_1      | Level M4                               | No              | Self Declaration   | - M4_IO_1_PCIe_Device_MCTP_PLDM_Management_Declaration* (conditional)              |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_002`_                                                 |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_2      | Level M4                               | No              | Self Declaration   | - M4_IO_1_3_Interface_Declaration* (conditional)                                   |
+|                          | M4_IO_2      | Level M4                               | No              | Self Declaration   | - M4_IO_2_NVMe_MI_Over_MCTP_Declaration* (conditional)                             |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_3      | Level M4                               | No              | Self Declaration   | - M4_IO_1_3_Interface_Declaration* (conditional)                                   |
+|                          | M4_IO_3      | Level M4                               | No              | Self Declaration   | - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding_Declaration* (conditional)                     |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `MCTP_Test_Case_003`_                                                 |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| SPDM                     | M3_SPDM_1    | Level M3                               | No              | Self Declaration   | - M3_SPDM_1_2_Interface_Declaration* (conditional)                                 |
+| SPDM                     | M3_SPDM_1    | Level M3                               | No              | Self Declaration   | - M3_SPDM_1_SPDM_Protocol_Declaration* (conditional)                               |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SPDM_2    | Level M3                               | No              | Self Declaration   | - M3_SPDM_1_2_Interface_Declaration* (conditional)                                 |
+|                          | M3_SPDM_2    | Level M3                               | No              | Self Declaration   | - M3_SPDM_2_SPDM_MCTP_Binding_Declaration* (conditional)                           |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | RAS                      | M1_RAS_1     | Level M1                               | Yes             | IB                 | - M1_RAS_1_2_Send_Platform_Error_Record_Command                                    |
@@ -183,7 +183,7 @@ SBMR checklist
 |                          | M1_RAS_2     | Level M1                               | Yes             | IB                 | - M1_RAS_1_2_Send_Platform_Error_Record_Command                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M2_RAS_2     | Level M2                               | No              | Self Declaration   | - M2_RAS_2_Function_Declaration* (conditional)                                     |
+|                          | M2_RAS_2     | Level M2                               | No              | Self Declaration   | - M2_RAS_2_Redfish_Platform_Error_Record_Declaration* (conditional)                |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | IPMI                     | IPMI_1       | Level M1                               | Yes             | OOB                | - M1_OOB_1_IPMI_1_2_3_Power_Control                                                |
@@ -218,16 +218,16 @@ SBMR future requirements checklist
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | Category                   | Rule ID      | Covered by ACS? | Execution Type     | Test Tag(s)                                                                        |
 +============================+==============+=================+====================+====================================================================================+
-| In-Band                    | M5_IB_1      | No              | Self Declaration   | - M5_IB_1_2_Interface_Declaration* (conditional)                                   |
+| In-Band                    | M5_IB_1      | No              | Self Declaration   | - M5_IB_1_MMBI_Interface_Declaration* (conditional)                                |
 |                            |              |                 |                    |                                                                                    |
 +                            +--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                            | M5_IB_2      | No              | Self Declaration   | - M5_IB_1_2_Interface_Declaration* (conditional)                                   |
+|                            | M5_IB_2      | No              | Self Declaration   | - M5_IB_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
 |                            |              |                 |                    |                                                                                    |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Side-Band                  | M5_SB_1      | No              | Self Declaration   | - M5_SB_1_Interface_Declaration*                                                   |
+| Side-Band                  | M5_SB_1      | No              | Self Declaration   | - M5_SB_1_MCTP_High_Bandwidth_Binding_Declaration*                                 |
 |                            |              |                 |                    |                                                                                    |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| BMC-IO                     | M5_IO_1      | No              | Self Declaration   | - M5_IO_1_Interface_Declaration*                                                   |
+| BMC-IO                     | M5_IO_1      | No              | Self Declaration   | - M5_IO_1_MCTP_IO_High_Bandwidth_Binding_Declaration*                              |
 |                            |              |                 |                    |                                                                                    |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | OOB                        | M5_OOB_1     | Yes             | OOB                | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)                           |
@@ -236,10 +236,10 @@ SBMR future requirements checklist
 |                            |              |                 |                    | user-accessible BIOS settings using                                                |
 |                            |              |                 |                    | M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT flag in config.                              |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Host-to-SatMC interface    | M5_HS_1      | No              | Self Declaration   | - M5_HS_1_2_Interface_Declaration* (conditional)                                   |
+| Host-to-SatMC interface    | M5_HS_1      | No              | Self Declaration   | - M5_HS_1_MCTP_Over_PCC_Mailbox_Declaration* (conditional)                         |
 |                            |              |                 |                    |                                                                                    |
 +                            +--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                            | M5_HS_2      | No              | Self Declaration   | - M5_HS_1_2_Interface_Declaration* (conditional)                                   |
+|                            | M5_HS_2      | No              | Self Declaration   | - M5_HS_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
 |                            |              |                 |                    |                                                                                    |
 +----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 

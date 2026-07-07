@@ -293,7 +293,7 @@ Test Layout in sbmr-acs repository can be classified as follows:
 
 `redfish/host_interface/`: Contains Redfish Host Interface test cases.
 
-`test_lists/`: Contains SBMR suite lists and level metadata used for grouping test cases.
+`test_lists/`: Contains SBMR rule metadata used to generate level-specific test lists.
 
 `tools/`: Contains Robot Framework linting rules and supporting tool configuration.
 

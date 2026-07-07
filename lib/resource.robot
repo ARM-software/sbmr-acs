@@ -146,23 +146,39 @@ ${GROUP_NAME}               ${EMPTY}
 ${LDAP_SERVER_URI}          ldap://${LDAP_SERVER_HOST}
 
 # Self Declaration
-${MFSPX_Interface_Declaration}           0
-${M1_JTAG_1_2_Interface_Declaration}     0
-${M2_JTAG_2_Interface_Declaration}       0
-${M2_IO_1_NCSI_Interface_Declaration}    0
-${M2_RAS_2_Function_Declaration}         0
-${M3_SB_1_9_Interface_Declaration}       0
-${M3_JTAG_2_Interface_Declaration}       0
-${M3_IO_1_2_Interface_Declaration}       0
-${M3_OOB_1_Interface_Declaration}        0
-${M3_SPDM_1_2_Interface_Declaration}     0
-${M4_SB_1_Interface_Declaration}         0
-${M4_IO_1_3_Interface_Declaration}       0
-${M5_IB_1_2_Interface_Declaration}       0
-${M5_SB_1_Interface_Declaration}         0
-${M5_IO_1_Interface_Declaration}         0
-${M5_HS_1_2_Interface_Declaration}       0
-${M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT}  0
+${MFSPX_SMBUS_SSIF_SUPPORT}                              0
+${RXNXV_REDFISH_PLATFORM_ERROR_RECORD_SUPPORT}           0
+${M1_JTAG_1_JTAG_REMOTE_DEBUG_SUPPORT}                   0
+${M1_JTAG_2_ADI_TAP_ACCESS_SUPPORT}                      0
+${M2_JTAG_2_JTAG_DEBUG_CAPABILITY_SUPPORT}               0
+${M2_IO_1_NCSI_RBT_SUPPORT}                              0
+${M2_RAS_2_REDFISH_PLATFORM_ERROR_RECORD_SUPPORT}        0
+${M3_SB_1_PMCI_SIDE_BAND_INTERFACE_SUPPORT}              0
+${M3_SB_2_PLDM_PLATFORM_FUNCTIONS_SUPPORT}               0
+${M3_SB_3_MCTP_TRANSPORT_PROTOCOL_SUPPORT}               0
+${M3_SB_4_PLDM_OVER_MCTP_BINDING_SUPPORT}                0
+${M3_SB_5_SPDM_SECURITY_PROTOCOL_SUPPORT}                0
+${M3_SB_6_SPDM_OVER_MCTP_BINDING_SUPPORT}                0
+${M3_SB_7_SPDM_SECURE_MESSAGES_SUPPORT}                  0
+${M3_SB_8_SPDM_SECURE_MESSAGES_MCTP_BINDING_SUPPORT}     0
+${M3_SB_9_MCTP_I2C_PHYSICAL_BINDING_SUPPORT}             0
+${M3_JTAG_2_PRODUCTION_JTAG_DISABLE_SUPPORT}             0
+${M3_IO_1_NCSI_RBT_OR_MCTP_SUPPORT}                      0
+${M3_IO_2_MCTP_IO_PHYSICAL_BINDING_SUPPORT}              0
+${M3_OOB_1_IPMI_OOB_OPTIONAL_SUPPORT}                    0
+${M3_SPDM_1_SPDM_PROTOCOL_SUPPORT}                       0
+${M3_SPDM_2_SPDM_MCTP_BINDING_SUPPORT}                   0
+${M4_SB_1_MCTP_I3C_PHYSICAL_BINDING_SUPPORT}             0
+${M4_IO_1_PCIE_DEVICE_MCTP_PLDM_MANAGEMENT_SUPPORT}      0
+${M4_IO_2_NVME_MI_OVER_MCTP_SUPPORT}                     0
+${M4_IO_3_MCTP_I3C_PCIE_VDM_BINDING_SUPPORT}             0
+${M5_IB_1_MMBI_INTERFACE_SUPPORT}                        0
+${M5_IB_2_MCTP_HOST_INTERFACE_DISCOVERY_SUPPORT}         0
+${M5_SB_1_MCTP_HIGH_BANDWIDTH_BINDING_SUPPORT}           0
+${M5_IO_1_MCTP_IO_HIGH_BANDWIDTH_BINDING_SUPPORT}        0
+${M5_HS_1_MCTP_OVER_PCC_MAILBOX_SUPPORT}                 0
+${M5_HS_2_MCTP_HOST_INTERFACE_DISCOVERY_SUPPORT}         0
+${M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT}                 0
 
 *** Keywords ***
 Get Inventory Schema

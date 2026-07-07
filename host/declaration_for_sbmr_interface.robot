@@ -77,20 +77,6 @@ Declaration For M3_SB_1 PMCI Side-Band Interface
     ${M3_SB_1_PMCI_SIDE_BAND_INTERFACE_SUPPORT}  M3_SB_1  PMCI-based BMC-to-SatMC side-band interface
 
 
-Declaration For M3_SB_2 PLDM Platform Functions
-    [Documentation]  Declaration for PLDM platform-level data models and functions.
-    [Tags]  M3_SB_2_PLDM_Platform_Functions_Declaration
-    [Template]  Verify Declaration
-    ${M3_SB_2_PLDM_PLATFORM_FUNCTIONS_SUPPORT}  M3_SB_2  PLDM platform-level data models and functions
-
-
-Declaration For M3_SB_4 PLDM Over MCTP Binding
-    [Documentation]  Declaration for PLDM over MCTP message binding.
-    [Tags]  M3_SB_4_PLDM_Over_MCTP_Binding_Declaration
-    [Template]  Verify Declaration
-    ${M3_SB_4_PLDM_OVER_MCTP_BINDING_SUPPORT}  M3_SB_4  PLDM over MCTP message binding
-
-
 Declaration For M3_SB_5 SPDM Security Protocol
     [Documentation]  Declaration for SPDM security protocol support.
     [Tags]  M3_SB_5_SPDM_Security_Protocol_Declaration

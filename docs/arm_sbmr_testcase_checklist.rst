@@ -19,9 +19,10 @@ manual testing.
 - Manual fallback links identify the manual validation guide to use when an
   automated test is not applicable, blocked by platform topology, or fails due
   to implementation-specific service or object-model differences. After manual
-  validation, declare compliance using the listed declaration tag.
-- MCTP automation requires role-exclusive, comma-separated interface names in
-  ``MCTP_SB_INTERFACES`` and ``MCTP_IO_INTERFACES`` in the ``config`` file.
+  validation, declare compliance using the listed config variable.
+- MCTP and PLDM-over-MCTP automation require role-exclusive, comma-separated
+  interface names in ``MCTP_SB_INTERFACES`` and ``MCTP_IO_INTERFACES`` in the
+  ``config`` file.
 
 SBMR checklist
 ==============
@@ -93,9 +94,11 @@ SBMR checklist
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `Side_Band_Test_Case_001`_                                            |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_2      | Level M3                               | No              | Self Declaration   | - M3_SB_2_PLDM_Platform_Functions_Declaration*                                     |
+|                          | M3_SB_2      | Level M3                               | No              | SSH,               | - M3_SB_2_PLDM_Platform_Functions                                                  |
+|                          |              |                                        |                 | Self Declaration   |                                                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
-|                          |              |                                        |                 |                    | Manual test: `PLDM_Test_Case_001`_                                                 |
+|                          |              |                                        |                 |                    | Manual fallback: `PLDM_Test_Case_001`_; declare by setting                         |
+|                          |              |                                        |                 |                    | `M3_SB_2_PLDM_PLATFORM_FUNCTIONS_SUPPORT` in `config`_                             |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M3_SB_3      | Level M3                               | No              | SSH,               | - M3_SB_3_MCTP_Transport_Protocol                                                  |
 |                          |              |                                        |                 | Self Declaration   |                                                                                    |
@@ -103,9 +106,11 @@ SBMR checklist
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_002`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_SB_3_MCTP_TRANSPORT_PROTOCOL_SUPPORT` in `config`_                             |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_4      | Level M3                               | No              | Self Declaration   | - M3_SB_4_PLDM_Over_MCTP_Binding_Declaration*                                      |
+|                          | M3_SB_4      | Level M3                               | No              | SSH,               | - M3_SB_4_PLDM_Over_MCTP_Binding                                                   |
+|                          |              |                                        |                 | Self Declaration   |                                                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
-|                          |              |                                        |                 |                    | Manual test: `PLDM_Test_Case_002`_                                                 |
+|                          |              |                                        |                 |                    | Manual fallback: `PLDM_Test_Case_002`_; declare by setting                         |
+|                          |              |                                        |                 |                    | `M3_SB_4_PLDM_OVER_MCTP_BINDING_SUPPORT` in `config`_                              |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M3_SB_5      | Level M3                               | No              | Self Declaration   | - M3_SB_5_SPDM_Security_Protocol_Declaration*                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
@@ -176,8 +181,10 @@ SBMR checklist
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M4_IO_1      | Level M4                               | No              | SSH,               | - M4_IO_1_MCTP_Transport_Protocol (conditional)                                    |
 |                          |              |                                        |                 | Self Declaration   |                                                                                    |
+|                          |              |                                        |                 |                    | - M4_IO_1_PCIe_Device_MCTP_PLDM_Management (conditional)                           |
 |                          |              |                                        |                 |                    |                                                                                    |
-|                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_002`_; declare by setting                         |
+|                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_002`_ and `PLDM_Test_Case_002`_; declare by       |
+|                          |              |                                        |                 |                    | setting                                                                            |
 |                          |              |                                        |                 |                    | `M4_IO_1_PCIE_DEVICE_MCTP_PLDM_MANAGEMENT_SUPPORT` in `config`_                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M4_IO_2      | Level M4                               | No              | Self Declaration   | - M4_IO_2_NVMe_MI_Over_MCTP_Declaration* (conditional)                             |

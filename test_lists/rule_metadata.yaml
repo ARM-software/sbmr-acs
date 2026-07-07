@@ -47,6 +47,7 @@ skip_on_failure:
     - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration
     - M3_IO_2_MCTP_Physical_Binding
     - M4_IO_1_MCTP_Transport_Protocol
+    - M4_IO_1_PCIe_Device_MCTP_PLDM_Management
     - M4_IO_2_NVMe_MI_Over_MCTP_Declaration
     - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding
     - M3_SPDM_1_SPDM_Protocol_Declaration
@@ -204,7 +205,7 @@ rules:
     category: Side-Band
     suites:
       oob:
-        - M3_SB_2_PLDM_Platform_Functions_Declaration
+        - M3_SB_2_PLDM_Platform_Functions
 
   - id: M3_SB_3
     introduced: M3
@@ -218,7 +219,7 @@ rules:
     category: Side-Band
     suites:
       oob:
-        - M3_SB_4_PLDM_Over_MCTP_Binding_Declaration
+        - M3_SB_4_PLDM_Over_MCTP_Binding
 
   - id: M3_SB_5
     introduced: M3
@@ -346,6 +347,7 @@ rules:
     suites:
       oob:
         - M4_IO_1_MCTP_Transport_Protocol
+        - M4_IO_1_PCIe_Device_MCTP_PLDM_Management
 
   - id: M4_IO_2
     introduced: M4

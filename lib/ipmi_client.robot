@@ -305,6 +305,8 @@ Initiate Host Boot Via External IPMI
     ${output}=  Run External IPMI Standard Command  chassis power on
     Should Not Contain  ${output}  Error
 
+    Wait For Chassis Power On Via IPMI
+
     Run Keyword If  '${wait}' == '${0}'  Return From Keyword
     Wait Until Keyword Succeeds  10 min  10 sec  Is Host Running
 
@@ -632,3 +634,44 @@ Check IPMI SOL Output Content
     ${output}=  OperatingSystem.Get File  ${file_path}  encoding_errors=ignore
     Should Match Regexp  ${output}  ${data}  case_insensitive=True
 
+Wait For Chassis Power Off Via IPMI
+    [Documentation]  Wait until chassis power status reports off.
+    [Arguments]  ${max_cycles}=30  ${interval}=1 sec
+
+    Wait For Chassis Power State Via IPMI
+    ...  off  ${max_cycles}  ${interval}
+
+
+Wait For Chassis Power On Via IPMI
+    [Documentation]  Wait until chassis power status reports on.
+    [Arguments]  ${max_cycles}=10  ${interval}=1 sec
+
+    Wait For Chassis Power State Via IPMI
+    ...  on  ${max_cycles}  ${interval}
+
+
+Wait For Chassis Power State Via IPMI
+    [Documentation]  Wait until chassis reports the expected power state.
+    [Arguments]  ${expected_state}  ${max_cycles}  ${interval}=1 sec
+
+    ${status}=  Set Variable  ${EMPTY}
+
+    FOR  ${cycle}  IN RANGE  ${max_cycles}
+        ${cycle_number}=  Evaluate  ${cycle} + 1
+        ${status}=  Run External IPMI Standard Command  chassis power status
+        Log  Chassis power status check ${cycle_number}/${max_cycles}: ${status}
+
+        ${state_reached}=  Run Keyword And Return Status
+        ...  Should Contain  ${status}  Chassis Power is ${expected_state}
+
+        Run Keyword If  ${state_reached}
+        ...  Run Keywords
+        ...  Log  Chassis reached power-${expected_state} state on cycle ${cycle_number}.  console=True
+        ...  AND
+        ...  Return From Keyword
+
+        Sleep  ${interval}
+    END
+
+    Log  Chassis did not reach power-${expected_state} state after ${max_cycles} cycles. Final status: ${status}  level=ERROR
+    Fail  Chassis power is not ${expected_state} after ${max_cycles} status checks.

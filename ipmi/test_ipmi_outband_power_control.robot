@@ -66,7 +66,7 @@ Suite Setup Execution
     [Documentation]  Do the post test setup.
 
     Run External IPMI Standard Command  chassis power off
-    Sleep  10 sec
+    Wait For Chassis Power Off Via IPMI
 
     Run External IPMI Standard Command  chassis bootdev none ${IPMI_OPTIONS_EFIBOOT}
 

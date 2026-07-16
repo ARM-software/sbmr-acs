@@ -58,7 +58,7 @@ Suite Setup Execution
     [documentation]  Do suite setup tasks.
 
     Run External IPMI Standard Command  chassis power off
-    Sleep  10 sec
+    Wait For Chassis Power Off Via IPMI
 
 
 Suite Teardown Execution

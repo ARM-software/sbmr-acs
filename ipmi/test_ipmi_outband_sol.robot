@@ -91,10 +91,18 @@ Verify BSA Compliant UART From Boot Log
     #   printk: legacy console [ttyAMA0] enabled
     ${ttyConsole}=  Get Regexp Matches  ${output}  (?m)printk: (?:legacy )?console \\[(tty[^\\]]+)\\] enabled  1
 
-    Dictionary Should Contain Key  ${spcr_tty_lists}  ${ttyConsole}[0]
+    ${matching_console_tty}=  Set Variable  ${EMPTY}
+    FOR  ${tty}  IN  @{ttyConsole}
+      ${is_spcr_compliant}=  Run Keyword And Return Status
+      ...  Dictionary Should Contain Key  ${spcr_tty_lists}  ${tty}
+      ${matching_console_tty}=  Set Variable If
+      ...  ${is_spcr_compliant}  ${tty}  ${matching_console_tty}
+    END
+
+    Should Not Be Empty  ${matching_console_tty}
     ...  msg=Failure: Console UART not a BSA compliant UART
 
-    RETURN  ${ttyConsole}[0]
+    RETURN  ${matching_console_tty}
 
 
 Suite Setup Execution

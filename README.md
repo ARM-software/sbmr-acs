@@ -233,16 +233,25 @@ The logs for the IB tests will be stored in the 'logs' directory, which is locat
   $ robot --argumentfile config --argumentfile logs/sbmr-acs-linux-M3.args ./redfish ./ipmi ./host
   ```
 
-- Execute single/multiple test case:
+- Execute/skip single or multiple test cases using --include and --exclude:
 
   ```
-  $ robot --argumentfile config --include TEST_TAG1 --include TEST_TAG2 .
+  $ robot --argumentfile config --include TEST_TAG1 --exclude TEST_TAG2 .
   ```
 
-- Skip single/multiple test case:
+  Example:
 
   ```
-  $ robot --argumentfile config --exclude TEST_TAG1 --exclude TEST_TAG2 .
+  $ robot --argumentfile config \
+      --include M2_OOB_1_Redfish_Host_PowerOn \
+      --include M2_OOB_1_Redfish_Host_PowerOff \
+      --exclude M2_OOB_1_Redfish_Host_ForceRestart .
+  ```
+
+  **Note:** Separate argument files can be used for include and exclude tags. The file content should contain the required Robot options, for example --include entries in one file and --exclude entries in another file:
+
+  ```
+  $ robot --argumentfile config --argumentfile include.args --argumentfile exclude.args .
   ```
 
 ## Guidance on SBMR Compliance for Arm SystemReady Requirements

@@ -37,6 +37,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishInteropValidator.
 
 ${profile_dir_path}    HWMgmt-OCP-profiles
 ${profile_github_url}  https://github.com/opencomputeproject/HWMgmt-OCP-Profiles
+${profile_revision}    8a3eba20b6b7c5fcb61a31eb37f7e8484d8ad4c8
 
 
 *** Test Cases ***
@@ -79,6 +80,7 @@ Suite Setup Execution
 
     Download DMTF Tool  ${rsv_dir_path}  ${rsv_github_url}  stable_branch=${rsv_revision}
     Download DMTF Tool  ${profile_dir_path}  ${profile_github_url}
+    Checkout DMTF Tool Revision  ${profile_dir_path}  ${profile_revision}
 
     # Power Off System and Set BootSourceOverrideEnabled to Disabled
     Redfish Hard Power Off  stack_mode=skip  quiet=1
@@ -94,4 +96,3 @@ Suite Teardown Execution
     [Documentation]  Do the post suite teardown
 
     Redfish Delete All Sessions
-

@@ -40,6 +40,14 @@ Download DMTF Tool
     ${rc}  ${output}=  Shell Cmd  ${cmd_buf}
 
 
+Checkout DMTF Tool Revision
+    [Documentation]  Check out a specific revision of a downloaded DMTF tool.
+    [Arguments]      ${rsv_dir_path}  ${revision}
+
+    ${cmd_buf}  Catenate  git -C ${rsv_dir_path} checkout --detach ${revision}
+    ${rc}  ${output}=  Shell Cmd  ${cmd_buf}
+
+
 Run DMTF Tool
     [Documentation]  Execution of the command.
     [Arguments]      ${rsv_dir_path}  ${command_string}  ${check_error}=0
@@ -72,4 +80,3 @@ Redfish JsonSchema ResponseValidator Result
     # Example:
     # 0 errors
     Should Contain  ${tool_output}  0 errors
-

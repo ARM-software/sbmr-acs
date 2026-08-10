@@ -278,8 +278,11 @@ Verify that PLDM messages are carried using the PLDM-over-MCTP binding, ensuring
   </tr>
   <tr>
     <td>1</td>
-    <td>Verify PLDM is layered on top of the MCTP transport.<br><pre><code>systemctl show pldmd.service | grep -E "After=|Requires=|Wants="</code></pre></td>
-    <td>1. Output shows ordering or dependency on MCTP-related units (for example <b>mctpd.service</b>, <b>mctp.target</b>, or <b>mctp-local.target</b>)<br>2. Confirms PLDM operates over the MCTP transport layer<br>Example output:<br><pre>After=mctpd.service mctp.target</pre></td>
+    <td>Verify the target MCTP endpoint advertises PLDM support.<br><pre><code>busctl get-property &lt;mctp-dbus-service&gt; &lt;endpoint-object-path&gt; \
+    xyz.openbmc_project.MCTP.Endpoint SupportedMessageTypes</code></pre></td>
+    <td>1. The command completes successfully<br>2. <b>SupportedMessageTypes</b> contains <b>1</b> (<b>0x01</b>), the MCTP message type for PLDM<br>3. The first value after <b>ay</b> is the array count; the remaining values are the supported MCTP message types<br>Example command (network 1, EID 9):<br><pre><code>busctl get-property au.com.codeconstruct.MCTP1 \
+    /au/com/codeconstruct/mctp1/networks/1/endpoints/9 \
+    xyz.openbmc_project.MCTP.Endpoint SupportedMessageTypes</code></pre>Example output:<br><pre>ay 3 0 111 1</pre><br>Note: The MCTP D-Bus service and endpoint object path may vary by platform.</td>
   </tr>
   <tr>
     <td>2</td>

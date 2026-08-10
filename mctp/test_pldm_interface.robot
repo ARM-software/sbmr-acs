@@ -44,7 +44,7 @@ Test PLDM Side Band Over MCTP Binding
     [Documentation]  Verify PLDM commands are carried over configured SIDE-BAND interfaces.
     [Tags]  M3_SB_4_PLDM_Over_MCTP_Binding
 
-    # PLDM_Test_Case_002: PLDM-over-MCTP dependency and command-flow check.
+    # PLDM_Test_Case_002: PLDM-over-MCTP capability and command-flow check.
     Run Automated Check Or Declaration
     ...  ${M3_SB_4_PLDM_OVER_MCTP_BINDING_SUPPORT}
     ...  M3_SB_4_PLDM_Over_MCTP_Binding
@@ -107,28 +107,15 @@ Verify PLDM Platform Functions
 
 
 Verify PLDM Over MCTP Binding
-    [Documentation]  Verify PLDM-over-MCTP binding through dependency and PLDM commands.
+    [Documentation]  Verify endpoints advertise PLDM and respond to PLDM-over-MCTP commands.
     [Arguments]  ${interface_csv}  ${role}
 
     ${interfaces}=  Get Configured MCTP Interfaces  ${interface_csv}  ${role}
 
-    # Step 1: record whether pldmd declares an explicit MCTP systemd relationship.
-    ${pldm_dependencies}  ${stderr}  ${rc}=  BMC Execute Command
-    ...  systemctl show pldmd.service --property=After --property=Requires --property=Wants --no-pager
-    ...  print_err=1
-    Should Be Equal As Integers  0  ${rc}
-    ...  msg=pldmd.service dependency query failed. stdout=${pldm_dependencies} stderr=${stderr}
-    Should Be Empty  ${stderr}  msg=${pldm_dependencies}
-    ${has_mctp_dependency}=  Run Keyword And Return Status
-    ...  Should Match Regexp  ${pldm_dependencies}  (?im)\\bmctp[^\\s]*\\.(service|target)\\b
-    IF  not ${has_mctp_dependency}
-        Log  pldmd.service has no explicit MCTP systemd relationship; continuing with functional PLDM-over-MCTP validation. Output: ${pldm_dependencies}  WARN
-    END
-
-    # Step 2: get candidate remote EIDs from the MCTP routing table for pldmtool -m.
+    # Step 1: get routed remote EIDs whose D-Bus endpoint advertises PLDM message type 0x01.
     ${endpoint_candidates}=  Discover PLDM MCTP Endpoint IDs  ${interfaces}  ${role}
 
-    # Step 3: prove PLDM messages can be sent over MCTP using read-only base/platform commands.
+    # Step 2: prove PLDM messages can be sent over MCTP using read-only base/platform commands.
     Verify PLDM Commands For Role Endpoints  ${endpoint_candidates}  ${role}
 
 
@@ -252,6 +239,12 @@ Discover PLDM MCTP Endpoint IDs
                     CONTINUE
                 END
 
+                ${endpoint_path}=  Set Variable  ${network_path}/endpoints/${eid_text}
+                ${advertises_pldm}=  Endpoint Advertises PLDM  ${mctp_dbus_service}  ${endpoint_path}
+                IF  not ${advertises_pldm}
+                    CONTINUE
+                END
+
                 ${candidate_key}=  Set Variable  ${interface}|${network_id}|${eid_text}
                 ${is_known_candidate}=  Run Keyword And Return Status
                 ...  List Should Contain Value  ${candidate_keys}  ${candidate_key}
@@ -270,6 +263,26 @@ Discover PLDM MCTP Endpoint IDs
     Should Not Be Empty  ${endpoint_candidates}
     ...  msg=No remote PLDM endpoint IDs were discovered for ${role} after filtering LocalEIDs. Output: ${route_output}
     RETURN  ${endpoint_candidates}
+
+
+Endpoint Advertises PLDM
+    [Documentation]  Return true when an MCTP endpoint advertises message type 0x01.
+    [Arguments]  ${mctp_dbus_service}  ${endpoint_path}
+
+    ${message_types_output}  ${stderr}  ${rc}=  BMC Execute Command
+    ...  busctl get-property ${mctp_dbus_service} ${endpoint_path} xyz.openbmc_project.MCTP.Endpoint SupportedMessageTypes
+    ...  print_err=1
+    IF  ${rc} != 0 or '''${stderr}''' != '''${EMPTY}'''
+        Log  Skipping MCTP endpoint ${endpoint_path}: SupportedMessageTypes query failed: rc=${rc}, stdout=${message_types_output}, stderr=${stderr}
+        RETURN  ${False}
+    END
+
+    ${advertises_pldm}=  Run Keyword And Return Status
+    ...  Should Match Regexp  ${message_types_output}  ^ay\\s+\\d+(?:\\s+\\d+)*\\s+1(?:\\s+\\d+)*\\s*$
+    IF  not ${advertises_pldm}
+        Log  Skipping MCTP endpoint ${endpoint_path}: PLDM message type 0x01 is not advertised. Output: ${message_types_output}
+    END
+    RETURN  ${advertises_pldm}
 
 
 Verify PLDM Commands For Role Endpoints

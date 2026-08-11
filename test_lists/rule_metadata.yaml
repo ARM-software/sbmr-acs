@@ -61,6 +61,10 @@ skip_on_failure:
     - M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server
     - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server
     - M3_OOB_1_IPMI_OOB_Optional_Declaration
+    - M3_SB_5_SPDM_Security_Protocol_Declaration
+    - M3_SB_6_SPDM_Over_MCTP_Binding_Declaration
+    - M3_SB_7_SPDM_Secure_Messages_Declaration
+    - M3_SB_8_SPDM_Secure_Messages_MCTP_Binding_Declaration
 
 rules:
   - id: M1_IB_1

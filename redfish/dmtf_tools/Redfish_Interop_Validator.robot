@@ -37,7 +37,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishInteropValidator.
 
 ${profile_dir_path}    HWMgmt-OCP-profiles
 ${profile_github_url}  https://github.com/opencomputeproject/HWMgmt-OCP-Profiles
-${profile_revision}    8a3eba20b6b7c5fcb61a31eb37f7e8484d8ad4c8
+${profile_revision}    2bd155bc63712763966df43d0d946479f347f979
 
 
 *** Test Cases ***
@@ -69,6 +69,7 @@ Run Redfish Interop Validator With Profile
     [Arguments]  ${profile}
 
     ${interop_cmd} =  Catenate  ${cmd_str_master}
+    ...                         --required_profiles_dir ${EXECDIR}${/}${profile_dir_path}
     ...                         ${EXECDIR}${/}${profile_dir_path}${/}${profile}
     ${rc}  ${output}=  Run DMTF Tool  ${rsv_dir_path}  ${interop_cmd}  check_error=1
 

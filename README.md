@@ -20,14 +20,23 @@ SBMR Architecture Compliance Suite (ACS) checks for compliance against the [Arm 
  - The compliance suite is not a substitute for design verification.
  - To review the SBMR ACS logs, Arm licensees can contact Arm directly through their partner managers.
 
-## Execution modes
-SBMR-ACS can be executed in the below modes
+## Test coverage and self-declarations
 
-| Modes  | Test type   | Description                                                                                                                                                                                                            | Remarks                                                                                                                                                                             |
-| ------ |:-----------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Mode 1 | Out-of-Band | OOB tests: SBMR-ACS may be downloaded and run on any external host machine (x86, AArch64) with Linux<br>Note: Pre-requisites mentioned in the README must be installed.                                     | Note: For Ubuntu, automated scripts to install the pre-requisites is supported in the package.<br>For other Distros, this must be done manually.                                    |
-| Mode 2 | In-Band     | In-Band tests: Download and run SBMR ACS on any Linux distro (based on AArch64) installed on the system-under-test.<br>Note: Pre-requisites must be installed.                                                 | Please Note: For Ubuntu, automated scripts to install the pre-requisites is supported in the package.<br>For other Distros, this must be done manually.                             |
-| Mode 3 | In-Band     | In-Band tests: Run the SBMR ACS in-built into the SystemReady-band ACS image through a simple automation on the ACS Linux<br>For more details, please see: https://github.com/ARM-software/arm-systemready/blob/main/SystemReady-band/README.md. | Pre-built SystemReady-band ACS image inbuilt with SBMR ACS can be found at [SystemReady-band Pre-built images](https://github.com/ARM-software/arm-systemready/tree/main/SystemReady-band/prebuilt_images).<br><br> Choose the grub option "Linux boot" to run the in-band tests as part of ACS automation or refer the [SystemReady Band Execution Enviroment and Configuration User Guide](https://github.com/ARM-software/arm-systemready/blob/main/docs/SystemReady_Execution_Enviroment_and_Config_Guide.md) to modify acs_run_config.ini to run SBMR in-band tests specifically.  |
+SBMR-ACS provides automated test coverage for in-band and out-of-band requirements, including supported side-band checks executed through the out-of-band suite. The available automated and manual test methods are described in [Execution modes](#execution-modes).
+
+Some SBMR requirements are not currently covered by automated or manual tests. Partners must independently verify compliance with these requirements and set the corresponding self-declaration variables to `1` in the [`config`](config) file. Variables must remain set to `0` for requirements that have not been verified or are not supported.
+
+SBMR-ACS combines automated test results with partner-provided self-declarations to generate a complete compliance report for the applicable SBMR rules.
+
+## Execution modes
+SBMR-ACS can be executed in the following modes:
+
+| Mode   | Test type                         | Execution method | Description | Remarks |
+| ------ | --------------------------------- | :--------------: | ----------- | ------- |
+| Mode 1 | Out-of-Band and Side-Band | Automated | Run SBMR-ACS on an external Linux host. Both x86 and AArch64 hosts are supported. Automated MCTP and PLDM side-band tests are included in the OOB suite through `mctp/test_mctp_interface.robot` and `mctp/test_pldm_interface.robot`. | Ubuntu users can install the prerequisites using the provided script; users of other Linux distributions must install them manually. For side-band automation, configure the BMC SSH connection and `MCTP_SB_INTERFACES`. If side-band automation fails, follow the [Side-band manual testing guide](docs/sideband_manual_testing.md). |
+| Mode 2 | In-Band—direct                    | Automated | Download and run the in-band tests directly on an AArch64 Linux distribution installed on the system under test. | Install the prerequisites listed in this README. Ubuntu users can use the provided installation script; users of other Linux distributions must install them manually. |
+|        | In-Band—SystemReady image         | Automated | Run the copy of SBMR-ACS built into the [SystemReady-band ACS image](https://github.com/ARM-software/arm-systemready/blob/main/SystemReady-band/README.md) through automation on ACS Linux. | Pre-built images containing SBMR-ACS are available from the [SystemReady-band pre-built images](https://github.com/ARM-software/arm-systemready/tree/main/SystemReady-band/prebuilt_images) directory. Select **SystemReady band ACS (Automation)** from the GRUB menu to run ACS automation. To run only the SBMR in-band tests, follow the [SystemReady-band execution environment and configuration user guide](https://github.com/ARM-software/arm-systemready/blob/main/docs/SystemReady_Execution_Environment_and_Config_Guide.md) and update `acs_run_config.ini`.|
+
 
 ## Steps for Installation of Pre-requisites
 - Clone the SBMR-ACS GitHub repository
@@ -144,9 +153,10 @@ SBMR-ACS can be executed in the below modes
       ```
 
 ## Running SBMR-ACS tests
-### Configure
 
-**Note: For In-band testing, this step may be skipped. Go directly to [Running SBMR-ACS in-band (IB) tests](#running-sbmr-acs-in-bandib-tests).**
+**Note: For in-band testing, the configuration step below is not required. Go directly to [Running SBMR-ACS in-band (IB) tests](#running-sbmr-acs-in-bandib-tests).**
+
+### Configure SBMR-ACS Out-of-Band (OOB) tests:
 
 Download the sbmr-acs repository and install pre-requisites as mentioned in [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) section.
 Before running the test suite, set up the configuration values in the [*config*](config) file as discussed below. This is required for OOB testing.
@@ -178,7 +188,7 @@ For self-declaration information, SBMR-ACS has a limitation in verifying some SB
 
 ### Running SBMR-ACS Out-of-Band (OOB) tests:
 
-After following [configure](#configure) and [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) steps on an external host machine.
+After following [Configure SBMR-ACS Out-of-Band (OOB) tests](#configure-sbmr-acs-out-of-band-oob-tests) and [steps-for-installation-of-pre-requisites](#steps-for-installation-of-pre-requisites) on an external host machine.
 Run run-sbmr-acs.sh with "oob" argument. If no SBMR level is passed, the suite defaults to SBMR 3.0 baseline requirements (M4).
 
 Note: If testing SBMR compliance for Arm SystemReady Requirements, see [Guidance on SBMR Compliance for Arm SystemReady Requirements](#guidance-on-sbmr-compliance-for-arm-systemready-requirements).
@@ -202,65 +212,21 @@ Note: If testing SBMR compliance for Arm SystemReady Requirements, see [Guidance
 The logs for the IB tests will be stored in the 'logs' directory, which is located in the current working directory.
 
 
-### Some useful commands:
+### Command-line options
 
-- Execute SBMR test script with Debug Mode (with -d):
+| Option | Description | Example |
+| ------ | ----------- | ------- |
+| `-d` | Run the test suite in debug mode. | `./run-sbmr-acs.sh oob -d` |
+| `-l LEVEL`<br>`--level LEVEL` | Run tests for a specific SBMR requirement level, including historical levels and future requirements. | `./run-sbmr-acs.sh oob --level M1`<br>`./run-sbmr-acs.sh linux -l M2.1`<br>`./run-sbmr-acs.sh oob --level FR` |
 
-  ```
-  ./run-sbmr-acs.sh oob -d
-  ```
+### Customizing test execution
 
-- Execute SBMR test script for an explicit historical level:
-
-  ```
-  ./run-sbmr-acs.sh oob --level M1
-  ./run-sbmr-acs.sh linux -l M2.1
-  ```
-
-- Execute SBMR future requirement test cases:
-
-  ```
-  ./run-sbmr-acs.sh oob --level FR
-  ```
-
-- Generate SBMR OOB test cases manually:
-
-  ```
-  $ ./bin/generate_level_argumentfile.py --suite oob --level M3 --output logs/sbmr-acs-oob-M3.args
-  ```
-
-- Execute SBMR OOB test cases with a generated argument file:
-
-  ```
-  $ robot --argumentfile config --argumentfile logs/sbmr-acs-oob-M3.args .
-  ```
-
-- Execute SBMR IB test cases with a generated argument file:
-
-  ```
-  $ robot --argumentfile config --argumentfile logs/sbmr-acs-linux-M3.args ./redfish ./ipmi ./host
-  ```
-
-- Execute/skip single or multiple test cases using --include and --exclude:
-
-  ```
-  $ robot --argumentfile config --include TEST_TAG1 --exclude TEST_TAG2 .
-  ```
-
-  Example:
-
-  ```
-  $ robot --argumentfile config \
-      --include M2_OOB_1_Redfish_Host_PowerOn \
-      --include M2_OOB_1_Redfish_Host_PowerOff \
-      --exclude M2_OOB_1_Redfish_Host_ForceRestart .
-  ```
-
-  **Note:** Separate argument files can be used for include and exclude tags. The file content should contain the required Robot options, for example --include entries in one file and --exclude entries in another file:
-
-  ```
-  $ robot --argumentfile config --argumentfile include.args --argumentfile exclude.args .
-  ```
+| Action | Command |
+| ------ | ------- |
+| Generate an OOB Robot Framework argument file. | `./bin/generate_level_argumentfile.py --suite oob --level M3 --output logs/sbmr-acs-oob-M3.args` |
+| Run tests using a generated argument file. |`robot --argumentfile config --argumentfile logs/sbmr-acs-oob-M3.args .`|
+| Run or skip selected test cases using tags. | `robot --argumentfile config --include TEST_TAG1 --exclude TEST_TAG2 .`<br>Example: `robot --argumentfile config --include M2_OOB_1_Redfish_Host_PowerOn --include M2_OOB_1_Redfish_Host_PowerOff --exclude M2_OOB_1_Redfish_Host_ForceRestart .` |
+| Use separate argument files for included and excluded tags. | `robot --argumentfile config --argumentfile include.args --argumentfile exclude.args .`<br>**Note:** The include and exclude argument files should contain the required Robot Framework `--include` and `--exclude` options. |
 
 ## Guidance on SBMR Compliance for Arm SystemReady Requirements
 
@@ -269,7 +235,7 @@ For Arm SystemReady band compliance on physical servers, Arm SystemReady Require
 SBMR-ACS supports the following execution modes for this requirement:
 
 - Out-of-band testing: run Mode 1 from [Execution modes](#execution-modes) with `--level M2.1`.
-- In-band testing: run Mode 2 directly on the system-under-test with `--level M2.1`, or run Mode 3 through the SystemReady-band ACS image.
+- In-band testing: run Mode 2 directly on the system under test with `--level M2.1`, or use the SystemReady-band ACS image.
 
 When running SBMR-ACS standalone for SystemReady band compliance, execute both out-of-band and in-band tests with the explicit SBMR level. For example:
 

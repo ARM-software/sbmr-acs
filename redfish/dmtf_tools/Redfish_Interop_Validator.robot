@@ -37,7 +37,7 @@ ${cmd_str_master}  ${DEFAULT_PYTHON} ${rsv_dir_path}${/}RedfishInteropValidator.
 
 ${profile_dir_path}    HWMgmt-OCP-profiles
 ${profile_github_url}  https://github.com/opencomputeproject/HWMgmt-OCP-Profiles
-${profile_revision}    2bd155bc63712763966df43d0d946479f347f979
+${profile_revision}    de25e37fb6f7dd21ba7f4f87ef6a88f9fbb30db4
 
 
 *** Test Cases ***

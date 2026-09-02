@@ -308,7 +308,8 @@ Initiate Host Boot Via External IPMI
     Wait For Chassis Power On Via IPMI
 
     Run Keyword If  '${wait}' == '${0}'  Return From Keyword
-    Wait Until Keyword Succeeds  10 min  10 sec  Is Host Running
+    Wait Until Keyword Succeeds  10 min  10 sec
+    ...  Is Boot Progress At Required State  OSRunning
 
 
 Initiate Host PowerOff Via External IPMI
@@ -323,7 +324,7 @@ Initiate Host PowerOff Via External IPMI
     Should Not Contain  ${output}  Error
 
     Run Keyword If  '${wait}' == '${0}'  Return From Keyword
-    Wait Until Keyword Succeeds  3 min  10 sec  Is Host Off
+    Wait Until Keyword Succeeds  3 min  10 sec  Is Host Off Via IPMI
 
 
 Is Host Off Via IPMI

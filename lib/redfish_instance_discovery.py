@@ -238,6 +238,10 @@ def discover_ids(config):
 
 
 def set_redfish_instance_ids():
+    if getattr(BuiltIn(), "dry_run_active", False):
+        log_info("Skipping Redfish instance ID discovery during dry-run.")
+        return
+
     auto_discover = str(get_variable("AUTO_DISCOVER_REDFISH_IDS", "1")).lower()
     if auto_discover in ("0", "false", "no"):
         # IB runs disable auto-discovery and keep the configured/default values.

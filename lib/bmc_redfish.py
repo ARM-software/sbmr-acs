@@ -58,6 +58,10 @@ class bmc_redfish(redfish_plus):
         likewise be deleted.
         """
         self.__inited__ = False
+        if getattr(BuiltIn(), "dry_run_active", False):
+            self.__inited__ = True
+            return
+
         try:
             if MTLS_ENABLED == "True":
                 self.__inited__ = True

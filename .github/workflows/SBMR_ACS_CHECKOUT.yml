@@ -1,8 +1,6 @@
-name: Checkout sbmr-acs Repository
+name: SBMR ACS Build Checker
 
 on:
-  schedule:
-    - cron: '30 17 * * *'    # trigger daily at 11:00 PM IST
   push:
     branches:                # trigger on push to main
       - main

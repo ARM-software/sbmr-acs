@@ -1,0 +1,60 @@
+name: SBMR ACS Daily Build
+
+on:
+  schedule:
+    - cron: '30 17 * * *'  # Daily at 11:00 PM IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dry-run-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set artifact metadata
+        run: echo "commit_sha=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt "robotframework>=6.1"
+
+      - name: Validate Robot Framework test data
+        run: |
+          robot --dryrun \
+            --argumentfile config \
+            --variable BMC_ID:bmc \
+            --variable SYSTEM_ID:system \
+            --variable CHASSIS_ID:chassis \
+            --outputdir logs/dry-run \
+            --name "SBMR-ACS dry-run" \
+            .
+
+      - name: Zip the repository
+        if: always()
+        run: |
+          COMMIT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          # store the commit_sha in Actions environment variable
+          echo "commit_sha=$COMMIT_SHA" >> "$GITHUB_ENV"
+
+          zip -r sbmr-acs-$COMMIT_SHA.zip .
+          ls sbmr-acs-$COMMIT_SHA.zip
+
+      - name: Upload Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbmr-acs-${{ env.commit_sha }}.zip
+          path: sbmr-acs-${{ env.commit_sha }}.zip

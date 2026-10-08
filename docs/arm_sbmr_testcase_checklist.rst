@@ -28,12 +28,14 @@ SBMR checklist
 ==============
 
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Category                 | Rule ID      | Specification version first introduced | Covered by ACS? | Execution Type     | Test Tag(s)                                                                        |
+| Category                 | Rule ID      | Specification version first introduced | Covered by ACS? | Test Execution     | Test Tag(s) / Manual Test Steps                                                    |
+|                          |              |                                        |                 | Method             |                                                                                    |
 +==========================+==============+========================================+=================+====================+====================================================================================+
 | In-Band                  | M1_IB_1      | Level M1                               | Yes             | IB                 | - M1_IB_1_IPMI_SSIF_Functionality                                                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | MFSPX        | Level M1                               | No              | Self Declaration   | - MFSPX_SMBus_SSIF_Declaration*                                                    |
+|                          | MFSPX        | Level M1                               | No (Self        | Manual steps       | - MFSPX_SMBus_SSIF_Declaration*                                                    |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M2_IB_1      | Level M2                               | Yes             | IB, OOB            | - M2_IB_1_Redfish_HI_Functionality                                                 |
 |                          |              |                                        |                 |                    | - M2_IB_1_Redfish_HI_Type                                                          |
@@ -44,8 +46,8 @@ SBMR checklist
 |                          | M2_IB_2      | Level M2                               | Yes             | IB                 | - M2_IB_2_IPMI_SSIF_Functionality                                                  |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | RXNXV        | Level M2.1                             | Partial         | IB,                | - RXNXV_Send_Platform_Error_Record_Command                                         |
-|                          |              |                                        |                 | Self Declaration   | - RXNXV_Redfish_Platform_Error_Record_Declaration* (conditional)                   |
+|                          | RXNXV        | Level M2.1                             | Partial (Self   | IB                 | - RXNXV_Send_Platform_Error_Record_Command                                         |
+|                          |              |                                        | Declaration)    |                    | - RXNXV_Redfish_Platform_Error_Record_Declaration* (conditional)                   |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M21_IB_1     | Level M2.1                             | Yes             | IB                 | - M21_IB_1_IPMI_SSIF_Capability                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
@@ -78,63 +80,78 @@ SBMR checklist
 | USB                      | M21_USB_1    | Level M2.1                             | Yes             | OOB                | - M21_USB_1_Redfish_Virtual_Media_Action_Uri (conditional)                         |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| JTAG                     | M1_JTAG_1    | Level M1                               | No              | Self Declaration   | - M1_JTAG_1_JTAG_Remote_Debug_Declaration* (conditional)                           |
-|                          |              |                                        |                 |                    |                                                                                    |
+| JTAG                     | M1_JTAG_1    | Level M1                               | No (Self        | Manual steps       | - M1_JTAG_1_JTAG_Remote_Debug_Declaration* (conditional)                           |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M1_JTAG_2    | Level M1                               | No              | Self Declaration   | - M1_JTAG_2_ADI_TAP_Access_Declaration* (conditional)                              |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M1_JTAG_2    | Level M1                               | No (Self        | Manual steps       | - M1_JTAG_2_ADI_TAP_Access_Declaration* (conditional)                              |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M2_JTAG_2    | Level M2                               | No              | Self Declaration   | - M2_JTAG_2_JTAG_Debug_Capability_Declaration* (conditional)                       |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M2_JTAG_2    | Level M2                               | No (Self        | Manual steps       | - M2_JTAG_2_JTAG_Debug_Capability_Declaration* (conditional)                       |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_JTAG_2    | Level M3                               | No              | Self Declaration   | - M3_JTAG_2_Production_JTAG_Disable_Declaration* (conditional)                     |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_JTAG_2    | Level M3                               | No (Self        | Manual steps       | - M3_JTAG_2_Production_JTAG_Disable_Declaration* (conditional)                     |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Side-Band                | M3_SB_1      | Level M3                               | No              | Self Declaration   | - M3_SB_1_PMCI_Side_Band_Interface_Declaration*                                    |
-|                          |              |                                        |                 |                    |                                                                                    |
+| Side-Band                | M3_SB_1      | Level M3                               | No (Self        | Manual steps       | - M3_SB_1_PMCI_Side_Band_Interface_Declaration*                                    |
+|                          |              |                                        | Declaration)    | available          |                                                                                    |
 |                          |              |                                        |                 |                    | Manual test: `Side_Band_Test_Case_001`_                                            |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_2      | Level M3                               | No              | SSH,               | - M3_SB_2_PLDM_Platform_Functions                                                  |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SB_2      | Level M3                               | Partial (Self   | OpenBMC SSH        | - M3_SB_2_PLDM_Platform_Functions                                                  |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `PLDM_Test_Case_001`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_SB_2_PLDM_PLATFORM_FUNCTIONS_SUPPORT` in `config`_                             |
-+                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_3      | Level M3                               | No              | SSH,               | - M3_SB_3_MCTP_Transport_Protocol                                                  |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M3_SB_3      | Level M3                               | Partial (Self   | OpenBMC SSH        | - M3_SB_3_MCTP_Transport_Protocol                                                  |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_002`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_SB_3_MCTP_TRANSPORT_PROTOCOL_SUPPORT` in `config`_                             |
-+                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_4      | Level M3                               | No              | SSH,               | - M3_SB_4_PLDM_Over_MCTP_Binding                                                   |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M3_SB_4      | Level M3                               | Partial (Self   | OpenBMC SSH        | - M3_SB_4_PLDM_Over_MCTP_Binding                                                   |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `PLDM_Test_Case_002`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_SB_4_PLDM_OVER_MCTP_BINDING_SUPPORT` in `config`_                              |
-+                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_5      | Level M3                               | No              | Self Declaration   | - M3_SB_5_SPDM_Security_Protocol_Declaration*                                      |
 |                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_6      | Level M3                               | No              | Self Declaration   | - M3_SB_6_SPDM_Over_MCTP_Binding_Declaration*                                      |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SB_5      | Level M3                               | No (Self        | Manual steps       | - M3_SB_5_SPDM_Security_Protocol_Declaration*                                      |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_7      | Level M3                               | No              | Self Declaration   | - M3_SB_7_SPDM_Secure_Messages_Declaration*                                        |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SB_6      | Level M3                               | No (Self        | Manual steps       | - M3_SB_6_SPDM_Over_MCTP_Binding_Declaration*                                      |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_8      | Level M3                               | No              | Self Declaration   | - M3_SB_8_SPDM_Secure_Messages_MCTP_Binding_Declaration*                           |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SB_7      | Level M3                               | No (Self        | Manual steps       | - M3_SB_7_SPDM_Secure_Messages_Declaration*                                        |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SB_9      | Level M3                               | No              | SSH,               | - M3_SB_9_MCTP_Physical_Binding                                                    |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SB_8      | Level M3                               | No (Self        | Manual steps       | - M3_SB_8_SPDM_Secure_Messages_MCTP_Binding_Declaration*                           |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M3_SB_9      | Level M3                               | Partial (Self   | OpenBMC SSH        | - M3_SB_9_MCTP_Physical_Binding                                                    |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_001`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_SB_9_MCTP_I2C_PHYSICAL_BINDING_SUPPORT` in `config`_                           |
-+                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_SB_1      | Level M4                               | No              | SSH,               | - M4_SB_1_MCTP_I3C_PCIE_VDM_Binding                                                |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M4_SB_1      | Level M4                               | Partial (Self   | OpenBMC SSH        | - M4_SB_1_MCTP_I3C_PCIE_VDM_Binding                                                |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_003`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M4_SB_1_MCTP_I3C_PHYSICAL_BINDING_SUPPORT` in `config`_                           |
+|                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | OOB                      | M1_OOB_1     | Level M1                               | Yes             | IB, OOB            | - M1_OOB_1_IPMI_1_2_3_Power_Control                                                |
 |                          |              |                                        |                 |                    | - M1_OOB_1_IPMI_4_5_Boot_Device                                                    |
@@ -159,48 +176,58 @@ SBMR checklist
 |                          |              |                                        |                 |                    | - M2_OOB_3_Redfish_Interop_Validator_On_OCP_Server (recommended)                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_OOB_1     | Level M3                               | No              | Self Declaration   | - M3_OOB_1_IPMI_OOB_Optional_Declaration* (implementation choice)                  |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_OOB_1     | Level M3                               | No (Self        | Manual steps       | - M3_OOB_1_IPMI_OOB_Optional_Declaration* (implementation choice)                  |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 |                          | M3_OOB_2     | Level M3                               | Yes             | OOB                | - M3_OOB_2_Redfish_Service_Validator                                               |
 |                          |              |                                        |                 |                    | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Baseline                               |
 |                          |              |                                        |                 |                    | - M3_OOB_2_Redfish_Interop_Validator_On_OCP_Server (recommended)                   |
 |                          |              |                                        |                 |                    |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| BMC-IO                   | M2_IO_1      | Level M2                               | No              | Self Declaration   | - M2_IO_1_NCSI_RBT_Declaration* (conditional)                                      |
-|                          |              |                                        |                 |                    |                                                                                    |
+| BMC-IO                   | M2_IO_1      | Level M2                               | No (Self        | Manual steps       | - M2_IO_1_NCSI_RBT_Declaration* (conditional)                                      |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_IO_1      | Level M3                               | No              | Self Declaration   | - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration* (conditional)                              |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_IO_1      | Level M3                               | No (Self        | Manual steps       | - M3_IO_1_NCSI_RBT_Or_MCTP_Declaration* (conditional)                              |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_IO_2      | Level M3                               | No              | SSH,               | - M3_IO_2_MCTP_Physical_Binding (conditional)                                      |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_IO_2      | Level M3                               | Partial (Self   | OpenBMC SSH        | - M3_IO_2_MCTP_Physical_Binding (conditional)                                      |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_001`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M3_IO_2_MCTP_IO_PHYSICAL_BINDING_SUPPORT` in `config`_                            |
+|                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_1      | Level M4                               | No              | SSH,               | - M4_IO_1_MCTP_Transport_Protocol (conditional)                                    |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
+|                          | M4_IO_1      | Level M4                               | Partial (Self   | OpenBMC SSH        | - M4_IO_1_MCTP_Transport_Protocol (conditional)                                    |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | - M4_IO_1_PCIe_Device_MCTP_PLDM_Management (conditional)                           |
 |                          |              |                                        |                 |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_002`_ and `PLDM_Test_Case_002`_; declare by       |
 |                          |              |                                        |                 |                    | setting                                                                            |
 |                          |              |                                        |                 |                    | `M4_IO_1_PCIE_DEVICE_MCTP_PLDM_MANAGEMENT_SUPPORT` in `config`_                    |
-+                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_2      | Level M4                               | No              | Self Declaration   | - M4_IO_2_NVMe_MI_Over_MCTP_Declaration* (conditional)                             |
 |                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M4_IO_3      | Level M4                               | No              | SSH,               | - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding (conditional)                                  |
-|                          |              |                                        |                 | Self Declaration   |                                                                                    |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M4_IO_2      | Level M4                               | No (Self        | Manual steps       | - M4_IO_2_NVMe_MI_Over_MCTP_Declaration* (conditional)                             |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M4_IO_3      | Level M4                               | Partial (Self   | OpenBMC SSH        | - M4_IO_3_MCTP_I3C_PCIE_VDM_Binding (conditional)                                  |
+|                          |              |                                        | Declaration)    |                    |                                                                                    |
 |                          |              |                                        |                 |                    | Manual fallback: `MCTP_Test_Case_003`_; declare by setting                         |
 |                          |              |                                        |                 |                    | `M4_IO_3_MCTP_I3C_PCIE_VDM_BINDING_SUPPORT` in `config`_                           |
+|                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | Note: OpenBMC customers may use SSH automation or manual validation with Self      |
+|                          |              |                                        |                 |                    | Declaration. Customers using non-OpenBMC implementations may use own validation    |
+|                          |              |                                        |                 |                    | methods with Self Declaration.                                                     |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| SPDM                     | M3_SPDM_1    | Level M3                               | No              | Self Declaration   | - M3_SPDM_1_SPDM_Protocol_Declaration* (conditional)                               |
-|                          |              |                                        |                 |                    |                                                                                    |
+| SPDM                     | M3_SPDM_1    | Level M3                               | No (Self        | Manual steps       | - M3_SPDM_1_SPDM_Protocol_Declaration* (conditional)                               |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M3_SPDM_2    | Level M3                               | No              | Self Declaration   | - M3_SPDM_2_SPDM_MCTP_Binding_Declaration* (conditional)                           |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M3_SPDM_2    | Level M3                               | No (Self        | Manual steps       | - M3_SPDM_2_SPDM_MCTP_Binding_Declaration* (conditional)                           |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | RAS                      | M1_RAS_1     | Level M1                               | Yes             | IB                 | - M1_RAS_1_2_Send_Platform_Error_Record_Command                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
@@ -208,8 +235,8 @@ SBMR checklist
 |                          | M1_RAS_2     | Level M1                               | Yes             | IB                 | - M1_RAS_1_2_Send_Platform_Error_Record_Command                                    |
 |                          |              |                                        |                 |                    |                                                                                    |
 +                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                          | M2_RAS_2     | Level M2                               | No              | Self Declaration   | - M2_RAS_2_Redfish_Platform_Error_Record_Declaration* (conditional)                |
-|                          |              |                                        |                 |                    |                                                                                    |
+|                          | M2_RAS_2     | Level M2                               | No (Self        | Manual steps       | - M2_RAS_2_Redfish_Platform_Error_Record_Declaration* (conditional)                |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
 +--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 | IPMI                     | IPMI_1       | Level M1                               | Yes             | OOB                | - M1_OOB_1_IPMI_1_2_3_Power_Control                                                |
 |                          |              |                                        |                 |                    |                                                                                    |
@@ -240,33 +267,34 @@ SBMR checklist
 SBMR future requirements checklist
 ==================================
 
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Category                   | Rule ID      | Covered by ACS? | Execution Type     | Test Tag(s)                                                                        |
-+============================+==============+=================+====================+====================================================================================+
-| In-Band                    | M5_IB_1      | No              | Self Declaration   | - M5_IB_1_MMBI_Interface_Declaration* (conditional)                                |
-|                            |              |                 |                    |                                                                                    |
-+                            +--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                            | M5_IB_2      | No              | Self Declaration   | - M5_IB_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
-|                            |              |                 |                    |                                                                                    |
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Side-Band                  | M5_SB_1      | No              | Self Declaration   | - M5_SB_1_MCTP_High_Bandwidth_Binding_Declaration*                                 |
-|                            |              |                 |                    |                                                                                    |
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| BMC-IO                     | M5_IO_1      | No              | Self Declaration   | - M5_IO_1_MCTP_IO_High_Bandwidth_Binding_Declaration*                              |
-|                            |              |                 |                    |                                                                                    |
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| OOB                        | M5_OOB_1     | Yes             | OOB                | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)                           |
-|                            |              |                 |                    |                                                                                    |
-|                            |              |                 |                    | User should declare whether the server platform supports                           |
-|                            |              |                 |                    | user-accessible BIOS settings using                                                |
-|                            |              |                 |                    | M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT flag in config.                              |
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-| Host-to-SatMC interface    | M5_HS_1      | No              | Self Declaration   | - M5_HS_1_MCTP_Over_PCC_Mailbox_Declaration* (conditional)                         |
-|                            |              |                 |                    |                                                                                    |
-+                            +--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
-|                            | M5_HS_2      | No              | Self Declaration   | - M5_HS_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
-|                            |              |                 |                    |                                                                                    |
-+----------------------------+--------------+-----------------+--------------------+------------------------------------------------------------------------------------+
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+| Category                 | Rule ID      | Specification version first introduced | Covered by ACS  | Test Execution     | Test Tag(s) / Manual Test Steps                                                    |
+|                          |              |                                        | Automation?     | Method             |                                                                                    |
++==========================+==============+========================================+=================+====================+====================================================================================+
+| In-Band                  | M5_IB_1      | Level M5                               | No (Self        | Manual steps       | - M5_IB_1_MMBI_Interface_Declaration* (conditional)                                |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M5_IB_2      | Level M5                               | No (Self        | Manual steps       | - M5_IB_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+| Side-Band                | M5_SB_1      | Level M5                               | No (Self        | Manual steps       | - M5_SB_1_MCTP_High_Bandwidth_Binding_Declaration*                                 |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+| BMC-IO                   | M5_IO_1      | Level M5                               | No (Self        | Manual steps       | - M5_IO_1_MCTP_IO_High_Bandwidth_Binding_Declaration*                              |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+| OOB                      | M5_OOB_1     | Level M5                               | Yes             | OOB                | - M5_OOB_1_Redfish_BIOS_Settings_Resource* (conditional)                           |
+|                          |              |                                        |                 |                    |                                                                                    |
+|                          |              |                                        |                 |                    | User should declare whether the server platform supports                           |
+|                          |              |                                        |                 |                    | user-accessible BIOS settings using                                                |
+|                          |              |                                        |                 |                    | M5_OOB_1_EXPOSE_BIOS_SETTINGS_SUPPORT flag in config.                              |
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+| Host-to-SatMC interface  | M5_HS_1      | Level M5                               | No (Self        | Manual steps       | - M5_HS_1_MCTP_Over_PCC_Mailbox_Declaration* (conditional)                         |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++                          +--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
+|                          | M5_HS_2      | Level M5                               | No (Self        | Manual steps       | - M5_HS_2_MCTP_Host_Interface_Discovery_Declaration* (conditional)                 |
+|                          |              |                                        | Declaration)    | unavailable        |                                                                                    |
++--------------------------+--------------+----------------------------------------+-----------------+--------------------+------------------------------------------------------------------------------------+
 
 .. _Side_Band_Test_Case_001: sideband_manual_testing.md#side_band_test_case_001
 .. _MCTP_Test_Case_001: sideband_manual_testing.md#mctp_test_case_001

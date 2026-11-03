@@ -97,7 +97,7 @@ rules:
     category: In-Band
     suites:
       linux:
-        - M2_IB_2_IPMI_SSIF_Functionality
+        - M2_IB_1_Redfish_HI_Functionality
 
   - id: RXNXV
     introduced: M2.1

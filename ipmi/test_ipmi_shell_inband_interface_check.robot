@@ -29,7 +29,7 @@ ${DMIDECODE_CMD_38}=    dmidecode -t 38
 
 Test Host IPMI Inband Interface Functionality
     [Documentation]  Verify IPMI Inband Interface Functionality on Host
-    [Tags]  M1_IB_1_IPMI_SSIF_Functionality  M2_IB_2_IPMI_SSIF_Functionality
+    [Tags]  M1_IB_1_IPMI_SSIF_Functionality
 
     ${rc}  ${stdout}  ${stderr}=  Shell Cmd  ${DMIDECODE_CMD_38}  return_stderr=True
 
